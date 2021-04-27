@@ -1,0 +1,54 @@
+<%- include("partials/header.ejs"); -%>
+<div class="row">
+  <h1 class="text-center">New Panorama</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/create"
+      method="POST"
+      autocomplete="off"
+      novalidate
+      class="validated-form"
+      enctype="multipart/form-data"
+    >
+      <!--* Title  -->
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="panorama[title]"
+          required
+        />
+      </div>
+      <!--* Location  -->
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="panorama[location]"
+          required
+        />
+      </div>
+      <!--* Image Url  -->
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Upload Images</label>
+        <input
+          type="file"
+          class="form-control"
+          id="formFileMultiple"
+          name="image"
+          multiple
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Add Panorama</button>
+      </div>
+    </form>
+    <a href="/">All Panoramas</a>
+  </div>
+</div>
+<%- include("partials/footer.ejs"); -%>
