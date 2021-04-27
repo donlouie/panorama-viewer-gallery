@@ -11,7 +11,7 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
         return next(new AppError('No documents found in the database', 404));
       }
 
-      res.status(200).render('index', { panoramaList: doc });
+      res.status(200).render('index', { panoramas: doc });
     });
   } catch (err) {
     console.error(err.message);
@@ -37,3 +37,11 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
     res.status(500).send('Server Error');
   }
 });
+
+exports.showDetail = async (req, res) => {
+  const panorama = await Panorama.findById(req.params.id);
+  if (!panorama) {
+    return res.redirect('/');
+  }
+  res.render('show', { panorama });
+};

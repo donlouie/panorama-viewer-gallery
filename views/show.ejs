@@ -1,0 +1,13 @@
+<%- include("partials/header.ejs"); -%>
+<div id="panorama"></div>
+<script>
+  panoramaURL = '<%= panorama.images[0].url %>';
+
+  pannellum.viewer('panorama', {
+    type: 'equirectangular',
+    panorama: panoramaURL,
+    autoLoad: true,
+    autoRotate: -2,
+  });
+</script>
+<%-include("partials/footer.ejs"); -%>
