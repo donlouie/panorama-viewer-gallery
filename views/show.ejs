@@ -1,13 +1,60 @@
 <%- include("partials/header.ejs"); -%>
+<style>
+  #panorama {
+    width: 600px;
+    height: 400px;
+  }
+  #partial {
+    width: 600px;
+    height: 400px;
+  }
+  #controls {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 3px;
+  }
+  .ctrl {
+    padding: 8px 5px;
+    width: 30px;
+    text-align: center;
+    background: rgba(200, 200, 200, 0.8);
+    display: inline-block;
+    cursor: pointer;
+  }
+  .ctrl:hover {
+    background: rgba(200, 200, 200, 1);
+  }
+</style>
 <div id="panorama"></div>
+<div id="partial"></div>
+
+<form class="d-inline" action="<%=panorama._id%>?_method=DELETE" method="POST">
+  <button class="btn btn-danger">Delete</button>
+</form>
 <script>
   panoramaURL = '<%= panorama.images[0].url %>';
+  panoramaTitle = '<%= panorama.title %>';
 
   pannellum.viewer('panorama', {
     type: 'equirectangular',
     panorama: panoramaURL,
     autoLoad: true,
     autoRotate: -2,
+    compass: true,
+    northOffset: 247.5,
+    title: panoramaTitle,
+    author: 'Lorma Colleges',
+  });
+  pannellum.viewer('partial', {
+    type: 'equirectangular',
+    panorama: panoramaURL,
+    autoLoad: true,
+    haov: 149.87,
+    vaov: 54.15,
+    vOffset: 1.17,
   });
 </script>
 <%-include("partials/footer.ejs"); -%>

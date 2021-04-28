@@ -10,13 +10,20 @@ const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });
 
+//* Show Panorama List
 router.get('/', panoramaController.showPanorama);
 
+//* Render Panorama Create Form
+//* Create Panorama
 router
   .route('/create')
   .get(panoramaController.renderNewForm)
   .post(upload.array('image'), panoramaController.createPanorama);
 
-router.route('/:id').get(catchAsync(panoramaController.showDetail));
+//* Show Panorama Detail
+router
+  .route('/:id')
+  .get(panoramaController.showDetail)
+  .delete(panoramaController.deletePanorama);
 
 module.exports = router;

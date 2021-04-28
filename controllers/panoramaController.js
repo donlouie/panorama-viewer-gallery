@@ -4,6 +4,7 @@ const AppError = require('../utils/appError');
 const Panorama = require('../models/panoramaModel');
 const { cloudinary } = require('../cloudinary');
 
+//* Show Panorama List
 exports.showPanorama = catchAsync(async (req, res, next) => {
   try {
     await Panorama.find({}, (err, doc) => {
@@ -19,10 +20,12 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
   }
 });
 
+//* Render Panorama Create Form
 exports.renderNewForm = (req, res) => {
   res.render('create');
 };
 
+//* Create Panorama
 exports.createPanorama = catchAsync(async (req, res, next) => {
   try {
     const panorama = new Panorama(req.body.panorama);
@@ -31,6 +34,7 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
       filename: f.filename,
     }));
     await panorama.save();
+    console.log(panorama);
     res.redirect('/');
   } catch (err) {
     console.error(err.message);
@@ -38,10 +42,28 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
   }
 });
 
+//* Show Panorama Detail
 exports.showDetail = async (req, res) => {
   const panorama = await Panorama.findById(req.params.id);
   if (!panorama) {
     return res.redirect('/');
   }
   res.render('show', { panorama });
+};
+
+//* Delete Panorama
+// exports.deletePanorama = async (req, res) => {
+//   const { id } = req.params;
+//   await Panorama.findByIdAndDelete(id);
+//   res.redirect('/');
+// };
+
+exports.deletePanorama = async (req, res) => {
+  const { id } = req.params;
+  const panorama = await Panorama.findById(id);
+  console.log(panorama);
+  console.log(panorama.images[0].filename);
+  cloudinary.uploader.destroy(panorama.images[0].filename);
+  await Panorama.findByIdAndDelete(id);
+  res.redirect('/');
 };
