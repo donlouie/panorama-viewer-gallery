@@ -1,9 +1,9 @@
-<%- include("partials/header.ejs"); -%>
+<%- include("../partials/header.ejs"); -%>
 <div class="row">
   <h1 class="text-center">New Panorama</h1>
   <div class="col-6 offset-3">
     <form
-      action="/create"
+      action="create"
       method="POST"
       autocomplete="off"
       novalidate
@@ -60,7 +60,7 @@
         <button class="btn btn-success">Add Panorama</button>
       </div>
     </form>
-    <a href="/">All Panoramas</a>
+    <a href="/panoramas">All Panoramas</a>
   </div>
 </div>
-<%- include("partials/footer.ejs"); -%>
+<%- include("../partials/footer.ejs"); -%>

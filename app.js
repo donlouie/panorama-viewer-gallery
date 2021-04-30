@@ -13,8 +13,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
-app.use('/', panoramaRouter);
+//* Routes
+app.use('/panoramas', panoramaRouter);
 
+//* @route GET
+//? @desc Render home page
+app.get('/', (req, res) => {
+  res.render('home');
+});
+
+//* @route ALL
+//? @desc ERROR 404 Page
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });

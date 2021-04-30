@@ -4,7 +4,8 @@ const AppError = require('../utils/appError');
 const Panorama = require('../models/panoramaModel');
 const { cloudinary } = require('../cloudinary');
 
-//* Show Panorama List
+//* @route GET
+//? @desc Show panorama list
 exports.showPanorama = catchAsync(async (req, res, next) => {
   try {
     await Panorama.find({}, (err, doc) => {
@@ -12,7 +13,7 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
         return next(new AppError('No documents found in the database', 404));
       }
 
-      res.status(200).render('index', { panoramas: doc });
+      res.status(200).render('panoramas/index', { panoramas: doc });
     });
   } catch (err) {
     console.error(err.message);
@@ -20,17 +21,19 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
   }
 });
 
-//* Render Panorama Create Form
+//* @route GET
+//? @desc Render panorama create form
 exports.renderNewForm = (req, res) => {
   try {
-    res.render('create');
+    res.render('panoramas/create');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 };
 
-//* Create Panorama
+//* @route POST
+//? @desc Create new panorama
 exports.createPanorama = catchAsync(async (req, res, next) => {
   try {
     const panorama = new Panorama(req.body.panorama);
@@ -40,38 +43,37 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
     }));
     await panorama.save();
     // console.log(panorama);
-    res.redirect('/');
+    res.redirect('/panoramas');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
 
-//* Show Panorama Detail
+//* @route GET
+//? @desc Show panorama detail
 exports.showDetail = async (req, res) => {
   try {
     const panorama = await Panorama.findById(req.params.id);
     // console.log(panorama);
-    res.render('show', { panorama });
+    res.render('panoramas/show', { panorama });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 };
 
-//* Delete Panorama
-// exports.deletePanorama = async (req, res) => {
-//   const { id } = req.params;
-//   await Panorama.findByIdAndDelete(id);
-//   res.redirect('/');
-// };
-
-// exports.deletePanorama = async (req, res) => {
-//   const { id } = req.params;
-//   const panorama = await Panorama.findById(id);
-//   console.log(panorama);
-//   console.log(panorama.images[0].filename);
-//   cloudinary.uploader.destroy(panorama.images[0].filename);
-//   await Panorama.findByIdAndDelete(id);
-//   res.redirect('/');
-// };
+//* @route DELETE
+//? @desc Delete panorama
+exports.deletePanorama = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const panorama = await Panorama.findById(id);
+    cloudinary.uploader.destroy(panorama.images[0].filename);
+    await Panorama.findByIdAndDelete(id);
+    res.redirect('/panoramas');
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
