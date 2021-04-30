@@ -21,9 +21,7 @@ router
   .post(upload.array('image'), panoramaController.createPanorama);
 
 //* Show Panorama Detail
-router
-  .route('/:id')
-  .get(panoramaController.showDetail)
-  .delete(panoramaController.deletePanorama);
+router.route('/:id').get(panoramaController.showDetail);
+// .delete(panoramaController.deletePanorama);
 
 module.exports = router;
