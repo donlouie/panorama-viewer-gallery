@@ -11,7 +11,9 @@ const userController = require('../controllers/userController');
 //? @desc Render create user form
 //* @route POST
 //? @desc Create user
-router.route('/register').get(userController.renderRegister);
-//   .post(catchAsync(users.register));
+router
+  .route('/register')
+  .get(userController.renderRegister)
+  .post(catchAsync(userController.register));
 
 module.exports = router;

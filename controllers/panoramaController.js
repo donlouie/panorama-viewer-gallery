@@ -23,7 +23,7 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
 
 //* @route GET
 //? @desc Render panorama create form
-exports.renderNewForm = (req, res) => {
+exports.renderNewForm = (req, res, next) => {
   try {
     res.render('panoramas/create');
   } catch (err) {
@@ -43,7 +43,8 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
     }));
     await panorama.save();
     // console.log(panorama);
-    res.redirect('/panoramas');
+    req.flash('success_msg', 'Panorama created successfully!');
+    res.status(201).redirect('/panoramas');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -52,11 +53,11 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
 
 //* @route GET
 //? @desc Show panorama detail
-exports.showDetail = async (req, res) => {
+exports.showDetail = async (req, res, next) => {
   try {
     const panorama = await Panorama.findById(req.params.id);
     // console.log(panorama);
-    res.render('panoramas/show', { panorama });
+    res.status(200).render('panoramas/show', { panorama });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -65,13 +66,14 @@ exports.showDetail = async (req, res) => {
 
 //* @route DELETE
 //? @desc Delete panorama
-exports.deletePanorama = async (req, res) => {
+exports.deletePanorama = async (req, res, next) => {
   try {
     const { id } = req.params;
     const panorama = await Panorama.findById(id);
     cloudinary.uploader.destroy(panorama.images[0].filename);
     await Panorama.findByIdAndDelete(id);
-    res.redirect('/panoramas');
+    req.flash('success_msg', 'Panorama deleted successfully!');
+    res.status(200).redirect('/panoramas');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
