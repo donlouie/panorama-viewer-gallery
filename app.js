@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
 const panoramaRouter = require('./routes/panoramaRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const AppError = require('./utils/appError');
 
@@ -14,6 +15,7 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 //* Routes
+app.use('/', userRouter);
 app.use('/panoramas', panoramaRouter);
 
 //* @route GET
