@@ -1,10 +1,11 @@
 <%- include("../partials/header.ejs"); -%>
+<%- include("../partials/navbar.ejs"); -%> 
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <p><i class="fas fa-sign-in-alt"></i> Create Account</p>
       <%- include('../partials/messages.ejs') %>
-      <form action="/register" method="POST" autocomplete="off">
+      <form action="/users/register" method="POST" autocomplete="off">
         <div class="form-group">
           <label for="name">Name</label>
           <input
@@ -51,7 +52,7 @@
         </div>
         <button type="submit" class="btn btn-dark btn-block">Register</button>
       </form>
-      <p>Have An Account? <a href="/login">Login</a></p>
+      <p>Have An Account? <a href="/users/login">Login</a></p>
     </div>
   </div>
 </div>

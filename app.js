@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 });
 
 //* Routes
-app.use('/', userRouter);
+app.use('/users', userRouter);
 app.use('/panoramas', panoramaRouter);
 
 //* @route GET

@@ -13,8 +13,18 @@ router
   .route('/register')
   .get(userController.renderRegister)
   .post(userController.createUser);
+
 //* @route GET
 //? @desc Render login form
-router.route('/login').get(userController.renderLogin);
+//* @route POST
+//? @desc Login User
+router
+  .route('/login')
+  .get(userController.renderLogin)
+  .post(userController.loginUser);
+
+//* @route GET
+//? @desc Logout User
+router.route('/logout').get(userController.logoutUser);
 
 module.exports = router;

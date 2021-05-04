@@ -3,6 +3,8 @@ const router = express.Router();
 
 const catchAsync = require('../utils/catchAsync');
 
+const { ensureAuthenticated } = require('../config/auth');
+
 const Panorama = require('../models/panoramaModel');
 const panoramaController = require('../controllers/panoramaController');
 
@@ -12,8 +14,11 @@ const upload = multer({ storage });
 
 //* @route GET
 //? @desc Show panorama list
-router.get('/', panoramaController.showPanorama);
+router.route('/').get(panoramaController.showPanorama);
 
+//* @route GET
+//? @desc Render info page
+router.route('/info').get(ensureAuthenticated, panoramaController.renderInfo);
 
 //* @route GET
 //? @desc Render panorama create form
@@ -21,7 +26,7 @@ router.get('/', panoramaController.showPanorama);
 //? @desc Create new panorama
 router
   .route('/create')
-  .get(panoramaController.renderNewForm)
+  .get(ensureAuthenticated, panoramaController.renderNewForm)
   .post(upload.array('image'), panoramaController.createPanorama);
 
 //* @route GET
@@ -31,6 +36,6 @@ router
 router
   .route('/:id')
   .get(panoramaController.showDetail)
-  .delete(panoramaController.deletePanorama);
+  // .delete(panoramaController.deletePanorama);
 
 module.exports = router;

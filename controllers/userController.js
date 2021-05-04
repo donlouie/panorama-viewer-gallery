@@ -79,7 +79,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
                   'success_msg',
                   'You are now registered and can log in'
                 );
-                res.redirect('/login');
+                res.redirect('/users/login');
               })
               .catch((err) => console.log(err));
           })
@@ -88,3 +88,21 @@ exports.createUser = catchAsync(async (req, res, next) => {
     });
   }
 });
+
+//* @route POST
+//? @desc Login User
+exports.loginUser = (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/panoramas/info',
+    failureRedirect: '/users/login',
+    failureFlash: true,
+  })(req, res, next);
+};
+
+//* @route GET
+//? @desc Logout User
+exports.logoutUser = (req, res, next) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/users/login');
+};

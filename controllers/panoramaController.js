@@ -22,6 +22,17 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
 });
 
 //* @route GET
+//? @desc Render panorama info page
+exports.renderInfo= (req, res, next) => {
+  try {
+    res.render('panoramas/info');
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+//* @route GET
 //? @desc Render panorama create form
 exports.renderNewForm = (req, res, next) => {
   try {
