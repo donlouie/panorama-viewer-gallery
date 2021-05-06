@@ -13,17 +13,19 @@
 <link href="/css/panellum.css" rel="stylesheet" />
 <!--* Body  -->
 <!--! temp Delete Button  -->
-<form
+<!-- <form
   class="d-inline"
   action="/panoramas/<%=panorama._id%>?_method=DELETE"
   method="POST"
 >
   <button class="btn btn-danger">Delete</button>
-</form>
+</form> -->
 <!--! temp Edit Button  -->
-<a class="card-link btn btn-info" href="/panoramas/<%=panorama._id%>/edit"
+<!-- <a class="card-link btn btn-info" href="/panoramas/<%=panorama._id%>/edit"
   >Edit</a
->
+> -->
+<!--! temp Author -->
+<h5 class="card-title"><%= panorama.author.name %></h5>
 <!--* /Body  -->
 <div class="container py-4">
   <header class="pb-3 mb-4 border-bottom">
@@ -36,7 +38,6 @@
       </span>
     </a>
   </header>
-
   <div class="p-3 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">360° Panorama</h1>
