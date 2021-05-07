@@ -31,14 +31,15 @@ router
 
 //* @route GET
 //? @desc Render panorama modify form
-router.route('/delete');
-// .get(ensureAuthenticated, panoramaController.renderModifyForm);
+//* @route POST
+//? @desc Delete panorama
+router
+    .route('/modify')
+    .get(panoramaController.renderModifyForm)
+    .post(panoramaController.deletePanorama);
 
 //* @route GET
 //? @desc Show panorama detail
-//* @route DELETE
-//? @desc Delete panorama
 router.route('/:id').get(panoramaController.showDetail);
-// .delete(panoramaController.deletePanorama);
 
 module.exports = router;

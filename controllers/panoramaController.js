@@ -3,6 +3,7 @@ const AppError = require('../utils/appError');
 
 const Panorama = require('../models/panoramaModel');
 const { cloudinary } = require('../cloudinary');
+const { populate } = require('../models/panoramaModel');
 
 //* @route GET
 //? @desc Show panorama list
@@ -44,6 +45,32 @@ exports.renderNewForm = (req, res, next) => {
     }
 };
 
+//* @route GET
+//? @desc Render panorama modify list
+exports.renderModifyForm = catchAsync(async (req, res, next) => {
+    try {
+        // await Panorama.find({}, (err, doc) => {
+        //     if (!doc) {
+        //         return next(
+        //             new AppError('No documents found in the database', 404)
+        //         );
+        //     }
+        //     res.status(200).render('panoramas/modify', { panoramas: doc });
+        // });
+        const panorama = await Panorama.find({}, (err, doc) => {
+            if (!doc) {
+                return next(
+                    new AppError('No documents found in the database', 404)
+                );
+            }
+        }).populate('author');
+        res.status(200).render('panoramas/modify', { panoramas: panorama });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 //* @route POST
 //? @desc Create new panorama
 exports.createPanorama = catchAsync(async (req, res, next) => {
@@ -78,11 +105,11 @@ exports.showDetail = async (req, res, next) => {
     }
 };
 
-//* @route DELETE
+//* @route POST
 //? @desc Delete panorama
 exports.deletePanorama = async (req, res, next) => {
     try {
-        const { id } = req.params;
+        const { id } = await Panorama.findById(req.body.deleteButton);
         const panorama = await Panorama.findById(id);
         cloudinary.uploader.destroy(panorama.images[0].filename);
         await Panorama.findByIdAndDelete(id);
