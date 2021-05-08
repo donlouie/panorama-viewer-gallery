@@ -1,67 +1,69 @@
-<%- include("../partials/header.ejs"); -%>
-<%- include("../partials/anavbar.ejs"); -%> 
+<%- include("../partials/header.ejs"); -%> <%-
+include("../partials/anavbar.ejs"); -%>
 <div class="row">
-  <h3 class="text-center">New Panorama</h3>
-  <div class="col-6 offset-3">
-    <form
-      action="create"
-      method="POST"
-      autocomplete="off"
-      novalidate
-      class="validated-form"
-      enctype="multipart/form-data"
-    >
-      <!--* Title  -->
-      <div class="mb-3">
-        <label class="form-label" for="title">Title</label>
-        <input
-          class="form-control"
-          type="text"
-          id="title"
-          name="panorama[title]"
-          required
-        />
-      </div>
-      <!--* Location  -->
-      <div class="mb-3">
-        <label class="form-label" for="location">Location</label>
-        <input
-          class="form-control"
-          type="text"
-          id="location"
-          name="panorama[location]"
-          required
-        />
-      </div>
-      <!--* Description  -->
-      <div class="mb-3">
-        <label class="form-label" for="description">Description</label>
-        <textarea
-          class="form-control"
-          type="text"
-          id="description"
-          name="panorama[description]"
-          rows="3"
-          required
-        ></textarea>
-      </div>
-      <!--* Image Url  -->
-      <!--! Single Image Only  -->
-      <div class="mb-3">
-        <label for="formFileMultiple" class="form-label">Upload Images</label>
-        <input
-          type="file"
-          class="form-control"
-          id="formFileMultiple"
-          name="image"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <button class="btn btn-success">Add Panorama</button>
-      </div>
-    </form>
-    <a href="/panoramas">All Panoramas</a>
-  </div>
+    <h3 class="text-center">New Panorama</h3>
+    <div class="col-6 offset-3">
+        <form
+            action="create"
+            method="POST"
+            autocomplete="off"
+            novalidate
+            class="validated-form"
+            enctype="multipart/form-data"
+        >
+            <!--* Title  -->
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="title"
+                    name="panorama[title]"
+                    required
+                />
+            </div>
+            <!--* Location  -->
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="location"
+                    name="panorama[location]"
+                    required
+                />
+            </div>
+            <!--* Description  -->
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea
+                    class="form-control"
+                    type="text"
+                    id="description"
+                    name="panorama[description]"
+                    rows="3"
+                    required
+                ></textarea>
+            </div>
+            <!--* Image Url  -->
+            <!--! Single Image Only  -->
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label"
+                    >Upload Images</label
+                >
+                <input
+                    type="file"
+                    class="form-control"
+                    id="formFileMultiple"
+                    name="image"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Add Panorama</button>
+            </div>
+        </form>
+        <a href="/panoramas">All Panoramas</a>
+    </div>
 </div>
 <%- include("../partials/footer.ejs"); -%>

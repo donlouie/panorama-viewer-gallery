@@ -25,7 +25,7 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
 
 //* @route GET
 //? @desc Render panorama info page
-exports.renderInfo = (req, res, next) => {
+exports.renderInfo = async (req, res, next) => {
     try {
         res.render('panoramas/info');
     } catch (err) {
@@ -36,7 +36,7 @@ exports.renderInfo = (req, res, next) => {
 
 //* @route GET
 //? @desc Render panorama create form
-exports.renderNewForm = (req, res, next) => {
+exports.renderNewForm = async (req, res, next) => {
     try {
         res.render('panoramas/create');
     } catch (err) {
@@ -46,8 +46,25 @@ exports.renderNewForm = (req, res, next) => {
 };
 
 //* @route GET
-//? @desc Render panorama modify list
-exports.renderModifyForm = catchAsync(async (req, res, next) => {
+//? @desc Render panorama edit form
+exports.renderEditForm = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const panorama = await Panorama.findById(id);
+        if (!panorama) {
+            req.flash('error', 'Cannot find that panorama!');
+            return res.redirect('/panoramas/admin/list');
+        }
+        res.render('panoramas/edit', { panorama });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+};
+
+//* @route GET
+//? @desc Render panorama list
+exports.renderList = catchAsync(async (req, res, next) => {
     try {
         // await Panorama.find({}, (err, doc) => {
         //     if (!doc) {
@@ -64,7 +81,7 @@ exports.renderModifyForm = catchAsync(async (req, res, next) => {
                 );
             }
         }).populate('author');
-        res.status(200).render('panoramas/modify', { panoramas: panorama });
+        res.status(200).render('panoramas/list', { panoramas: panorama });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -84,7 +101,7 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
         await panorama.save();
         // console.log(panorama);
         req.flash('success_msg', 'Panorama created successfully!');
-        res.status(201).redirect('/panoramas');
+        res.status(201).redirect('/panoramas/admin/list');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -113,8 +130,9 @@ exports.deletePanorama = async (req, res, next) => {
         const panorama = await Panorama.findById(id);
         cloudinary.uploader.destroy(panorama.images[0].filename);
         await Panorama.findByIdAndDelete(id);
+        //! Flash message not shown after delete
         req.flash('success_msg', 'Panorama deleted successfully!');
-        res.status(200).redirect('/panoramas');
+        res.status(200).redirect('/panoramas/admin/list');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

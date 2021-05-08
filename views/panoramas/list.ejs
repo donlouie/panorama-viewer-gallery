@@ -1,0 +1,49 @@
+<%- include("../partials/header.ejs"); -%> <%-
+include("../partials/anavbar.ejs"); -%>
+
+<h3 class="text-center">Panorama List</h3>
+<!--* Table -->
+<table class="table w-50 p-3 col-6 offset-3">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Location</th>
+            <th scope="col">Modified By</th>
+            <th scope="col">Date Modified</th>
+            <th>Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let panorama of panoramas) { %>
+        <tr>
+            <td><%= panorama.title %></td>
+            <td><%= panorama.location %></td>
+            <td><%= panorama.author.name %></td>
+            <td><%= panorama.date %></td>
+            <td>
+                <a
+                    class="card-link btn btn-info"
+                    href="/panoramas/admin/<%= panorama._id %>/edit"
+                    ><i class="fas fa-edit"></i
+                ></a>
+            </td>
+            <!--* Delete Button  -->
+            <td>
+                <form class="d-inline" action="/panoramas/admin/list" method="POST">
+                    <button
+                        class="btn btn-danger"
+                        name="deleteButton"
+                        value="<%= panorama._id %>"
+                        onclick="this.form.submit()"
+                    >
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%-include("../partials/footer.ejs"); -%>

@@ -18,28 +18,32 @@ router.route('/').get(panoramaController.showPanorama);
 
 //* @route GET
 //? @desc Render info page
-router.route('/info').get(ensureAuthenticated, panoramaController.renderInfo);
+router.route('/admin/info').get(panoramaController.renderInfo);
 
 //* @route GET
 //? @desc Render panorama create form
 //* @route POST
 //? @desc Create new panorama
 router
-    .route('/create')
-    .get(ensureAuthenticated, panoramaController.renderNewForm)
+    .route('/admin/create')
+    .get(panoramaController.renderNewForm)
     .post(upload.array('image'), panoramaController.createPanorama);
 
 //* @route GET
-//? @desc Render panorama modify form
+//? @desc Render panorama list
 //* @route POST
 //? @desc Delete panorama
 router
-    .route('/modify')
-    .get(panoramaController.renderModifyForm)
+    .route('/admin/list')
+    .get(panoramaController.renderList)
     .post(panoramaController.deletePanorama);
 
 //* @route GET
 //? @desc Show panorama detail
 router.route('/:id').get(panoramaController.showDetail);
+
+//* @route GET
+//? @desc Render edit campground form
+router.route('/admin/:id/edit').get(panoramaController.renderEditForm);
 
 module.exports = router;

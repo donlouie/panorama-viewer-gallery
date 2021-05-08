@@ -93,7 +93,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
 //? @desc Login User
 exports.loginUser = (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/panoramas/info',
+        successRedirect: '/panoramas/admin/info',
         failureRedirect: '/users/login',
         failureFlash: true,
     })(req, res, next);
