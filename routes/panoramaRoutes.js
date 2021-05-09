@@ -18,7 +18,9 @@ router.route('/').get(panoramaController.showPanorama);
 
 //* @route GET
 //? @desc Render info page
-router.route('/admin/info').get(panoramaController.renderInfo);
+router
+    .route('/admin/info')
+    .get(ensureAuthenticated, panoramaController.renderInfo);
 
 //* @route GET
 //? @desc Render panorama create form
@@ -26,7 +28,7 @@ router.route('/admin/info').get(panoramaController.renderInfo);
 //? @desc Create new panorama
 router
     .route('/admin/create')
-    .get(panoramaController.renderNewForm)
+    .get(ensureAuthenticated, panoramaController.renderNewForm)
     .post(upload.array('image'), panoramaController.createPanorama);
 
 //* @route GET
@@ -44,6 +46,9 @@ router.route('/:id').get(panoramaController.showDetail);
 
 //* @route GET
 //? @desc Render edit campground form
-router.route('/admin/:id/edit').get(panoramaController.renderEditForm);
+router
+    .route('/admin/:id/edit')
+    .get(panoramaController.renderEditForm)
+    .put(panoramaController.updatePanorama);
 
 module.exports = router;

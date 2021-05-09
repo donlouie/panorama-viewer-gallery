@@ -25,29 +25,29 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
 
 //* @route GET
 //? @desc Render panorama info page
-exports.renderInfo = async (req, res, next) => {
+exports.renderInfo = catchAsync(async (req, res, next) => {
     try {
         res.render('panoramas/info');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-};
+});
 
 //* @route GET
 //? @desc Render panorama create form
-exports.renderNewForm = async (req, res, next) => {
+exports.renderNewForm = catchAsync(async (req, res, next) => {
     try {
         res.render('panoramas/create');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-};
+});
 
 //* @route GET
 //? @desc Render panorama edit form
-exports.renderEditForm = async (req, res, next) => {
+exports.renderEditForm = catchAsync(async (req, res, next) => {
     try {
         const { id } = req.params;
         const panorama = await Panorama.findById(id);
@@ -60,7 +60,7 @@ exports.renderEditForm = async (req, res, next) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-};
+});
 
 //* @route GET
 //? @desc Render panorama list
@@ -110,7 +110,7 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
 
 //* @route GET
 //? @desc Show panorama detail
-exports.showDetail = async (req, res, next) => {
+exports.showDetail = catchAsync(async (req, res, next) => {
     try {
         const panorama = await Panorama.findById(req.params.id)
             // console.log(panorama);
@@ -120,11 +120,33 @@ exports.showDetail = async (req, res, next) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-};
+});
+
+//* @route PUT
+//? @desc Update panorama
+exports.updatePanorama = catchAsync(async (req, res, next) => {
+    try {
+        // author: authorId,
+        // date: Date.now(),
+        // const authorId = req.user._id;
+        const { id } = req.params;
+        const panorama = await Panorama.findByIdAndUpdate(id, {
+            
+        });
+        await panorama.save();
+        console.log(panorama);
+        //! Flash message not shown after update
+        req.flash('success', 'Panorama updated successfully!');
+        res.redirect('/panoramas/admin/list');
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 //* @route POST
 //? @desc Delete panorama
-exports.deletePanorama = async (req, res, next) => {
+exports.deletePanorama = catchAsync(async (req, res, next) => {
     try {
         const { id } = await Panorama.findById(req.body.deleteButton);
         const panorama = await Panorama.findById(id);
@@ -137,4 +159,4 @@ exports.deletePanorama = async (req, res, next) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-};
+});

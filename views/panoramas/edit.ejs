@@ -1,7 +1,72 @@
 <%- include("../partials/header.ejs"); -%> <%-
 include("../partials/anavbar.ejs"); -%>
-<h1>Edit Form</h1>
-<h2><%= panorama.title %></h2>
-<h2><%= panorama.location %></h2>
-<h2><%= panorama.description %></h2>
+<div class="row">
+    <h3 class="text-center">Edit Panorama</h3>
+    <div class="col-6 offset-3">
+        <form
+            action="/panoramas/admin/<%=panorama._id%>/edit?_method=PUT"
+            method="POST"
+            autocomplete="off"
+            novalidate
+            class="validated-form"
+            enctype="multipart/form-data"
+        >
+            <!--* Title  -->
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="title"
+                    name="panorama[title]"
+                    value="<%= panorama.title %>"
+                    required
+                />
+            </div>
+            <!--* Location  -->
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="location"
+                    name="panorama[location]"
+                    value="<%= panorama.location %>"
+                    required
+                />
+            </div>
+            <!--* Description  -->
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea
+                    class="form-control"
+                    type="text"
+                    id="description"
+                    name="panorama[description]"
+                    rows="3"
+                    required
+                >
+<%= panorama.description %> </textarea
+                >
+            </div>
+            <!--* Image Url  -->
+            <!--! Single Image Only  -->
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label"
+                    >Upload Images</label
+                >
+                <input
+                    type="file"
+                    class="form-control"
+                    id="formFileMultiple"
+                    name="image"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info">Update Panorama</button>
+            </div>
+        </form>
+    </div>
+</div>
 <%- include("../partials/footer.ejs"); -%>
