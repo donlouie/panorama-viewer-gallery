@@ -18,8 +18,9 @@ require('./config/passport')(passport);
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));

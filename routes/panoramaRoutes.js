@@ -49,6 +49,6 @@ router.route('/:id').get(panoramaController.showDetail);
 router
     .route('/admin/:id/edit')
     .get(panoramaController.renderEditForm)
-    .put(panoramaController.updatePanorama);
+    .put(upload.array('image'), panoramaController.updatePanorama);
 
 module.exports = router;

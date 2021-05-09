@@ -6,6 +6,10 @@ const imageSchema = new Schema({
     filename: String,
 });
 
+imageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_200');
+});
+
 const panoramaSchema = new mongoose.Schema({
     title: {
         type: String,
