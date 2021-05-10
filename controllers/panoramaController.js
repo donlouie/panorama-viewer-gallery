@@ -126,28 +126,32 @@ exports.showDetail = catchAsync(async (req, res, next) => {
 //* @route PUT
 //? @desc Update panorama
 exports.updatePanorama = catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    console.log(req.body);
-    const panorama = await Panorama.findByIdAndUpdate(id, {
-        ...req.body.panorama,
-    });
-    const imgs = req.files.map((f) => ({
-        url: f.path,
-        filename: f.filename,
-    }));
-    panorama.images.push(...imgs);
-    if (req.body.deleteImages) {
-        for (let filename of req.body.deleteImages) {
-            cloudinary.uploader.destroy(filename);
-        }
-        await panorama.updateOne({
-            $pull: { images: { filename: { $in: req.body.deleteImages } } },
+    try {
+        const { id } = req.params;
+        const panorama = await Panorama.findByIdAndUpdate(id, {
+            ...req.body.panorama,
         });
-        console.log(panorama);
+        const imgs = req.files.map((f) => ({
+            url: f.path,
+            filename: f.filename,
+        }));
+        panorama.images.push(...imgs);
+        if (req.body.deleteImages) {
+            for (let filename of req.body.deleteImages) {
+                cloudinary.uploader.destroy(filename);
+            }
+            await panorama.updateOne({
+                $pull: { images: { filename: { $in: req.body.deleteImages } } },
+            });
+            console.log(panorama);
+        }
+        await panorama.save();
+        req.flash('success', 'Successfully updated panorama!');
+        res.redirect('/panoramas/admin/list');
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
-    await panorama.save();
-    req.flash('success', 'Successfully updated panorama!');
-    res.redirect('/panoramas/admin/list');
 });
 
 //* @route POST

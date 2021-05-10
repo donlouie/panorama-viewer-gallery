@@ -37,7 +37,7 @@ router
 //? @desc Delete panorama
 router
     .route('/admin/list')
-    .get(panoramaController.renderList)
+    .get(ensureAuthenticated, panoramaController.renderList)
     .post(panoramaController.deletePanorama);
 
 //* @route GET
@@ -46,9 +46,11 @@ router.route('/:id').get(panoramaController.showDetail);
 
 //* @route GET
 //? @desc Render edit campground form
+//* @route PUT
+//? @desc Update panorama
 router
     .route('/admin/:id/edit')
-    .get(panoramaController.renderEditForm)
+    .get(ensureAuthenticated, panoramaController.renderEditForm)
     .put(upload.array('image'), panoramaController.updatePanorama);
 
 module.exports = router;
