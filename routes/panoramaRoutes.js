@@ -14,7 +14,7 @@ const upload = multer({ storage });
 
 //* @route GET
 //? @desc Show panorama list
-router.route('/').get(panoramaController.showPanorama);
+router.route('/:page').get(panoramaController.showPanorama);
 
 //* @route GET
 //? @desc Render info page
@@ -42,7 +42,7 @@ router
 
 //* @route GET
 //? @desc Show panorama detail
-router.route('/:id').get(panoramaController.showDetail);
+router.route('/show/:id').get(panoramaController.showDetail);
 
 //* @route GET
 //? @desc Render edit campground form

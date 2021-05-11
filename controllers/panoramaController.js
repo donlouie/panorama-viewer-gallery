@@ -10,14 +10,29 @@ const { date } = require('joi');
 //? @desc Show panorama list
 exports.showPanorama = catchAsync(async (req, res, next) => {
     try {
-        await Panorama.find({}, (err, doc) => {
-            if (!doc) {
-                return next(
-                    new AppError('No documents found in the database', 404)
-                );
-            }
-            res.status(200).render('panoramas/index', { panoramas: doc });
-        });
+        // await Panorama.find({}, (err, doc) => {
+        //     if (!doc) {
+        //         return next(
+        //             new AppError('No documents found in the database', 404)
+        //         );
+        //     }
+        //     res.status(200).render('panoramas/index', { panoramas: doc });
+        // });
+        var perPage = 3;
+        var page = req.params.page || 1;
+        Panorama.find({})
+            .skip(perPage * page - perPage)
+            .limit(perPage)
+            .exec(function (err, panoramas) {
+                Panorama.countDocuments().exec(function (err, count) {
+                    if (err) return next(err);
+                    res.render('panoramas/index', {
+                        panoramas: panoramas,
+                        current: page,
+                        pages: Math.ceil(count / perPage),
+                    });
+                });
+            });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -67,14 +82,6 @@ exports.renderEditForm = catchAsync(async (req, res, next) => {
 //? @desc Render panorama list
 exports.renderList = catchAsync(async (req, res, next) => {
     try {
-        // await Panorama.find({}, (err, doc) => {
-        //     if (!doc) {
-        //         return next(
-        //             new AppError('No documents found in the database', 404)
-        //         );
-        //     }
-        //     res.status(200).render('panoramas/modify', { panoramas: doc });
-        // });
         const panorama = await Panorama.find({}, (err, doc) => {
             if (!doc) {
                 return next(
