@@ -128,8 +128,11 @@ exports.showDetail = catchAsync(async (req, res, next) => {
 exports.updatePanorama = catchAsync(async (req, res, next) => {
     try {
         const { id } = req.params;
+        authorId = req.user._id;
         const panorama = await Panorama.findByIdAndUpdate(id, {
             ...req.body.panorama,
+            author: authorId,
+            date: Date.now(),
         });
         const imgs = req.files.map((f) => ({
             url: f.path,
