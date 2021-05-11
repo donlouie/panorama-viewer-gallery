@@ -6,6 +6,12 @@ const { cloudinary } = require('../cloudinary');
 const { populate } = require('../models/panoramaModel');
 const { date } = require('joi');
 
+//* Regex function
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
+//! Search query is only displays 3 results
 //* @route GET
 //? @desc Show panorama list
 exports.showPanorama = catchAsync(async (req, res, next) => {
@@ -18,21 +24,55 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
         //     }
         //     res.status(200).render('panoramas/index', { panoramas: doc });
         // });
-        var perPage = 3;
-        var page = req.params.page || 1;
-        Panorama.find({})
-            .skip(perPage * page - perPage)
-            .limit(perPage)
-            .exec(function (err, panoramas) {
-                Panorama.countDocuments().exec(function (err, count) {
-                    if (err) return next(err);
-                    res.render('panoramas/index', {
-                        panoramas: panoramas,
-                        current: page,
-                        pages: Math.ceil(count / perPage),
+        //** */
+        // const perPage = 3;
+        // const page = req.params.page || 1;
+        // Panorama.find({})
+        //     .skip(perPage * page - perPage)
+        //     .limit(perPage)
+        //     .exec(function (err, panoramas) {
+        //         Panorama.countDocuments().exec(function (err, count) {
+        //             if (err) return next(err);
+        //             res.render('panoramas/index', {
+        //                 panoramas: panoramas,
+        //                 current: page,
+        //                 pages: Math.ceil(count / perPage),
+        //             });
+        //         });
+        //     });
+        //** */
+        const perPage = 3;
+        const page = req.params.page || 1;
+        if (req.query.search) {
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+            Panorama.find({ title: regex })
+                .skip(perPage * page - perPage)
+                .limit(perPage)
+                .exec(function (err, panoramas) {
+                    Panorama.countDocuments().exec(function (err, count) {
+                        if (err) return next(err);
+                        res.render('panoramas/index', {
+                            panoramas: panoramas,
+                            current: page,
+                            pages: Math.ceil(count / perPage),
+                        });
                     });
                 });
-            });
+        } else {
+            Panorama.find({})
+                .skip(perPage * page - perPage)
+                .limit(perPage)
+                .exec(function (err, panoramas) {
+                    Panorama.countDocuments().exec(function (err, count) {
+                        if (err) return next(err);
+                        res.render('panoramas/index', {
+                            panoramas: panoramas,
+                            current: page,
+                            pages: Math.ceil(count / perPage),
+                        });
+                    });
+                });
+        }
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

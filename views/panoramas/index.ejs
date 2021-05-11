@@ -1,23 +1,49 @@
-<%- include("../partials/header.ejs"); -%>
-<%- include("../partials/navbar.ejs"); -%> 
-<%- include('../partials/messages.ejs') %>
+<%- include("../partials/header.ejs"); -%> <%-
+include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
+%>
 <main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <i class="fas fa-3x fa-camera-retro"></i>
-      </div>
-    </div>
-  </section>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <i class="fas fa-3x fa-camera-retro"></i>
+            </div>
+        </div>
+    </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <!--  -->
-        <% for(let panorama of panoramas) { %>
-        <div class="col">
-          <div class="card shadow-sm">
-            <!-- <svg
+    <div class="album py-5 bg-light">
+        <!--* Search Form -->
+        <div class="search-input d-flex justify-content-center">
+            <form
+                action="/panoramas/:r"
+                method="GET"
+                class="form-inline"
+                autocomplete="off"
+            >
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="Panorama search..."
+                        class="form-control"
+                    />
+                    <span class="input-group-btn">
+                        <input
+                            type="submit"
+                            value="Search"
+                            class="btn btn-search btn-dark"
+                        />
+                    </span>
+                </div>
+            </form>
+        </div>
+        <!--* /Search Form -->
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
+                <!--  -->
+                <% for(let panorama of panoramas) { %>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <!-- <svg
               class="bd-placeholder-img card-img-top"
               width="100%"
               height="225"
@@ -27,65 +53,79 @@
               preserveAspectRatio="xMidYMid slice"
               focusable="false"
             > -->
-              <img src="<%= panorama.images[0].url %>" class="card-img-top" alt="...">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c" />
-              <!-- <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text> -->
-            </svg>
+                        <img
+                            src="<%= panorama.images[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <title>Placeholder</title>
+                        <!-- <rect width="100%" height="100%" fill="#55595c" /> -->
+                        <!-- <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text> -->
+                        <!-- </svg> -->
 
-            <div class="card-body">
-              <h5 class="card-title"><%= panorama.title %></h5>
-              <p class="text-muted"><%= panorama.location %></p>
-              <p class="card-text">
-                <%= panorama.description.substring(0, 250) + "..."  %> 
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a
-                    href="/panoramas/show/<%= panorama.id %>"
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                  >
-                    View
-                  </a>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= panorama.title %></h5>
+                            <p class="text-muted"><%= panorama.location %></p>
+                            <p class="card-text">
+                                <%= panorama.description.substring(0, 250) +
+                                "..." %>
+                            </p>
+                            <div
+                                class="
+                                    d-flex
+                                    justify-content-between
+                                    align-items-center
+                                "
+                            >
+                                <div class="btn-group">
+                                    <a
+                                        href="/panoramas/show/<%= panorama.id %>"
+                                        type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        View
+                                    </a>
+                                </div>
+                                <small class="text-muted"
+                                    ><%= panorama.date.toDateString() %>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <small class="text-muted"><%= panorama.date.toDateString()  %> </small>
-              </div>
+                <% } %>
+                <!--  -->
             </div>
-          </div>
+            <!--* Pagination  -->
+
+            <% if (pages > 0) { %>
+            <ul class="pagination text-center">
+                <% if (current == 1) { %>
+                <li class="disabled"><a class="page-link">First</a></li>
+                <% } else { %>
+                <li><a class="page-link" href="/panoramas/1">First</a></li>
+                <% } %> <% var i = (Number(current) > 5 ? Number(current) - 4 :
+                1) %> <% if (i !== 1) { %>
+                <li class="disabled"><a class="page-link">...</a></li>
+                <% } %> <% for (; i <= (Number(current) + 4) && i <= pages; i++)
+                { %> <% if (i == current) { %>
+                <li class="active"><a class="page-link"><%= i %></a></li>
+                <% } else { %>
+                <li>
+                    <a class="page-link" href="/panoramas/<%= i %>"><%= i %></a>
+                </li>
+                <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a class="page-link">...</a></li>
+                <% } %> <% } %> <% if (current == pages) { %>
+                <li class="disabled"><a class="page-link">Last</a></li>
+                <% } else { %>
+                <li>
+                    <a class="page-link" href="/panoramas/<%= pages %>">Last</a>
+                </li>
+                <% } %>
+            </ul>
+            <% } %>
         </div>
-        <% } %>
-        <!--  -->
-        <% if (pages > 0) { %>
-          <ul class="pagination text-center">
-              <% if (current == 1) { %>
-                  <li class="disabled"><a class="page-link">First</a></li>
-              <% } else { %>
-                  <li><a class="page-link" href="/panoramas/1">First</a></li>
-              <% } %>
-              <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
-              <% if (i !== 1) { %>
-                  <li class="disabled"><a class="page-link">...</a></li>
-              <% } %>
-              <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
-                  <% if (i == current) { %>
-                      <li  class="active"><a class="page-link"><%= i %></a></li>
-                  <% } else { %>
-                      <li><a class="page-link" href="/panoramas/<%= i %>"><%= i %></a></li>
-                  <% } %>
-                  <% if (i == Number(current) + 4 && i < pages) { %>
-                      <li class="disabled"><a class="page-link">...</a></li>
-                  <% } %>
-              <% } %>
-              <% if (current == pages) { %>
-                  <li class="disabled"><a class="page-link">Last</a></li>
-              <% } else { %>
-                  <li><a class="page-link" href="/panoramas/<%= pages %>">Last</a></li>
-              <% } %>
-          </ul>
-      <% } %>
-      </div>
     </div>
-  </div>
 </main>
 <%- include("../partials/footer.ejs"); -%>
