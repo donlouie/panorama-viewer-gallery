@@ -9,9 +9,8 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Date Received</th>
-            <th scope="col">View</th>
+            <th scope="col">Read</th>
             <th scope="col">Delete</th>
-            <th scope="col">Reply</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +19,17 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
             <td><%= message.name %></td>
             <td><%= message.email %></td>
             <td><%= message.date %></td>
-            <td><%= message.body %></td>
+            <!--* View Button  -->
+            <td>
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#message-<%= message._id %>"
+                >
+                    <i class="fab fa-readme"></i>
+                </button>
+            </td>
             <!--* Delete Button  -->
             <td>
                 <form
@@ -38,16 +47,120 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                     </button>
                 </form>
             </td>
-            <!-- <td>
-                <a
-                    class="card-link btn btn-info"
-                    href="/panoramas/admin/<%= message._id %>/edit"
-                    ><i class="fas fa-edit"></i
-                ></a>
-            </td> -->
         </tr>
         <% } %>
     </tbody>
 </table>
 
-<%-include("../partials/footer.ejs"); -%>
+<!-- Modal -->
+<% for(let message of messages) { %>
+<div
+    class="modal fade"
+    id="message-<%= message._id %>"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Message Preview
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-9 mb-md-0 mb-5">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="form-control"
+                                    value="<%= message.name %>"
+                                    readonly
+                                />
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Email Address"
+                                    value="<%= message.email %>"
+                                    readonly
+                                />
+                            </div>
+                            <br />
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    class="form-control"
+                                    value="<%= message.title %>"
+                                    readonly
+                                />
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row mt-1">
+                        <!--Grid column-->
+                        <div class="col-md-12">
+                            <div class="md-form">
+                                <textarea
+                                    type="text"
+                                    id="body"
+                                    name="body"
+                                    rows="4"
+                                    class="form-control md-textarea"
+                                    readonly
+                                >
+<%= message.body %></textarea
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %> <%-include("../partials/footer.ejs"); -%>
