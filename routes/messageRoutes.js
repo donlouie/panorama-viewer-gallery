@@ -20,6 +20,7 @@ router
 router
     .route('/admin/list')
     .get(messageController.renderList)
+    .post(messageController.sendEmail)
     .post(messageController.deleteMessage);
 
 module.exports = router;

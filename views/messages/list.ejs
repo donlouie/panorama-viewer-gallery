@@ -150,7 +150,53 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                     </div>
                     <!--Grid row-->
                 </div>
+                <!--* Reply Form -->
+                <div class="col-md-9 mb-md-0 mb-5 mt-5">
+                    <form
+                        id="mail-form"
+                        name="mail-form"
+                        action="/messages/admin/list"
+                        method="POST"
+                        autocomplete="off"
+                    >
+                        <input
+                            type="hidden"
+                            id="to"
+                            name="to"
+                            value="<%= message.email %>"
+                        />
+                        <div>
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="title"
+                                value=""
+                                name="title"
+                                placeholder="Subject"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <textarea
+                                class="form-control mt-1"
+                                id="body"
+                                name="body"
+                                value=""
+                                rows="4"
+                                placeholder="Message Here..."
+                                required
+                            ></textarea>
+                        </div>
+                        <div>
+                            <br />
+                            <button class="btn btn-dark" type="submit">
+                                Send Email <i class="far fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
+
             <div class="modal-footer">
                 <button
                     type="button"
