@@ -6,6 +6,7 @@ const AppError = require('./utils/appError');
 
 //* Routes
 const panoramaRouter = require('./routes/panoramaRoutes');
+const messageRouter = require('./routes/messageRoutes');
 const userRouter = require('./routes/userRoutes');
 
 //* Authentication modules
@@ -44,7 +45,9 @@ app.use((req, res, next) => {
 
 //* Routes
 app.use('/users', userRouter);
+app.use('/messages', messageRouter);
 app.use('/panoramas', panoramaRouter);
+
 
 //* @route GET
 //? @desc Render home page
