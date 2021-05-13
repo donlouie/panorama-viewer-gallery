@@ -1,0 +1,53 @@
+<%- include("../partials/header.ejs"); -%> <%-
+include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
+%>
+<h3 class="text-center">Message List</h3>
+<!--* Table -->
+<table class="table w-50 p-3 col-6 offset-3">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date Received</th>
+            <th scope="col">View</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Reply</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let message of messages) { %>
+        <tr>
+            <td><%= message.name %></td>
+            <td><%= message.email %></td>
+            <td><%= message.date %></td>
+            <td><%= message.body %></td>
+            <!--* Delete Button  -->
+            <td>
+                <form
+                    class="d-inline"
+                    action="/messages/admin/list"
+                    method="POST"
+                >
+                    <button
+                        class="btn btn-danger"
+                        name="deleteButton"
+                        value="<%= message._id %>"
+                        onclick="this.form.submit()"
+                    >
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </td>
+            <!-- <td>
+                <a
+                    class="card-link btn btn-info"
+                    href="/panoramas/admin/<%= message._id %>/edit"
+                    ><i class="fas fa-edit"></i
+                ></a>
+            </td> -->
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%-include("../partials/footer.ejs"); -%>
