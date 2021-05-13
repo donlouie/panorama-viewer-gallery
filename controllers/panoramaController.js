@@ -196,8 +196,8 @@ exports.updatePanorama = catchAsync(async (req, res, next) => {
             console.log(panorama);
         }
         await panorama.save();
-        req.flash('success', 'Successfully updated panorama!');
-        res.redirect('/panoramas/admin/list');
+        req.flash('success_msg', 'Panorama updated successfully!');
+        res.status(200).redirect('/panoramas/admin/list');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -212,7 +212,6 @@ exports.deletePanorama = catchAsync(async (req, res, next) => {
         const panorama = await Panorama.findById(id);
         cloudinary.uploader.destroy(panorama.images[0].filename);
         await Panorama.findByIdAndDelete(id);
-        //! Flash message not shown after delete
         req.flash('success_msg', 'Panorama deleted successfully!');
         res.status(200).redirect('/panoramas/admin/list');
     } catch (err) {

@@ -31,7 +31,7 @@ include("../partials/navbar.ejs"); -%>
                     id="message-form"
                     name="message-form"
                     action="create"
-                    method="post"
+                    method="POST"
                     autocomplete="off"
                 >
                     <!--Grid row-->
@@ -42,7 +42,7 @@ include("../partials/navbar.ejs"); -%>
                                 <input
                                     type="text"
                                     id="name"
-                                    name="name"
+                                    name="message[name]"
                                     class="form-control"
                                     placeholder="Name"
                                     required
@@ -57,7 +57,7 @@ include("../partials/navbar.ejs"); -%>
                                 <input
                                     type="email"
                                     id="email"
-                                    name="email"
+                                    name="message[email]"
                                     class="form-control"
                                     placeholder="Email Address"
                                     required
@@ -76,7 +76,7 @@ include("../partials/navbar.ejs"); -%>
                                 <input
                                     type="text"
                                     id="title"
-                                    name="title"
+                                    name="message[title]"
                                     class="form-control"
                                     placeholder="Subject"
                                     required
@@ -95,7 +95,7 @@ include("../partials/navbar.ejs"); -%>
                                 <textarea
                                     type="text"
                                     id="body"
-                                    name="body"
+                                    name="message[body]"
                                     rows="4"
                                     class="form-control md-textarea"
                                     placeholder="Your Message..."

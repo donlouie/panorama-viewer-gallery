@@ -6,7 +6,9 @@ const messageController = require('../controllers/messageController');
 
 //* @route POST
 //? @desc Create new message
-router.route('/create').get(messageController.renderNewForm);
-// .post(upload.array('image'), panoramaController.createPanorama);
+router
+    .route('/create')
+    .get(messageController.renderNewForm)
+    .post(messageController.createMessage);
 
 module.exports = router;
