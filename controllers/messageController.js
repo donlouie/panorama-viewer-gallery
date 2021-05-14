@@ -5,9 +5,13 @@ const nodeMailer = require('nodemailer');
 
 const Message = require('../models/messageModel');
 
+//* Nodemailer config
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
+
 //* Nodemailer Config
-// const user = require("../config/keys").Email;
-// const password = require("../config/keys").Password;
+const user = process.env.EMAIL;
+const password = process.env.PASSWORD;
 
 //* @route GET
 //? @desc Render message create form
@@ -82,40 +86,32 @@ exports.deletePanorama = catchAsync(async (req, res, next) => {
     }
 });
 
+//! Activate if not working https://accounts.google.com/b/0/DisplayUnlockCaptcha
 exports.sendEmail = catchAsync(async (req, res, next) => {
     try {
-        // const transporter = nodemailer.createTransport({
-        //     service: 'gmail',
-        //     auth: {
-        //         user: user,
-        //         pass: password,
-        //     },
-        // });
-
-        // const mailOptions = {
-        //     from: user,
-        //     to: req.body.to,
-        //     subject: req.body.title,
-        //     text: req.body.body,
-        // };
-
-        const body = {
+        const transporter = nodeMailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: user,
+                pass: password,
+            },
+        });
+        const mailOptions = {
+            from: user,
             to: req.body.to,
             subject: req.body.title,
             text: req.body.body,
         };
-
-        console.log(body);
-        // transporter.sendMail(mailOptions, function (err, info) {
-        //     if (err) {
-        //         console.log(mailOptions);
-        //         console.log(err);
-        //     } else {
-        //         console.log(info.response);
-        //         req.flash('success_msg', 'Email Sent Successfully');
-        //         res.redirect('/messages/admin/list');
-        //     }
-        // });
+        transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+                console.log(mailOptions);
+                console.log(err);
+            } else {
+                console.log(info.response);
+                req.flash('success_msg', 'Email Sent Successfully');
+                res.redirect('/messages/admin/list');
+            }
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
