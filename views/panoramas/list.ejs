@@ -1,53 +1,68 @@
 <%- include("../partials/header.ejs"); -%> <%-
-include("../partials/anavbar.ejs"); -%>
-<%- include('../partials/messages.ejs') %>
-<h3 class="text-center">Panorama List</h3>
+include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
+%>
 <!--* Table -->
-<table class="table w-50 p-3 col-6 offset-3">
-    <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Location</th>
-            <th scope="col">Modified By</th>
-            <th scope="col">Date Modified</th>
-            <th>Edit</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for(let panorama of panoramas) { %>
-        <tr>
-            <td><%= panorama.title %></td>
-            <td><%= panorama.location %></td>
-            <td><%= panorama.author.name %></td>
-            <td><%= panorama.date %></td>
-            <td>
-                <a
-                    class="card-link btn btn-info"
-                    href="/panoramas/admin/<%= panorama._id %>/edit"
-                    ><i class="fas fa-edit"></i
-                ></a>
-            </td>
-            <!--* Delete Button  -->
-            <td>
-                <form
-                    class="d-inline"
-                    action="/panoramas/admin/list"
-                    method="POST"
-                >
-                    <button
-                        class="btn btn-danger"
-                        name="deleteButton"
-                        value="<%= panorama._id %>"
-                        onclick="this.form.submit()"
+<div class="table-responsive mt-1 p-5">
+    <table
+        class="
+            table
+            table-success
+            table-sm
+            table-striped
+            table-hover
+            table-bordered
+            border-secondary
+            caption-top
+            text-center
+        "
+    >
+        <caption>
+            List of Panoramas
+        </caption>
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Location</th>
+                <th scope="col">Modified By</th>
+                <th scope="col">Date Modified</th>
+                <th>Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let panorama of panoramas) { %>
+            <tr>
+                <td><%= panorama.title %></td>
+                <td><%= panorama.location %></td>
+                <td><%= panorama.author.name %></td>
+                <td><%= panorama.date %></td>
+                <td>
+                    <a
+                        class="card-link btn btn-lg btn-success"
+                        href="/panoramas/admin/<%= panorama._id %>/edit"
+                        ><i class="fas fa-edit"></i
+                    ></a>
+                </td>
+                <!--* Delete Button  -->
+                <td>
+                    <form
+                        class="d-inline"
+                        action="/panoramas/admin/list"
+                        method="POST"
                     >
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </form>
-            </td>
-        </tr>
-        <% } %>
-    </tbody>
-</table>
-
+                        <button
+                            class="btn btn-lg btn-warning"
+                            name="deleteButton"
+                            value="<%= panorama._id %>"
+                            onclick="this.form.submit()"
+                        >
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
 <%-include("../partials/footer.ejs"); -%>
