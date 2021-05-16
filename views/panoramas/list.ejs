@@ -38,7 +38,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 <td><%= panorama.date %></td>
                 <td>
                     <a
-                        class="card-link btn btn-lg btn-success"
+                        class="card-link btn btn-success"
                         href="/panoramas/admin/<%= panorama._id %>/edit"
                         ><i class="fas fa-edit"></i
                     ></a>
@@ -51,7 +51,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                         method="POST"
                     >
                         <button
-                            class="btn btn-lg btn-warning"
+                            class="btn btn-warning"
                             name="deleteButton"
                             value="<%= panorama._id %>"
                             onclick="this.form.submit()"

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <div class="container-fluid">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <button
@@ -19,16 +19,36 @@
                         <i class="fas fa-book"></i> Info</a
                     >
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/panoramas/admin/create"
-                        ><i class="fas fa-plus-square"></i> Create</a
+                <!--* Panorama Dropdown  -->
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                     >
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/panoramas/admin/list"
-                        ><i class="fas fa-images"></i> Panorama List</a
+                        <i class="fas fa-images"></i> Panoramas
+                    </a>
+                    <ul
+                        class="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink"
                     >
+                        <li class="nav-item">
+                            <a class="nav-link" href="/panoramas/admin/create"
+                                ><i class="fas fa-plus-square"></i> Panorama
+                                Add</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/panoramas/admin/list"
+                                ><i class="fas fa-images"></i> Panorama List</a
+                            >
+                        </li>
+                    </ul>
                 </li>
+                <!--* Message Dropdown  -->
                 <li class="nav-item">
                     <a class="nav-link" href="/messages/admin/list"
                         ><i class="fas fa-envelope-open-text"></i> Messages</a

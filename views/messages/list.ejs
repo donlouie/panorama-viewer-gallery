@@ -38,7 +38,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 <td>
                     <button
                         type="button"
-                        class="btn btn-lg btn-light"
+                        class="btn btn-light"
                         data-bs-toggle="modal"
                         data-bs-target="#message-<%= message._id %>"
                     >
@@ -53,7 +53,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                         method="POST"
                     >
                         <button
-                            class="btn btn-lg btn-warning"
+                            class="btn btn-warning"
                             name="deleteButton"
                             value="<%= message._id %>"
                             onclick="this.form.submit()"
