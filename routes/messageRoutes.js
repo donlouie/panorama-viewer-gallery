@@ -21,6 +21,6 @@ router
     .route('/admin/list')
     .get(messageController.renderList)
     .post(messageController.sendEmail)
-    .post(messageController.deleteMessage);
+    .delete(messageController.deleteMessage);
 
 module.exports = router;

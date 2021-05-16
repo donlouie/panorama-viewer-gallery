@@ -70,21 +70,21 @@ exports.deleteMessage = catchAsync(async (req, res, next) => {
     }
 });
 
-//* @route POST
-//? @desc Delete panorama
-exports.deletePanorama = catchAsync(async (req, res, next) => {
-    try {
-        const { id } = await Panorama.findById(req.body.deleteButton);
-        const panorama = await Panorama.findById(id);
-        cloudinary.uploader.destroy(panorama.images[0].filename);
-        await Panorama.findByIdAndDelete(id);
-        req.flash('success_msg', 'Panorama deleted successfully!');
-        res.status(200).redirect('/panoramas/admin/list');
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
+// //* @route POST
+// //? @desc Delete panorama
+// exports.deletePanorama = catchAsync(async (req, res, next) => {
+//     try {
+//         const { id } = await Panorama.findById(req.body.deleteButton);
+//         const panorama = await Panorama.findById(id);
+//         cloudinary.uploader.destroy(panorama.images[0].filename);
+//         await Panorama.findByIdAndDelete(id);
+//         req.flash('success_msg', 'Panorama deleted successfully!');
+//         res.status(200).redirect('/panoramas/admin/list');
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send('Server Error');
+//     }
+// });
 
 //! Activate if not working https://accounts.google.com/b/0/DisplayUnlockCaptcha
 exports.sendEmail = catchAsync(async (req, res, next) => {

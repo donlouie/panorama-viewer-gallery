@@ -34,7 +34,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
             <td>
                 <form
                     class="d-inline"
-                    action="/messages/admin/list"
+                    action="/messages/admin/list?_method=DELETE"
                     method="POST"
                 >
                     <button
@@ -52,7 +52,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
     </tbody>
 </table>
 
-<!-- Modal -->
+<!--* Modal -->
 <% for(let message of messages) { %>
 <div
     class="modal fade"
@@ -91,9 +91,9 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                                 />
                             </div>
                         </div>
-                        <!--Grid column-->
+                        <!--*Grid column-->
 
-                        <!--Grid column-->
+                        <!--*Grid column-->
                         <div class="col-md-6">
                             <div class="md-form mb-0">
                                 <input
@@ -108,11 +108,11 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                             </div>
                             <br />
                         </div>
-                        <!--Grid column-->
+                        <!--*Grid column-->
                     </div>
-                    <!--Grid row-->
+                    <!--*Grid row-->
 
-                    <!--Grid row-->
+                    <!--*Grid row-->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="md-form mb-0">
@@ -128,11 +128,11 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                         </div>
                         <br />
                     </div>
-                    <!--Grid row-->
+                    <!-*-Grid row-->
 
-                    <!--Grid row-->
+                    <!--*Grid row-->
                     <div class="row mt-1">
-                        <!--Grid column-->
+                        <!--*Grid column-->
                         <div class="col-md-12">
                             <div class="md-form">
                                 <textarea
@@ -148,7 +148,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                             </div>
                         </div>
                     </div>
-                    <!--Grid row-->
+                    <!--*Grid row-->
                 </div>
                 <!--* Reply Form -->
                 <div class="col-md-9 mb-md-0 mb-5 mt-5">
