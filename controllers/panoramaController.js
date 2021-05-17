@@ -185,7 +185,7 @@ exports.updatePanorama = catchAsync(async (req, res, next) => {
             url: f.path,
             filename: f.filename,
         }));
-        panorama.images.push(...imgs);
+     panorama.images.push(...imgs);
         if (req.body.deleteImages) {
             for (let filename of req.body.deleteImages) {
                 cloudinary.uploader.destroy(filename);
