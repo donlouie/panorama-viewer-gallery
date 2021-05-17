@@ -122,14 +122,48 @@ exports.renderEditForm = catchAsync(async (req, res, next) => {
 //? @desc Render panorama list
 exports.renderList = catchAsync(async (req, res, next) => {
     try {
-        const panorama = await Panorama.find({}, (err, doc) => {
-            if (!doc) {
-                return next(
-                    new AppError('No documents found in the database', 404)
-                );
-            }
-        }).populate('author');
-        res.status(200).render('panoramas/list', { panoramas: panorama });
+        // const panorama = await Panorama.find({}, (err, doc) => {
+        //     if (!doc) {
+        //         return next(
+        //             new AppError('No documents found in the database', 404)
+        //         );
+        //     }
+        // }).populate('author');
+        // res.status(200).render('panoramas/list', { panoramas: panorama });
+        const perPage = 5;
+        const page = req.params.page || 1;
+        if (req.query.search) {
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+            Panorama.find({ title: regex })
+                .populate('author')
+                .skip(perPage * page - perPage)
+                .limit(perPage)
+                .exec(function (err, panoramas) {
+                    Panorama.countDocuments().exec(function (err, count) {
+                        if (err) return next(err);
+                        res.render('panoramas/list', {
+                            panoramas: panoramas,
+                            current: page,
+                            pages: Math.ceil(count / perPage),
+                        });
+                    });
+                });
+        } else {
+            Panorama.find({})
+                .populate('author')
+                .skip(perPage * page - perPage)
+                .limit(perPage)
+                .exec(function (err, panoramas) {
+                    Panorama.countDocuments().exec(function (err, count) {
+                        if (err) return next(err);
+                        res.render('panoramas/list', {
+                            panoramas: panoramas,
+                            current: page,
+                            pages: Math.ceil(count / perPage),
+                        });
+                    });
+                });
+        }
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -149,7 +183,7 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
         await panorama.save();
         // console.log(panorama);
         req.flash('success_msg', 'Panorama created successfully!');
-        res.status(201).redirect('/panoramas/admin/list');
+        res.status(201).redirect('/panoramas/admin/list/1');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -185,7 +219,7 @@ exports.updatePanorama = catchAsync(async (req, res, next) => {
             url: f.path,
             filename: f.filename,
         }));
-     panorama.images.push(...imgs);
+        panorama.images.push(...imgs);
         if (req.body.deleteImages) {
             for (let filename of req.body.deleteImages) {
                 cloudinary.uploader.destroy(filename);
@@ -197,7 +231,7 @@ exports.updatePanorama = catchAsync(async (req, res, next) => {
         }
         await panorama.save();
         req.flash('success_msg', 'Panorama updated successfully!');
-        res.status(200).redirect('/panoramas/admin/list');
+        res.status(200).redirect('/panoramas/admin/list/1');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -213,7 +247,7 @@ exports.deletePanorama = catchAsync(async (req, res, next) => {
         cloudinary.uploader.destroy(panorama.images[0].filename);
         await Panorama.findByIdAndDelete(id);
         req.flash('success_msg', 'Panorama deleted successfully!');
-        res.status(200).redirect('/panoramas/admin/list');
+        res.status(200).redirect('/panoramas/admin/list/1');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

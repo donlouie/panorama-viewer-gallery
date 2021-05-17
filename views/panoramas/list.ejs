@@ -47,7 +47,7 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 <td>
                     <form
                         class="d-inline"
-                        action="/panoramas/admin/list"
+                        action="/panoramas/admin/list/:page"
                         method="POST"
                     >
                         <button
@@ -64,5 +64,43 @@ include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
             <% } %>
         </tbody>
     </table>
+    <!--* Pagination  -->
+    <div class="mt-3">
+        <% if (pages > 0) { %>
+        <ul class="pagination text-center">
+            <% if (current == 1) { %>
+            <li class="disabled"><a class="page-link">First</a></li>
+            <% } else { %>
+            <li>
+                <a class="page-link" href="/panoramas/admin/list/1">First</a>
+            </li>
+            <% } %> <% var i = (Number(current) > 5 ? Number(current) - 4 : 1)
+            %> <% if (i !== 1) { %>
+            <li class="disabled"><a class="page-link">...</a></li>
+            <% } %> <% for (; i <= (Number(current) + 4) && i <= pages; i++) {
+            %> <% if (i == current) { %>
+            <li class="active"><a class="page-link"><%= i %></a></li>
+            <% } else { %>
+            <li>
+                <a class="page-link" href="/panoramas/admin/list/<%= i %>"
+                    ><%= i %></a
+                >
+            </li>
+            <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
+            <li class="disabled"><a class="page-link">...</a></li>
+            <% } %> <% } %> <% if (current == pages) { %>
+            <li class="disabled"><a class="page-link">Last</a></li>
+            <% } else { %>
+            <li>
+                <a class="page-link" href="/panoramas/admin/list/<%= pages %>"
+                    >Last</a
+                >
+            </li>
+            <% } %>
+        </ul>
+        <% } %>
+    </div>
+    <!--* /Pagination  -->
 </div>
+
 <%-include("../partials/footer.ejs"); -%>

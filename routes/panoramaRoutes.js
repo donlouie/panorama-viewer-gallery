@@ -34,7 +34,7 @@ router
 //* @route POST
 //? @desc Delete panorama
 router
-    .route('/admin/list')
+    .route('/admin/list/:page')
     .get(panoramaController.renderList)
     .post(panoramaController.deletePanorama);
 
