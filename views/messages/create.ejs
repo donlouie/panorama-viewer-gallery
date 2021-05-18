@@ -1,13 +1,11 @@
 <%- include("../partials/header.ejs"); -%> <%-
 include("../partials/navbar.ejs"); -%>
+
 <!--Section: Contact v.2-->
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <i class="fas fa-3x fa-envelope-open-text"></i>
-        </div>
-    </div>
-</section>
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div id="Map"></div>
+</div>
 
 <div class="container card card-body">
     <section class="mb-4">
@@ -136,4 +134,25 @@ include("../partials/navbar.ejs"); -%>
     </section>
 </div>
 <!--Section: Contact v.2-->
+
+<!-- Leaftlet JS, Script -->
+<script>
+    const latitude = 16.669890;
+    const longitude = 120.337650;
+
+    const mymap = L.map('Map').setView([latitude, longitude], 18);
+    L.marker([latitude, longitude])
+        .addTo(mymap)
+        .bindPopup('Establishment Location!')
+        .openPopup();
+
+    const attiribution =
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, { attiribution });
+    tiles.addTo(mymap);
+</script>
+<!-- /Leaflet JS, Script -->
+
 <%- include("../partials/footer.ejs"); -%>
