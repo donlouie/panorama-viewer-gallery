@@ -1,71 +1,73 @@
 <%- include("../partials/header.ejs"); -%> <%-
 include("../partials/anavbar.ejs"); -%> <%- include('../partials/messages.ejs')
 %>
-<!--* Table -->
-<div class="table-responsive mt-1 p-5">
-    <table
-        class="
-            table
-            table-success
-            table-sm
-            table-striped
-            table-hover
-            table-bordered
-            border-secondary
-            caption-top
-            text-center
-        "
-    >
-        <caption>
-            List of Messages
-        </caption>
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date Received</th>
-                <th scope="col">Read</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let message of messages) { %>
-            <tr>
-                <td><%= message.name %></td>
-                <td><%= message.email %></td>
-                <td><%= message.date %></td>
-                <!--* View Button  -->
-                <td>
-                    <button
-                        type="button"
-                        class="btn btn-light"
-                        data-bs-toggle="modal"
-                        data-bs-target="#message-<%= message._id %>"
-                    >
-                        <i class="fas fa-book-reader"></i>
-                    </button>
-                </td>
-                <!--* Delete Button  -->
-                <td>
-                    <form
-                        class="d-inline"
-                        action="/messages/admin/list?_method=DELETE"
-                        method="POST"
-                    >
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <!--* Table -->
+    <div class="table-responsive mt-1 p-5">
+        <table
+            class="
+                table
+                table-success
+                table-sm
+                table-striped
+                table-hover
+                table-bordered
+                border-secondary
+                caption-top
+                text-center
+            "
+        >
+            <caption>
+                List of Messages
+            </caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date Received</th>
+                    <th scope="col">Read</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let message of messages) { %>
+                <tr>
+                    <td><%= message.name %></td>
+                    <td><%= message.email %></td>
+                    <td><%= message.date %></td>
+                    <!--* View Button  -->
+                    <td>
                         <button
-                            class="btn btn-warning"
-                            name="deleteButton"
-                            value="<%= message._id %>"
-                            onclick="this.form.submit()"
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-toggle="modal"
+                            data-bs-target="#message-<%= message._id %>"
                         >
-                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-book-reader"></i>
                         </button>
-                    </form>
-                </td>
-            </tr>
-            <% } %>
-        </tbody>
-    </table>
+                    </td>
+                    <!--* Delete Button  -->
+                    <td>
+                        <form
+                            class="d-inline"
+                            action="/messages/admin/list?_method=DELETE"
+                            method="POST"
+                        >
+                            <button
+                                class="btn btn-warning"
+                                name="deleteButton"
+                                value="<%= message._id %>"
+                                onclick="this.form.submit()"
+                            >
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!--* Modal -->
