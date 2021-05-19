@@ -2,6 +2,7 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 const Panorama = require('../models/panoramaModel');
+const User = require('../models/userModel');
 const { cloudinary } = require('../cloudinary');
 const { populate } = require('../models/panoramaModel');
 const { date } = require('joi');
@@ -83,7 +84,10 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
 //? @desc Render panorama info page
 exports.renderInfo = catchAsync(async (req, res, next) => {
     try {
-        res.render('panoramas/info');
+        const userId = req.user._id;
+        const currentUser = await User.findById(userId);
+        // console.log(currentUser.name);
+        res.render('panoramas/info', { currentUser: currentUser });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -94,7 +98,9 @@ exports.renderInfo = catchAsync(async (req, res, next) => {
 //? @desc Render panorama create form
 exports.renderNewForm = catchAsync(async (req, res, next) => {
     try {
-        res.render('panoramas/create');
+        const userId = req.user._id;
+        const currentUser = await User.findById(userId);
+        res.render('panoramas/create', { currentUser: currentUser });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -105,13 +111,15 @@ exports.renderNewForm = catchAsync(async (req, res, next) => {
 //? @desc Render panorama edit form
 exports.renderEditForm = catchAsync(async (req, res, next) => {
     try {
+        const userId = req.user._id;
+        const currentUser = await User.findById(userId);
         const { id } = req.params;
         const panorama = await Panorama.findById(id);
         if (!panorama) {
             req.flash('error', 'Cannot find that panorama!');
             return res.redirect('/panoramas/admin/list');
         }
-        res.render('panoramas/edit', { panorama });
+        res.render('panoramas/edit', { panorama, currentUser: currentUser });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -130,6 +138,8 @@ exports.renderList = catchAsync(async (req, res, next) => {
         //     }
         // }).populate('author');
         // res.status(200).render('panoramas/list', { panoramas: panorama });
+        const userId = req.user._id;
+        const currentUser = await User.findById(userId);
         const perPage = 5;
         const page = req.params.page || 1;
         if (req.query.search) {
@@ -143,12 +153,15 @@ exports.renderList = catchAsync(async (req, res, next) => {
                         if (err) return next(err);
                         res.render('panoramas/list', {
                             panoramas: panoramas,
+                            currentUser: currentUser,
                             current: page,
                             pages: Math.ceil(count / perPage),
                         });
                     });
                 });
         } else {
+            const userId = req.user._id;
+            const currentUser = await User.findById(userId);
             Panorama.find({})
                 .populate('author')
                 .skip(perPage * page - perPage)
@@ -158,6 +171,7 @@ exports.renderList = catchAsync(async (req, res, next) => {
                         if (err) return next(err);
                         res.render('panoramas/list', {
                             panoramas: panoramas,
+                            currentUser: currentUser,
                             current: page,
                             pages: Math.ceil(count / perPage),
                         });

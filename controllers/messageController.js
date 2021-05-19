@@ -3,6 +3,7 @@ const AppError = require('../utils/appError');
 
 const nodeMailer = require('nodemailer');
 
+const User = require('../models/userModel');
 const Message = require('../models/messageModel');
 
 //* Nodemailer config
@@ -41,6 +42,8 @@ exports.renderList = catchAsync(async (req, res, next) => {
         //     }
         // });
         // res.status(200).render('messages/list', { messages: message });
+        const userId = req.user._id;
+        const currentUser = await User.findById(userId);
         const perPage = 5;
         const page = req.params.page || 1;
         if (req.query.search) {
@@ -54,12 +57,15 @@ exports.renderList = catchAsync(async (req, res, next) => {
                         if (err) return next(err);
                         res.render('messages/list', {
                             messages: messages,
+                            currentUser: currentUser,
                             current: page,
                             pages: Math.ceil(count / perPage),
                         });
                     });
                 });
         } else {
+            const userId = req.user._id;
+            const currentUser = await User.findById(userId);
             Message.find({})
                 .populate('author')
                 .skip(perPage * page - perPage)
@@ -69,6 +75,7 @@ exports.renderList = catchAsync(async (req, res, next) => {
                         if (err) return next(err);
                         res.render('messages/list', {
                             messages: messages,
+                            currentUser: currentUser,
                             current: page,
                             pages: Math.ceil(count / perPage),
                         });
