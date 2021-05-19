@@ -13,7 +13,7 @@ function escapeRegex(text) {
 
 //! Search query is only displays 3 results
 //* @route GET
-//? @desc Show panorama list
+//? @desc Show client panorama list
 exports.showPanorama = catchAsync(async (req, res, next) => {
     try {
         // await Panorama.find({}, (err, doc) => {

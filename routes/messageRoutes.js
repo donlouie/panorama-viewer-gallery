@@ -18,7 +18,7 @@ router
 //* @route POST
 //? @desc Delete panorama
 router
-    .route('/admin/list')
+    .route('/admin/list/:page')
     .get(messageController.renderList)
     .post(messageController.sendEmail)
     .delete(messageController.deleteMessage);
