@@ -42,7 +42,7 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
         //         });
         //     });
         //** */
-        const perPage = 3;
+        const perPage = 6;
         const page = req.params.page || 1;
         if (req.query.search) {
             const regex = new RegExp(escapeRegex(req.query.search), 'gi');

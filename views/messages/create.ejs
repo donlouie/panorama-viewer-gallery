@@ -1,6 +1,10 @@
 <%- include("../partials/header.ejs"); -%> <%-
 include("../partials/navbar.ejs"); -%>
 
+<!--* Leaflet API, JS & CSS  -->
+<link rel="stylesheet" href="/css/leaflet/leaflet.css" />
+<script src="/js/leaflet/leaflet.js"></script>
+
 <!--Section: Contact v.2-->
 
 <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -137,8 +141,8 @@ include("../partials/navbar.ejs"); -%>
 
 <!-- Leaftlet JS, Script -->
 <script>
-    const latitude = 16.669890;
-    const longitude = 120.337650;
+    const latitude = 16.66989;
+    const longitude = 120.33765;
 
     const mymap = L.map('Map').setView([latitude, longitude], 18);
     L.marker([latitude, longitude])
