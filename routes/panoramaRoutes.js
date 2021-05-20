@@ -13,12 +13,14 @@ const { storage } = require('../cloudinary');
 const upload = multer({ storage });
 
 //* @route GET
-//? @desc Show panorama list
+//? @desc Show client panorama list
 router.route('/:page').get(panoramaController.showPanorama);
 
 //* @route GET
 //? @desc Render info page
-router.route('/admin/info').get(panoramaController.renderInfo);
+router
+    .route('/admin/info')
+    .get(ensureAuthenticated, panoramaController.renderInfo);
 
 //* @route GET
 //? @desc Render panorama create form
@@ -26,7 +28,7 @@ router.route('/admin/info').get(panoramaController.renderInfo);
 //? @desc Create new panorama
 router
     .route('/admin/create')
-    .get(panoramaController.renderNewForm)
+    .get(ensureAuthenticated, panoramaController.renderNewForm)
     .post(upload.array('image'), panoramaController.createPanorama);
 
 //* @route GET
@@ -35,7 +37,7 @@ router
 //? @desc Delete panorama
 router
     .route('/admin/list/:page')
-    .get(panoramaController.renderList)
+    .get(ensureAuthenticated, panoramaController.renderList)
     .post(panoramaController.deletePanorama);
 
 //* @route GET
@@ -48,7 +50,7 @@ router.route('/show/:id').get(panoramaController.showDetail);
 //? @desc Update panorama
 router
     .route('/admin/:id/edit')
-    .get(panoramaController.renderEditForm)
+    .get(ensureAuthenticated, panoramaController.renderEditForm)
     .put(upload.array('image'), panoramaController.updatePanorama);
 
 module.exports = router;

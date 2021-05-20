@@ -1,5 +1,5 @@
-<%- include("../partials/header.ejs"); -%> 
-<%-include("../partials/navbar.ejs"); -%>
+<%- include("../partials/header.ejs"); -%> <%-include("../partials/navbar.ejs");
+-%>
 
 <!--Leaflet API, JS & CSS-->
 <link rel="stylesheet" href="/css/leaflet/leaflet.css" />
@@ -8,142 +8,142 @@
 
 <!--Section: Contact v.2-->
 <main class="container">
-<!--Leaflet Map-->
-<div class="my-3 p-3 bg-body rounded shadow-sm">
-    <div id="Map"></div>
-</div>
-<!--Leaflet Map-->
-<div class="container card card-body">
-    <section class="mb-4">
-        <%- include('../partials/messages.ejs') %>
-        <h1 class="fw-light text-center my-4">Contact us</h1>
-        <!--Section description-->
+    <!--Leaflet Map-->
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div id="Map"></div>
+    </div>
+    <!--Leaflet Map-->
+    <div class="container card card-body">
+        <section class="mb-4">
+            <%- include('../partials/messages.ejs') %>
+            <h1 class="fw-light text-center my-4">Contact us</h1>
+            <!--Section description-->
 
-        <p class="lead text-muted text-center w-responsive mx-auto mb-5">
-            Do you have any questions? Please do not hesitate to message us
-            directly.
-            <br />Our team will come back to you within a matter of hours to
-            help you.
-        </p>
+            <p class="lead text-muted text-center w-responsive mx-auto mb-5">
+                Do you have any questions? Please do not hesitate to message us
+                directly.
+                <br />Our team will come back to you within a matter of hours to
+                help you.
+            </p>
 
-        <div class="row">
-            <!--Grid column-->
-            <div class="col-md-9 mb-md-0 mb-5">
-                <form
-                    id="message-form"
-                    name="message-form"
-                    action="create"
-                    method="POST"
-                    autocomplete="off"
-                >
-                    <!--Grid row-->
-                    <div class="row">
-                        <!--Grid column-->
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="message[name]"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    required
-                                />
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-9 mb-md-0 mb-5">
+                    <form
+                        id="message-form"
+                        name="message-form"
+                        action="create"
+                        method="POST"
+                        autocomplete="off"
+                    >
+                        <!--Grid row-->
+                        <div class="row">
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="message[name]"
+                                        class="form-control"
+                                        placeholder="Name"
+                                        required
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <!--Grid column-->
+                            <!--Grid column-->
 
-                        <!--Grid column-->
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="message[email]"
-                                    class="form-control"
-                                    placeholder="Email Address"
-                                    required
-                                />
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="message[email]"
+                                        class="form-control"
+                                        placeholder="Email Address"
+                                        required
+                                    />
+                                </div>
+                                <br />
+                            </div>
+                            <!--Grid column-->
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <input
+                                        type="text"
+                                        id="title"
+                                        name="message[title]"
+                                        class="form-control"
+                                        placeholder="Subject"
+                                        required
+                                    />
+                                </div>
                             </div>
                             <br />
                         </div>
-                        <!--Grid column-->
-                    </div>
-                    <!--Grid row-->
+                        <!--Grid row-->
 
-                    <!--Grid row-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="md-form mb-0">
-                                <input
-                                    type="text"
-                                    id="title"
-                                    name="message[title]"
-                                    class="form-control"
-                                    placeholder="Subject"
-                                    required
-                                />
+                        <!--Grid row-->
+                        <div class="row mt-1">
+                            <!--Grid column-->
+                            <div class="col-md-12">
+                                <div class="md-form">
+                                    <textarea
+                                        type="text"
+                                        id="body"
+                                        name="message[body]"
+                                        rows="4"
+                                        class="form-control md-textarea"
+                                        placeholder="Your Message..."
+                                        required
+                                    ></textarea>
+                                </div>
                             </div>
                         </div>
                         <br />
-                    </div>
-                    <!--Grid row-->
+                        <button
+                            type="submit"
+                            class="btn btn-dark float-right"
+                            name="button"
+                        >
+                            Send Message <i class="far fa-paper-plane"></i>
+                        </button>
+                        <!--Grid row-->
+                    </form>
+                </div>
+                <!--Grid column-->
 
-                    <!--Grid row-->
-                    <div class="row mt-1">
-                        <!--Grid column-->
-                        <div class="col-md-12">
-                            <div class="md-form">
-                                <textarea
-                                    type="text"
-                                    id="body"
-                                    name="message[body]"
-                                    rows="4"
-                                    class="form-control md-textarea"
-                                    placeholder="Your Message..."
-                                    required
-                                ></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <button
-                        type="submit"
-                        class="btn btn-dark float-right"
-                        name="button"
-                    >
-                        Send Message <i class="far fa-paper-plane"></i>
-                    </button>
-                    <!--Grid row-->
-                </form>
+                <!--Grid column-->
+                <div class="col-md-3 text-center">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <i class="fas fa-phone mt-4"></i>
+                            <h6><b>+ 01 234 567 89</b></h6>
+                        </li>
+
+                        <li>
+                            <i class="fas fa-envelope mt-4"></i>
+                            <h6><b>abc@email.com</b></h6>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-3 text-center">
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <i class="fas fa-phone mt-4"></i>
-                        <h6><b>+ 01 234 567 89</b></h6>
-                    </li>
-
-                    <li>
-                        <i class="fas fa-envelope mt-4"></i>
-                        <h6><b>abc@email.com</b></h6>
-                    </li>
-                </ul>
-            </div>
-            <!--Grid column-->
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 </main>
 <!--Section: Contact v.2-->
 
 <!--Leaftlet JS, Script-->
 <script>
-    const latitude = 16.66989;
-    const longitude = 120.33765;
+    const latitude = 14.597922;
+    const longitude = 120.977618;
 
     const mymap = L.map('Map').setView([latitude, longitude], 18);
     L.marker([latitude, longitude])

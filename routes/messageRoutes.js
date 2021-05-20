@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { ensureAuthenticated } = require('../config/auth');
+
 const Message = require('../models/messageModel');
 const messageController = require('../controllers/messageController');
 
@@ -19,7 +21,7 @@ router
 //? @desc Delete panorama
 router
     .route('/admin/list/:page')
-    .get(messageController.renderList)
+    .get(ensureAuthenticated, messageController.renderList)
     .post(messageController.sendEmail)
     .delete(messageController.deleteMessage);
 
