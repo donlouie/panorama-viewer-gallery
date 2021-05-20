@@ -1,7 +1,9 @@
 <%- include("../partials/header.ejs"); -%> <%-
 include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
 %>
-<main>
+
+<main class="container">
+    <!--* Header  -->
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
@@ -26,8 +28,9 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
         </div>
     </section>
 
+    <!--* Gallery List  -->
     <div class="album py-5 bg-light">
-        <!--* Search Form -->
+        <!--* Search Form-->
         <div class="search-input d-flex justify-content-center">
             <form
                 action="/panoramas/:r"
@@ -36,12 +39,7 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 autocomplete="off"
             >
                 <div class="input-group">
-                    <input
-                        type="text"
-                        name="search"
-                        placeholder="Search here... "
-                        class="form-control"
-                    />
+                    <input type="text" name="search" class="form-control" />
                     <span class="input-group-btn">
                         <input
                             type="submit"
@@ -52,7 +50,8 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 </div>
             </form>
         </div>
-        <!--* /Search Form -->
+        <!--* Search Form-->
+
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
                 <!--  -->
@@ -102,33 +101,50 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 <% } %>
                 <!--  -->
             </div>
-            <!--* Pagination  -->
+
+            <!--* Pagination -->
             <div class="mt-3">
                 <% if (pages > 0) { %>
                 <ul class="pagination text-center">
                     <% if (current == 1) { %>
-                    <li class="disabled"><a class="page-link">First</a></li>
-                    <% } else { %>
-                    <li><a class="page-link" href="/panoramas/1">First</a></li>
-                    <% } %> <% var i = (Number(current) > 5 ? Number(current) -
-                    4 : 1) %> <% if (i !== 1) { %>
-                    <li class="disabled"><a class="page-link">...</a></li>
-                    <% } %> <% for (; i <= (Number(current) + 4) && i <= pages;
-                    i++) { %> <% if (i == current) { %>
-                    <li class="active"><a class="page-link"><%= i %></a></li>
+                    <li class="disabled"><a class="page-link text-secondary">First</a></li>
                     <% } else { %>
                     <li>
-                        <a class="page-link" href="/panoramas/<%= i %>"
+                        <a class="page-link text-secondary" href="/panoramas/1"
+                            >First</a
+                        >
+                    </li>
+                    <% } %> <% var i = (Number(current) > 5 ? Number(current) -
+                    4 : 1) %> <% if (i !== 1) { %>
+                    <li class="disabled">
+                        <a class="page-link text-secondary">...</a>
+                    </li>
+                    <% } %> <% for (; i <= (Number(current) + 4) && i <= pages;
+                    i++) { %> <% if (i == current) { %>
+                    <li class="active">
+                        <a class="page-link text-secondary"><%= i %></a>
+                    </li>
+                    <% } else { %>
+                    <li>
+                        <a
+                            class="page-link text-secondary"
+                            href="/panoramas/<%= i %>"
                             ><%= i %></a
                         >
                     </li>
                     <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
-                    <li class="disabled"><a class="page-link">...</a></li>
+                    <li class="disabled">
+                        <a class="page-link text-secondary">...</a>
+                    </li>
                     <% } %> <% } %> <% if (current == pages) { %>
-                    <li class="disabled"><a class="page-link">Last</a></li>
+                    <li class="disabled">
+                        <a class="page-link text-secondary">Last</a>
+                    </li>
                     <% } else { %>
                     <li>
-                        <a class="page-link" href="/panoramas/<%= pages %>"
+                        <a
+                            class="page-link text-secondary"
+                            href="/panoramas/<%= pages %>"
                             >Last</a
                         >
                     </li>
@@ -136,8 +152,8 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 </ul>
                 <% } %>
             </div>
-            <!--* /Pagination  -->
         </div>
     </div>
 </main>
+
 <%- include("../partials/footer.ejs"); -%>
