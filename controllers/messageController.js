@@ -44,7 +44,7 @@ exports.renderList = catchAsync(async (req, res, next) => {
         // res.status(200).render('messages/list', { messages: message });
         const userId = req.user._id;
         const currentUser = await User.findById(userId);
-        const perPage = 5;
+        const perPage = 10;
         const page = req.params.page || 1;
         if (req.query.search) {
             const regex = new RegExp(escapeRegex(req.query.search), 'gi');

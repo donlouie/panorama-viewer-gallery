@@ -10,17 +10,16 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
                 <h1 class="fw-light">Gallery</h1>
                 <p class="lead text-muted">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maxime mollitia, molestiae quas vel sint commodi repudiandae
-                    consequuntur voluptatum laborum.
+                    Maxime mollitia, molestiae quas vel sint.
                 </p>
                 <p>
-                    <a href="#" class="btn btn-primary my-2"
+                    <a href="#" class="btn btn-light my-2"
                         ><i class="fab fa-facebook-square"></i
                     ></a>
-                    <a href="#" class="btn btn-warning my-2"
+                    <a href="#" class="btn btn-light my-2"
                         ><i class="fab fa-instagram-square"></i
                     ></a>
-                    <a href="#" class="btn btn-danger my-2"
+                    <a href="#" class="btn btn-light my-2"
                         ><i class="fab fa-youtube-square"></i
                     ></a>
                 </p>
@@ -29,7 +28,7 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
     </section>
 
     <!--* Gallery List  -->
-    <div class="album py-5 bg-light">
+    <div class="album">
         <!--* Search Form-->
         <div class="search-input d-flex justify-content-center">
             <form
@@ -72,7 +71,7 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/messages.ejs')
                             <h5 class="card-title"><%= panorama.title %></h5>
                             <p class="text-muted"><%= panorama.location %></p>
                             <p class="card-text">
-                                <%= panorama.description.substring(0, 250) +
+                                <%= panorama.description.substring(0, 150) +
                                 "..." %>
                             </p>
                             <div

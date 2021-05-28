@@ -1,16 +1,16 @@
 <%- include("../partials/header.ejs"); -%> <%-include("../partials/navbar.ejs");
 -%>
 
-<!--Leaflet API, JS & CSS-->
+<!--*Leaflet API, JS & CSS-->
 <link rel="stylesheet" href="/css/leaflet/leaflet.css" />
 <link rel="stylesheet" href="/css/leaflet/style.css" />
 <script src="/js/leaflet/leaflet.js"></script>
-<!--Leaflet API, JS & CSS-->
+<!--*Leaflet API, JS & CSS-->
 
 <!--Section: Contact v.2-->
 <main class="container mt-5 mb-5">
     <!--Leaflet Map-->
-    <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="my-3 p-3 bg-dark rounded shadow-sm">
         <div id="Map"></div>
     </div>
     <!--Leaflet Map-->
@@ -19,7 +19,6 @@
             <%- include('../partials/messages.ejs') %>
             <h1 class="fw-light text-center my-4">Contact us</h1>
             <!--Section description-->
-
             <p class="lead text-muted text-center w-responsive mx-auto mb-5">
                 Do you have any questions? Please do not hesitate to message us
                 directly.
@@ -125,12 +124,12 @@
                     <ul class="list-unstyled mb-0">
                         <li>
                             <i class="fas fa-phone mt-4"></i>
-                            <h6><b>+ 01 234 567 89</b></h6>
+                            <h6><b>+ 48 234 567 88</b></h6>
                         </li>
 
                         <li>
                             <i class="fas fa-envelope mt-4"></i>
-                            <h6><b>abc@email.com</b></h6>
+                            <h6><b>contact@email.com</b></h6>
                         </li>
                     </ul>
                 </div>
@@ -141,15 +140,15 @@
 </main>
 <!--Section: Contact v.2-->
 
-<!--Leaftlet JS, Script-->
+<!--*Leaftlet JS, Script-->
 <script>
-    const latitude = 14.597922;
-    const longitude = 120.977618;
+    const latitude = 16.661257;
+    const longitude = 120.327724;
 
-    const mymap = L.map('Map').setView([latitude, longitude], 18);
+    const mymap = L.map('Map').setView([latitude, longitude], 16);
     L.marker([latitude, longitude])
         .addTo(mymap)
-        .bindPopup('Contact Location')
+        .bindPopup('Lorma SanJuan')
         .openPopup();
 
     const attiribution =
@@ -159,6 +158,6 @@
     const tiles = L.tileLayer(tileUrl, { attiribution });
     tiles.addTo(mymap);
 </script>
-<!--Leaflet JS, Script-->
+<!--*Leaflet JS, Script-->
 
 <%- include("../partials/footer.ejs"); -%>

@@ -127,7 +127,7 @@ exports.renderEditForm = catchAsync(async (req, res, next) => {
 });
 
 //* @route GET
-//? @desc Render panorama list
+//? @desc Render panorama admin list
 exports.renderList = catchAsync(async (req, res, next) => {
     try {
         // const panorama = await Panorama.find({}, (err, doc) => {
@@ -140,7 +140,7 @@ exports.renderList = catchAsync(async (req, res, next) => {
         // res.status(200).render('panoramas/list', { panoramas: panorama });
         const userId = req.user._id;
         const currentUser = await User.findById(userId);
-        const perPage = 5;
+        const perPage = 10;
         const page = req.params.page || 1;
         if (req.query.search) {
             const regex = new RegExp(escapeRegex(req.query.search), 'gi');

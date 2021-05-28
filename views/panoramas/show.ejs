@@ -20,7 +20,7 @@ include("../partials/navbar.ejs"); -%>
                 </span>
             </a>
         </header>
-        <div class="p-3 mb-4 bg-light rounded-3">
+        <div class="p-3 mb-4 text-light bg-dark rounded-3">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">360° Panorama</h1>
                 <div id="panorama">
@@ -39,14 +39,14 @@ include("../partials/navbar.ejs"); -%>
 
         <div class="row align-items-md-stretch">
             <div class="col-md-6">
-                <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <div class="h-100 p-5 text-light bg-secondary rounded-3">
                     <h2>Partial Panorama</h2>
                     <div id="partial"></div>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="h-100 p-5 bg-light border rounded-3">
+                <div class="h-100 p-5 bg-light text-dark border rounded-3">
                     <h2>Description</h2>
                     <p><%= panorama.description %></p>
                 </div>
