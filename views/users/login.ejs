@@ -6,7 +6,7 @@ include("../partials/navbar.ejs"); -%>
         <div class="col-md-6 m-auto">
             <div class="card card-body">
                 <p><i class="fas fa-sign-in-alt"></i> User Login</p>
-                <%- include('../partials/messages.ejs') %>
+                <%- include('../partials/utils/messages.ejs') %>
                 <!--* Form Login -->
                 <form action="/users/login" method="POST" autocomplete="off">
                     <div class="form-group">

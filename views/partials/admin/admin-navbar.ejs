@@ -5,11 +5,11 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="/panoramas/admin/info"> Dashboard </a>
+                <a class="nav-link" href="#"> Dashboard </a>
             </li>
         </ul>
 
-        <!--Panoramas -->
+        <!--Documentation-->
         <h6
             class="
                 sidebar-heading
@@ -17,18 +17,70 @@
                 justify-content-between
                 align-items-center
                 px-3
-                mt-4
+                mt-5
                 mb-1
                 text-muted
             "
         >
-            <span>Gallery</span>
-            <i class="far fa-images"></i>
+            <span>Documentation</span>
+            <i class="fas fa-drafting-compass"></i>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="/panoramas/admin/info">
+                    <span data-feather="file-text"></span>
+                    Technical Information
+                </a>
+            </li>
+        </ul>
+        <!--Documentation-->
+
+        <!--Panoramas Carlatan Campus-->
+        <h6
+            class="
+                sidebar-heading
+                d-flex
+                justify-content-between
+                align-items-center
+                px-3
+                mt-5
+                mb-1
+                text-muted
+            "
+        >
+            <span>Carlatan Campus</span>
+            <i class="fas fa-vr-cardboard"></i>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Create new panorama </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Panorama List </a>
+            </li>
+        </ul>
+        <!--Panoramas Carlatan Campus-->
+
+        <!--Panoramas SanJuan Campus-->
+        <h6
+            class="
+                sidebar-heading
+                d-flex
+                justify-content-between
+                align-items-center
+                px-3
+                mt-3
+                mb-1
+                text-muted
+            "
+        >
+            <span>SanJuan Campus</span>
+            <i class="fas fa-vr-cardboard"></i>
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 <a class="nav-link" href="/panoramas/admin/create">
-                    Add new panorama
+                    Create new panorama
                 </a>
             </li>
             <li class="nav-item">
@@ -37,7 +89,7 @@
                 </a>
             </li>
         </ul>
-        <!--Panoramas -->
+        <!--Panoramas SanJuan Campus-->
 
         <!--Messages -->
         <h6
@@ -47,7 +99,7 @@
                 justify-content-between
                 align-items-center
                 px-3
-                mt-4
+                mt-5
                 mb-1
                 text-muted
             "
@@ -64,5 +116,51 @@
             </li>
         </ul>
         <!--Messages -->
+
+        <!--User dropdown-->
+        <h6
+            class="
+                sidebar-heading
+                d-flex
+                justify-content-between
+                align-items-center
+                px-3
+                mt-5
+                mb-1
+                text-muted
+            "
+        >
+            <span>User</span>
+            <i class="fas fa-user-circle"></i>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                id="dropdownUser1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+            >
+                <!-- <img
+                    src="https://github.com/mdo.png"
+                    alt="hugenerd"
+                    width="30"
+                    height="30"
+                    class="rounded-circle"
+                /> -->
+                <span>Logged in as <%= currentUser.name %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li class="nav-item">
+                    <form action="/users/logout" class="p-2">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </ul>
+        <!--User dropdown-->
     </div>
 </nav>
