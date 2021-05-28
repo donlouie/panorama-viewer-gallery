@@ -49,7 +49,7 @@ include("../partials/anavbar.ejs"); -%>
                             type="text"
                             id="description"
                             name="panorama[description]"
-                            rows="3"
+                            rows="10"
                             required
                         >
         <%= panorama.description%></textarea
@@ -58,8 +58,9 @@ include("../partials/anavbar.ejs"); -%>
                     <!--* Image Url  -->
                     <div class="mb-3">
                         <label for="formFileMultiple" class="form-label"
-                            >Add more image(s)...</label
+                            >Replace image...</label
                         >
+                        <p><small class="text-muted">To update the image, tick the image checkbox and upload a new one.</small></p>
                         <input
                             type="file"
                             class="form-control"
@@ -73,7 +74,7 @@ include("../partials/anavbar.ejs"); -%>
         <input type="file" name="image" id="image" multiple>
       </div> -->
                     <!--* Delete Images  -->
-                    <label>Delete Images</label>
+                    <label>Delete Image</label>
                     <div class="mb-3">
                         <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
                             <% panorama.images.forEach((img, i) => { %>
