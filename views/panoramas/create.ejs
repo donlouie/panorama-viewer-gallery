@@ -1,82 +1,105 @@
-<%- include("../partials/header.ejs"); -%> <%-
-include("../partials/anavbar.ejs"); -%>
+<%- include("../partials/admin/admin-header.ejs"); -%>
 
-<main class="container mt-5 mb-5">
-    <div class="col-md-8 m-5">
-        <div class="card">
-            <h5 class="card-header"></h5>
-            <div class="card-body">
-                <div class="col-8">
-                    <form
-                        action="create"
-                        method="POST"
-                        autocomplete="off"
-                        novalidate
-                        class="validated-form"
-                        enctype="multipart/form-data"
-                    >
-                        <!--* Title  -->
-                        <div class="mb-3">
-                            <label class="form-label" for="title">Title</label>
-                            <input
-                                class="form-control"
-                                type="text"
-                                id="title"
-                                name="panorama[title]"
-                                required
-                            />
-                        </div>
-                        <!--* Location  -->
-                        <div class="mb-3">
-                            <label class="form-label" for="location"
-                                >Location</label
+<div class="container-fluid">
+    <div class="row">
+        <%- include("../partials/admin/admin-navbar.ejs"); -%>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div
+                class="
+                    d-flex
+                    justify-content-between
+                    flex-wrap flex-md-nowrap
+                    align-items-center
+                    pt-3
+                    pb-2
+                    mb-3
+                    border-bottom
+                "
+            >
+                <h1 class="h2">Dashboard</h1>
+            </div>
+            <div class="col-md-8 m-5">
+                <div class="card">
+                    <h5 class="card-header"></h5>
+                    <div class="card-body">
+                        <div class="col-8">
+                            <form
+                                action="create"
+                                method="POST"
+                                autocomplete="off"
+                                novalidate
+                                class="validated-form"
+                                enctype="multipart/form-data"
                             >
-                            <input
-                                class="form-control"
-                                type="text"
-                                id="location"
-                                name="panorama[location]"
-                                required
-                            />
+                                <!--* Title  -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="title"
+                                        >Title</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        id="title"
+                                        name="panorama[title]"
+                                        required
+                                    />
+                                </div>
+                                <!--* Location  -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="location"
+                                        >Location</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        id="location"
+                                        name="panorama[location]"
+                                        required
+                                    />
+                                </div>
+                                <!--* Description  -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="description"
+                                        >Description</label
+                                    >
+                                    <textarea
+                                        class="form-control"
+                                        type="text"
+                                        id="description"
+                                        name="panorama[description]"
+                                        rows="3"
+                                        required
+                                    ></textarea>
+                                </div>
+                                <!--* Image Url  -->
+                                <!--! Single Image Only  -->
+                                <div class="mb-3">
+                                    <label
+                                        for="formFileMultiple"
+                                        class="form-label"
+                                        >Upload Images</label
+                                    >
+                                    <input
+                                        type="file"
+                                        class="form-control"
+                                        id="formFileMultiple"
+                                        name="image"
+                                        required
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-success">
+                                        Add Panorama <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <!--* Description  -->
-                        <div class="mb-3">
-                            <label class="form-label" for="description"
-                                >Description</label
-                            >
-                            <textarea
-                                class="form-control"
-                                type="text"
-                                id="description"
-                                name="panorama[description]"
-                                rows="10"
-                                required
-                            ></textarea>
-                        </div>
-                        <!--* Image Url  -->
-                        <!--! Single Image Only  -->
-                        <div class="mb-3">
-                            <label for="formFileMultiple" class="form-label"
-                                >Upload Image</label
-                            >
-                            <input
-                                type="file"
-                                class="form-control"
-                                id="formFileMultiple"
-                                name="image"
-                                required
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <button class="btn btn-success">
-                                Add Panorama <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-</main>
+</div>
 
-<%- include("../partials/footer.ejs"); -%>
+<%-include("../partials/admin/admin-footer.ejs"); -%>

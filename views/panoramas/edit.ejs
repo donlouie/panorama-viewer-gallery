@@ -1,125 +1,159 @@
-<%- include("../partials/header.ejs"); -%> <%-
-include("../partials/anavbar.ejs"); -%>
+<%- include("../partials/admin/admin-header.ejs"); -%>
 
-<main class="container mt-5 mb-5">
-    <div class="col-md-8 m-5">
-        <div class="card">
-            <h5 class="card-header"></h5>
-            <div class="card-body">
-                <form
-                    action="/panoramas/admin/<%= panorama._id %>/edit?_method=PUT"
-                    method="POST"
-                    novalidate
-                    class="validated-form"
-                    enctype="multipart/form-data"
-                >
-                    <div class="mb-3">
-                        <!--* Title  -->
-                        <label class="form-label" for="title">Title</label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            id="title"
-                            name="panorama[title]"
-                            value="<%=panorama.title %>"
-                            required
-                        />
-                    </div>
-                    <!--* Location  -->
-                    <div class="mb-3">
-                        <label class="form-label" for="location"
-                            >Location</label
+<div class="container-fluid">
+    <div class="row">
+        <%- include("../partials/admin/admin-navbar.ejs"); -%>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div
+                class="
+                    d-flex
+                    justify-content-between
+                    flex-wrap flex-md-nowrap
+                    align-items-center
+                    pt-3
+                    pb-2
+                    mb-3
+                    border-bottom
+                "
+            >
+                <h1 class="h2">Dashboard</h1>
+            </div>
+
+            <div class="col-md-8 m-5">
+                <div class="card">
+                    <h5 class="card-header"></h5>
+                    <div class="card-body">
+                        <form
+                            action="/panoramas/admin/<%= panorama._id %>/edit?_method=PUT"
+                            method="POST"
+                            novalidate
+                            class="validated-form"
+                            enctype="multipart/form-data"
                         >
-                        <input
-                            class="form-control"
-                            type="text"
-                            id="location"
-                            name="panorama[location]"
-                            value="<%=panorama.location %>"
-                            required
-                        />
-                    </div>
-                    <!--* Description  -->
-                    <div class="mb-3">
-                        <label class="form-label" for="description"
-                            >Description</label
-                        >
-                        <textarea
-                            class="form-control"
-                            type="text"
-                            id="description"
-                            name="panorama[description]"
-                            rows="10"
-                            required
-                        >
+                            <div class="mb-3">
+                                <!--* Title  -->
+                                <label class="form-label" for="title"
+                                    >Title</label
+                                >
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    id="title"
+                                    name="panorama[title]"
+                                    value="<%=panorama.title %>"
+                                    required
+                                />
+                            </div>
+                            <!--* Location  -->
+                            <div class="mb-3">
+                                <label class="form-label" for="location"
+                                    >Location</label
+                                >
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    id="location"
+                                    name="panorama[location]"
+                                    value="<%=panorama.location %>"
+                                    required
+                                />
+                            </div>
+                            <!--* Description  -->
+                            <div class="mb-3">
+                                <label class="form-label" for="description"
+                                    >Description</label
+                                >
+                                <textarea
+                                    class="form-control"
+                                    type="text"
+                                    id="description"
+                                    name="panorama[description]"
+                                    rows="10"
+                                    required
+                                >
         <%= panorama.description%></textarea
-                        >
-                    </div>
-                    <!--* Image Url  -->
-                    <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label"
-                            >Replace image...</label
-                        >
-                        <p><small class="text-muted">To update the image, tick the image checkbox and upload a new one.</small></p>
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="formFileMultiple"
-                            name="image"
-                            multiple
-                        />
-                    </div>
-                    <!-- <div class="mb-3">
+                                >
+                            </div>
+                            <!--* Image Url  -->
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label"
+                                    >Replace image...</label
+                                >
+                                <p>
+                                    <small class="text-muted"
+                                        >To update the image, tick the image
+                                        checkbox and upload a new one.</small
+                                    >
+                                </p>
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    id="formFileMultiple"
+                                    name="image"
+                                    multiple
+                                />
+                            </div>
+                            <!-- <div class="mb-3">
         <label class="form-label" for="image">Add Images</label>
         <input type="file" name="image" id="image" multiple>
       </div> -->
-                    <!--* Delete Images  -->
-                    <label>Delete Image</label>
-                    <div class="mb-3">
-                        <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
-                            <% panorama.images.forEach((img, i) => { %>
-                            <div class="col">
-                                <div class="card">
-                                    <img
-                                        class="card-img"
-                                        src="<%= img.thumbnail %>"
-                                        alt=""
-                                    />
-                                    <div
-                                        class="
-                                            card-img-overlay
-                                            text-end
-                                            pt-1
-                                            pe-2
-                                        "
-                                    >
-                                        <label
-                                            class="visually-hidden"
-                                            for="image-<%= i %>"
-                                            >Delete Image</label
-                                        >
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            name="deleteImages[]"
-                                            value="<%= img.filename %>"
-                                            id="image-<%= i %>"
-                                        />
+                            <!--* Delete Images  -->
+                            <label>Delete Image</label>
+                            <div class="mb-3">
+                                <div
+                                    class="
+                                        row row-cols-1 row-cols-md-4
+                                        g-4
+                                        mb-3
+                                    "
+                                >
+                                    <% panorama.images.forEach((img, i) => { %>
+                                    <div class="col">
+                                        <div class="card">
+                                            <img
+                                                class="card-img"
+                                                src="<%= img.thumbnail %>"
+                                                alt=""
+                                            />
+                                            <div
+                                                class="
+                                                    card-img-overlay
+                                                    text-end
+                                                    pt-1
+                                                    pe-2
+                                                "
+                                            >
+                                                <label
+                                                    class="visually-hidden"
+                                                    for="image-<%= i %>"
+                                                    >Delete Image</label
+                                                >
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    name="deleteImages[]"
+                                                    value="<%= img.filename %>"
+                                                    id="image-<%= i %>"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
+                                    <% })%>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-success">
+                                        Update Campground
+                                        <i class="far fa-edit"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <% })%>
-                        </div>
-                        <div class="mb-3">
-                            <button class="btn btn-success">
-                                Update Campground <i class="far fa-edit"></i>
-                            </button>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
-</main>
+</div>
 
-<%- include("../partials/footer.ejs"); -%>
+<%-include("../partials/admin/admin-footer.ejs"); -%>
