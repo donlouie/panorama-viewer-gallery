@@ -18,9 +18,9 @@ router.route('/:page').get(panoramaController.showPanorama);
 
 //* @route GET
 //? @desc Render info page
-router
-    .route('/admin/info')
-    .get(ensureAuthenticated, panoramaController.renderInfo);
+// router
+//     .route('/admin/info')
+//     .get(ensureAuthenticated, panoramaController.renderInfo);
 
 //* @route GET
 //? @desc Render panorama create form

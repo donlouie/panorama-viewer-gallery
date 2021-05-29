@@ -81,20 +81,6 @@ exports.showPanorama = catchAsync(async (req, res, next) => {
 });
 
 //* @route GET
-//? @desc Render panorama info page
-exports.renderInfo = catchAsync(async (req, res, next) => {
-    try {
-        const userId = req.user._id;
-        const currentUser = await User.findById(userId);
-        // console.log(currentUser.name);
-        res.render('panoramas/info', { currentUser: currentUser });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
-
-//* @route GET
 //? @desc Render panorama create form
 exports.renderNewForm = catchAsync(async (req, res, next) => {
     try {

@@ -8,6 +8,7 @@ const AppError = require('./utils/appError');
 const panoramaRouter = require('./routes/panoramaRoutes');
 const messageRouter = require('./routes/messageRoutes');
 const userRouter = require('./routes/userRoutes');
+const adminRouter = require('./routes/adminRoutes');
 
 //* Authentication modules
 const flash = require('connect-flash');
@@ -15,6 +16,8 @@ const session = require('express-session');
 const passport = require('passport');
 //*Passport config
 require('./config/passport')(passport);
+//*Passport authentication middleware
+const { ensureAuthenticated } = require('./config/auth');
 
 const app = express();
 
@@ -45,9 +48,9 @@ app.use((req, res, next) => {
 
 //* Routes
 app.use('/users', userRouter);
+app.use('/dashboard', adminRouter);
 app.use('/messages', messageRouter);
 app.use('/panoramas', panoramaRouter);
-
 
 //* @route GET
 //? @desc Render home page
