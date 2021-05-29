@@ -58,7 +58,7 @@ include("../partials/navbar.ejs"); -%>
 <!--* Panellum viewer JS  -->
 <script>
     panoramaURL = '<%= panorama.images[0].url %>';
-    panoramaTitle = '<%= panorama.title %>';
+    panoramaLocation = '<%= panorama.location %>';
     //* 360 Panorama
     viewer = pannellum.viewer('panorama', {
         type: 'equirectangular',
@@ -68,6 +68,8 @@ include("../partials/navbar.ejs"); -%>
         northOffset: 247.5,
         preview: panoramaURL,
         autoLoad: true,
+        title: panoramaLocation,
+        author: 'LORMAKAD',
     });
     //* Partial Panorama
     pannellum.viewer('partial', {
