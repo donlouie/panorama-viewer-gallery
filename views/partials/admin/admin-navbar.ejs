@@ -5,7 +5,9 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#"> Dashboard </a>
+                <a class="nav-link" href="#"
+                    ><i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
             </li>
         </ul>
 
@@ -29,7 +31,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/panoramas/admin/info">
                     <span data-feather="file-text"></span>
-                    Technical Information
+                    <i class="fas fa-cogs"></i> Technical Information
                 </a>
             </li>
         </ul>
@@ -53,10 +55,14 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#"> Create new panorama </a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-plus-square"></i> Create new Panorama
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"> Panorama List </a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-list-ol"></i> List of Panoramas
+                </a>
             </li>
         </ul>
         <!--Panoramas Carlatan Campus-->
@@ -80,12 +86,12 @@
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 <a class="nav-link" href="/panoramas/admin/create">
-                    Create new panorama
+                    <i class="fas fa-plus-square"></i> Create new Panorama
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/panoramas/admin/list/1">
-                    Panorama List
+                    <i class="fas fa-list-ol"></i> List of Panoramas
                 </a>
             </li>
         </ul>
@@ -110,7 +116,7 @@
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 <a class="nav-link" href="/messages/admin/list/1">
-                    <span data-feather="file-text"></span>
+                    <i class="fas fa-inbox"></i>
                     Inbox
                 </a>
             </li>
@@ -148,7 +154,10 @@
                     height="30"
                     class="rounded-circle"
                 /> -->
-                <span>Logged in as <%= currentUser.name %></span>
+                <span
+                    ><i class="fas fa-id-card-alt"></i> Logged in as <%=
+                    currentUser.name %></span
+                >
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                 <li class="nav-item">
