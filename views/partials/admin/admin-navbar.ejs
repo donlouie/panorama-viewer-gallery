@@ -1,9 +1,9 @@
 <nav
     id="sidebarMenu"
-    class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+    class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow-sm"
 >
-    <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
+    <div class="position-sticky">
+        <ul class="nav flex-column shadow-lg">
             <li class="nav-item">
                 <a class="nav-link text-muted" href="#"
                     ><i class="fas fa-tachometer-alt"></i> Dashboard
@@ -12,164 +12,171 @@
         </ul>
 
         <!--Documentation-->
-        <h6
-            class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-3
-                mb-1
-                text-muted
-            "
-        >
-            <span>Documentation</span>
-            <i class="fas fa-drafting-compass"></i>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="/dashboard/admin/info">
-                    <span data-feather="file-text"></span>
-                    <i class="fas fa-cogs"></i> Technical Information
-                </a>
-            </li>
-        </ul>
+        <div class="mt-1 card bg-secondary">
+            <h6
+                class="
+                    sidebar-heading
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    px-3
+                    mt-3
+                    mb-1
+                    text-white
+                "
+            >
+                <span>Documentation</span>
+                <i class="fas fa-drafting-compass"></i>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/dashboard/admin/info">
+                        <span data-feather="file-text"></span>
+                        <i class="fas fa-cogs"></i> Technical Information
+                    </a>
+                </li>
+            </ul>
+        </div>
         <!--Documentation-->
 
-        <!--Panoramas Carlatan Campus-->
-        <h6
-            class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-3
-                mb-1
-                text-muted
-            "
-        >
-            <span>Carlatan Campus</span>
-            <i class="fas fa-vr-cardboard"></i>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link text-muted" href="#">
-                    <i class="fas fa-plus-square"></i> Create new Panorama
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-muted" href="#">
-                    <i class="fas fa-list-ol"></i> List of Panoramas
-                </a>
-            </li>
-        </ul>
-        <!--Panoramas Carlatan Campus-->
+        <!--Panorama Gallery -->
+        <div class="mt-1 card bg-secondary">
+            <!--Panoramas Carlatan Campus-->
+            <h6
+                class="
+                    sidebar-heading
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    px-3
+                    mt-3
+                    mb-1
+                    text-white
+                "
+            >
+                <span>Carlatan Campus</span>
+                <i class="fas fa-images"></i>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">
+                        <i class="fas fa-list-ol"></i> List of Panoramas
+                    </a>
+                </li>
+            </ul>
+            <!--Panoramas Carlatan Campus-->
 
-        <!--Panoramas SanJuan Campus-->
-        <h6
-            class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-3
-                mb-1
-                text-muted
-            "
-        >
-            <span>SanJuan Campus</span>
-            <i class="fas fa-vr-cardboard"></i>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="/panoramas/admin/create">
-                    <i class="fas fa-plus-square"></i> Create new Panorama
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/panoramas/admin/list/1">
-                    <i class="fas fa-list-ol"></i> List of Panoramas
-                </a>
-            </li>
-        </ul>
-        <!--Panoramas SanJuan Campus-->
+            <!--Panoramas SanJuan Campus-->
+            <h6
+                class="
+                    sidebar-heading
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    px-3
+                    mt-1
+                    mb-1
+                    text-white
+                "
+            >
+                <span>SanJuan Campus</span>
+                <i class="far fa-images"></i>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a
+                        class="nav-link text-white"
+                        href="/panoramas/admin/list/1"
+                    >
+                        <i class="fas fa-list-ol"></i> List of Panoramas
+                    </a>
+                </li>
+            </ul>
+            <!--Panoramas SanJuan Campus-->
+        </div>
+        <!--Panorama Gallery -->
 
         <!--Messages -->
-        <h6
-            class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-3
-                mb-1
-                text-muted
-            "
-        >
-            <span>Messages</span>
-            <i class="fas fa-envelope-open-text"></i>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="/messages/admin/list/1">
-                    <i class="fas fa-inbox"></i>
-                    Inbox
-                </a>
-            </li>
-        </ul>
+        <div class="mt-1 card bg-secondary">
+            <h6
+                class="
+                    sidebar-heading
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    px-3
+                    mt-3
+                    mb-1
+                    text-white
+                "
+            >
+                <span>Messages</span>
+                <i class="fas fa-envelope-open-text"></i>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a
+                        class="nav-link text-white"
+                        href="/messages/admin/list/1"
+                    >
+                        <i class="fas fa-inbox"></i>
+                        Inbox
+                    </a>
+                </li>
+            </ul>
+        </div>
         <!--Messages -->
 
         <!--User dropdown-->
-        <h6
-            class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-5
-                mb-1
-                text-muted
-            "
-        >
-            <span>User</span>
-            <i class="fas fa-user-circle"></i>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                id="dropdownUser1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+        <div class="mt-5 card bg-dark">
+            <h6
+                class="
+                    sidebar-heading
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    px-3
+                    mt-2
+                    mb-2
+                    text-muted
+                    shadow-sm
+                "
             >
-                <!-- <img
+                <span></span>
+                <i class="fas fa-user-circle text-light"></i>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <a
+                    href="#"
+                    class="nav-link dropdown-toggle text-light"
+                    id="dropdownUser1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    <!-- <img
                     src="https://github.com/mdo.png"
                     alt="hugenerd"
                     width="30"
                     height="30"
                     class="rounded-circle"
                 /> -->
-                <span
-                    ><i class="fas fa-id-card-alt"></i> Logged in as <%=
-                    currentUser.name %></span
-                >
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li class="nav-item">
-                    <form action="/users/logout" class="p-2">
-                        <button type="submit" class="btn btn-sm btn-light">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Logout
-                        </button>
-                    </form>
-                </li>
+                    <span
+                        ><i class="fas fa-id-card-alt"></i> Logged in as <%=
+                        currentUser.name %></span
+                    >
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li class="nav-item">
+                        <form action="/users/logout" class="p-2">
+                            <button type="submit" class="btn btn-sm btn-light">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </ul>
-        </ul>
+        </div>
         <!--User dropdown-->
     </div>
 </nav>

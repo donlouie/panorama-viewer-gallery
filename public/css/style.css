@@ -3,5 +3,9 @@ html {
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Merriweather', serif;
+}
+
+* {
+    border-radius: 0 !important;
 }
