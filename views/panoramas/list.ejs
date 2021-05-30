@@ -1,5 +1,9 @@
 <%- include("../partials/admin/admin-header.ejs"); -%>
 
+<!--*Sort table script asc/desc-->
+<script src="/js/table/sort.table.js"></script>
+<!--*Sort table script asc/desc-->
+
 <div class="container-fluid">
     <div class="row">
         <%- include("../partials/admin/admin-navbar.ejs"); -%>
@@ -28,6 +32,7 @@
             <!--Table-->
             <div class="table-responsive shadow-lg p-3 mb-5 bg-white rounded">
                 <table
+                    id="myTable"
                     class="
                         table table-striped table-hover table-bordered
                         border-secondary
@@ -42,13 +47,19 @@
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">
-                                Title <i class="fas fa-sort"></i>
+                                Title
+                                <i
+                                    onclick="sortTable(0)"
+                                    class="fas fa-sort"
+                                ></i>
                             </th>
                             <th scope="col">
-                                Location <i class="fas fa-sort"></i>
+                                Location
+                                <i class="fas fa-sort"></i>
                             </th>
                             <th scope="col">
-                                Modified By <i class="fas fa-sort"></i>
+                                Modified By
+                                <i class="fas fa-sort"></i>
                             </th>
                             <th scope="col">
                                 Date & Time Modified <i class="fas fa-sort"></i>
