@@ -12,6 +12,7 @@ body {
     border-radius: 0 !important;
 }
 
+/* Navbar */
 .feather {
     width: 16px;
     height: 16px;
@@ -108,3 +109,12 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
+/* Navbar */
+
+/* Image preview */
+.fit-preview {
+    width: 100%;
+    object-fit: cover;
+    height: 185px; /* only if you want fixed height */
+}
+/* Image preview */

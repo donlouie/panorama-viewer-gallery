@@ -1,6 +1,4 @@
-<%- include("../partials/header.ejs"); -%> <%-
-include("../partials/navbar.ejs"); -%> <%- include('../partials/utils/messages.ejs')
-%>
+<%- include("../partials/header.ejs"); -%>
 
 <main class="container mt-5 mb-5">
     <!--* Header  -->
@@ -107,7 +105,9 @@ include("../partials/navbar.ejs"); -%> <%- include('../partials/utils/messages.e
                 <% if (pages > 0) { %>
                 <ul class="pagination text-center">
                     <% if (current == 1) { %>
-                    <li class="disabled"><a class="page-link text-secondary">First</a></li>
+                    <li class="disabled">
+                        <a class="page-link text-secondary">First</a>
+                    </li>
                     <% } else { %>
                     <li>
                         <a class="page-link text-secondary" href="/panoramas/1"
