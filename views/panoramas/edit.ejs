@@ -26,7 +26,7 @@
                 class="
                     col-md-8
                     table-responsive
-                    shadow-lg
+                    shadow-sm
                     p-3
                     mb-5
                     bg-white
@@ -98,74 +98,99 @@
                                         checkbox and upload a new one.</small
                                     >
                                 </p>
+                                <!--? How to restrict to single image upload-->
                                 <input
                                     type="file"
                                     class="form-control"
                                     id="formFileMultiple"
                                     name="image"
+                                    onchange="document.getElementById('upload').src = window.URL.createObjectURL(this.files[0])"
                                     multiple
+                                    disabled
                                 />
+                                <!--Image Preview-->
+                                <div class="card card-thumbnail">
+                                    <img
+                                        class="img-fluid fit-preview"
+                                        id="upload"
+                                        alt="Image Preview"
+                                        src="/images/css/preview-default.jpg"
+                                    />
+                                </div>
                             </div>
                             <!-- <div class="mb-3">
         <label class="form-label" for="image">Add Images</label>
         <input type="file" name="image" id="image" multiple>
       </div> -->
                             <!--* Delete Images  -->
-                            <label>Delete Image</label>
-                            <p>
-                                <small class="text-danger"
-                                    >Tick the checkbox on the upper right corner
-                                    of the image to delete the old image from
-                                    the database</small
-                                >
-                            </p>
                             <div class="mb-3">
-                                <div
-                                    class="
-                                        row row-cols-1 row-cols-md-4
-                                        g-4
-                                        mb-3
-                                    "
-                                >
-                                    <% panorama.images.forEach((img, i) => { %>
-                                    <div class="col">
-                                        <div class="card">
-                                            <img
-                                                class="img-thumbnail card-img"
-                                                src="<%= img.thumbnail %>"
-                                                alt=""
-                                            />
-                                            <div
-                                                class="
-                                                    card-img-overlay
-                                                    text-end
-                                                    pt-1
-                                                    pe-2
-                                                "
-                                            >
-                                                <label
-                                                    class="visually-hidden"
-                                                    for="image-<%= i %>"
-                                                    >Delete Image</label
-                                                >
-                                                <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    name="deleteImages[]"
-                                                    value="<%= img.filename %>"
-                                                    id="image-<%= i %>"
+                                <label>Delete Image</label>
+                                <p>
+                                    <small class="text-danger"
+                                        >Tick the checkbox on the upper right
+                                        corner of the image to delete the old
+                                        image from the database</small
+                                    >
+                                </p>
+                                <div class="mb-3">
+                                    <div
+                                        class="
+                                            row row-cols-1 row-cols-md-4
+                                            g-4
+                                            mb-3
+                                        "
+                                    >
+                                        <% panorama.images.forEach((img, i) => {
+                                        %>
+                                        <div class="col">
+                                            <div class="card">
+                                                <img
+                                                    class="
+                                                        img-thumbnail
+                                                        card-img
+                                                    "
+                                                    src="<%= img.thumbnail %>"
+                                                    alt=""
                                                 />
+                                                <div
+                                                    class="
+                                                        card-img-overlay
+                                                        text-end
+                                                        pt-1
+                                                        pe-2
+                                                    "
+                                                >
+                                                    <label
+                                                        class="visually-hidden"
+                                                        for="image-<%= i %>"
+                                                        >Delete Image</label
+                                                    >
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="checkbox"
+                                                        name="deleteImages[]"
+                                                        value="<%=
+                                                img.filename %>"
+                                                        id="image-<%= i
+                                                %>"
+                                                        onclick="var input =
+                                                document.getElementById('formFileMultiple');
+                                                if(this.checked){ input.disabled
+                                                = false;
+                                                input.focus();}else{input.disabled=true;}"
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
+                                        <% })%>
                                     </div>
-                                    <% })%>
                                 </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-secondary float-end">
-                                        Update Panorama
-                                        <i class="far fa-edit"></i>
-                                    </button>
-                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-secondary float-end">
+                                    Update Panorama
+                                    <i class="far fa-edit"></i>
+                                </button>
                             </div>
                         </form>
                     </div>
