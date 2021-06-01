@@ -63,5 +63,8 @@ app.get('/', (req, res) => {
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
+// app.all('*', (req, res, next) => {
+//     res.render('error404');
+// });
 
 module.exports = app;
