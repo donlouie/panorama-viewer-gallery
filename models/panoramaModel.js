@@ -14,6 +14,10 @@ imageSchema.virtual('thumbnail').get(function () {
 imageSchema.virtual('preview').get(function () {
     return this.url.replace('/upload', '/upload/w_512');
 });
+//* Virtual pannellum preview
+imageSchema.virtual('panorama').get(function () {
+    return this.url.replace('/upload', '/upload/w_1920');
+});
 
 const panoramaSchema = new mongoose.Schema({
     title: {

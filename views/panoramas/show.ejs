@@ -52,11 +52,16 @@
             </div>
         </div>
     </div>
+    <!--!temp fix for url fetch -->
+    <!--Hidden Link -->
+    <% panorama.images.forEach((img, i) => { %>
+    <input id="panorama.url" type="hidden" value=" <%= img.panorama %>" />
+    <% }) %>
 </main>
 
 <!--* Panellum viewer JS  -->
 <script>
-    panoramaURL = '<%= panorama.images[0].url %>';
+    panoramaURL = document.getElementById('panorama.url').value;
     panoramaLocation = '<%= panorama.location %>';
     //* 360 Panorama
     viewer = pannellum.viewer('panorama', {
