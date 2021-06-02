@@ -61,6 +61,8 @@
 
 <!--* Panellum viewer JS  -->
 <script>
+    // autoLoad: true => auto start panorama on page load
+
     panoramaURL = document.getElementById('panorama.url').value;
     panoramaLocation = '<%= panorama.location %>';
     //* 360 Panorama
@@ -71,7 +73,6 @@
         compass: true,
         northOffset: 247.5,
         preview: panoramaURL,
-        autoLoad: true,
         title: panoramaLocation,
         author: 'LORMAKAD',
     });
