@@ -11,9 +11,9 @@ imageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
 });
 //* Virtual preview
-imageSchema.virtual('preview').get(function () {
-    return this.url.replace('/upload', '/upload/w_512');
-});
+// imageSchema.virtual('preview').get(function () {
+//     return this.url.replace('/upload', '/upload/w_512');
+// });
 //* Virtual pannellum preview
 imageSchema.virtual('panorama').get(function () {
     return this.url.replace('/upload', '/upload/w_1920');
