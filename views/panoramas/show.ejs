@@ -1,4 +1,5 @@
-<%- include("../partials/header.ejs"); -%>
+<!--*Bootstrap CSS-->
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
 
 <!--* Panellum API -->
 <script type="text/javascript" src="/js/pannellum/pannellum.js"></script>
@@ -7,21 +8,11 @@
 <link href="/css/pannellum/style.css" rel="stylesheet" />
 
 <!--* Body  -->
-<main class="container mt-5 mb-5">
+<main class="container mt-2 mb-5">
   <div class="container py-4">
-    <header class="pb-3 mb-4 border-bottom">
-      <a
-        href="/"
-        class="d-flex align-items-center text-dark text-decoration-none"
-      >
-        <span class="fs-4"
-          ><i class="fas fa-street-view"></i> <%= panorama.title %>
-        </span>
-      </a>
-    </header>
-    <div class="p-3 mb-4 text-light bg-dark rounded-3">
+    <!--Pannellum viewer -->
+    <div class="p-3 mb-4 text-light bg-light rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">360° Panorama</h1>
         <div id="panorama">
           <div id="controls">
             <div class="ctrl" id="pan-up">&#9650;</div>
@@ -33,22 +24,34 @@
             <div class="ctrl" id="fullscreen">&#x2922;</div>
           </div>
         </div>
+        <span class="text-muted">
+          Note: please click on the image and drag left and right to view the
+          entire space
+        </span>
       </div>
     </div>
+    <!--Pannellum viewer -->
 
+    <!--Description -->
     <div class="row align-items-md-stretch">
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-light bg-secondary rounded-3"></div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-light text-dark border rounded-3">
-          <h2>Description</h2>
+      <div class="col-md-12">
+        <div class="h-100 p-5 bg-light text-dark rounded-3">
+          <h2><i class="fas fa-compass"></i> <%= panorama.title %></h2>
+          <h5>Description</h5>
           <p><%= panorama.description %></p>
         </div>
       </div>
     </div>
+    <!--Back to list btn -->
+    <div class="btn-group float-end">
+      <a href="/panoramas/1" type="button" class="btn btn-dark">
+        Back to list of facilities
+      </a>
+    </div>
+    <!--Back to list btn -->
   </div>
+  <!--Description -->
+
   <!--!temp fix for url fetch -->
   <!--Hidden Link -->
   <% panorama.images.forEach((img, i) => { %>
@@ -75,5 +78,3 @@
 </script>
 <!--* Pannellum viewer controls JS  -->
 <script src="/js/pannellum/pannellum.controls.js"></script>
-
-<%-include("../partials/footer.ejs"); -%>

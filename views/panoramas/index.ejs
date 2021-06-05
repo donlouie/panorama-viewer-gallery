@@ -1,7 +1,7 @@
 <%- include("../partials/header.ejs"); -%>
 
 <main class="container mt-5 mb-5">
-  <!--* Header  -->
+  <!--Header-->
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
@@ -25,10 +25,11 @@
       </div>
     </div>
   </section>
+  <!--Header-->
 
-  <!--* Gallery List  -->
+  <!--Gallery List-->
   <div class="album">
-    <!--* Search Form-->
+    <!--Search Form-->
     <div class="search-input d-flex justify-content-center">
       <form
         action="/panoramas/:r"
@@ -48,7 +49,7 @@
         </div>
       </form>
     </div>
-    <!--* Search Form-->
+    <!--Search Form-->
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
@@ -63,11 +64,6 @@
                             alt="..."
                         />
                         <% }) %> -->
-            <title>Placeholder</title>
-            <!-- <rect width="100%" height="100%" fill="#55595c" /> -->
-            <!-- <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text> -->
-            <!-- </svg> -->
-
             <div class="card-body">
               <h5 class="card-title"><%= panorama.title %></h5>
               <p class="text-muted"><%= panorama.location %></p>
@@ -84,9 +80,6 @@
                     View
                   </a>
                 </div>
-                <small class="text-muted"
-                  ><%= panorama.date.toDateString() %>
-                </small>
               </div>
             </div>
           </div>
@@ -94,6 +87,7 @@
         <% } %>
         <!--  -->
       </div>
+      <!--Gallery List-->
 
       <!--* Pagination -->
       <div class="mt-3">
