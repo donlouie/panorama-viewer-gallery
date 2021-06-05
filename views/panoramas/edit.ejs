@@ -73,10 +73,10 @@
         <%= panorama.description%></textarea
                 >
               </div>
-              <!--* Image Url  -->
+              <!--Image Url-->
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label"
-                  >Replace image...</label
+                  >New Image</label
                 >
                 <p>
                   <small class="text-muted"
@@ -103,20 +103,21 @@
                     src="/images/css/preview-default.jpg"
                   />
                 </div>
+                <div>
+                  <span
+                    id="formFileMultipleSpan"
+                    class="text-danger fw-bold"
+                  ></span>
+                </div>
               </div>
               <!-- <div class="mb-3">
         <label class="form-label" for="image">Add Images</label>
         <input type="file" name="image" id="image" multiple>
       </div> -->
-              <!--* Delete Images  -->
+              <!--Image Url-->
+              <!--Delete Images-->
               <div class="mb-3">
-                <label>Delete Image</label>
-                <p>
-                  <small class="text-danger"
-                    >Tick the checkbox on the upper right corner of the image to
-                    delete the old image from the database</small
-                  >
-                </p>
+                <span>Current Image</span>
                 <div class="mb-3">
                   <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
                     <% panorama.images.forEach((img, i) => { %>
@@ -127,10 +128,11 @@
                           src="<%= img.thumbnail %>"
                           alt=""
                         />
-                        <div class="card-img-overlay text-end pt-1 pe-2">
+                        <div class="text-end pt-1 pe-2">
                           <label class="visually-hidden" for="image-<%= i %>"
                             >Delete Image</label
                           >
+                          <i class="fas fa-trash-alt"></i>
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -152,6 +154,7 @@
                   </div>
                 </div>
               </div>
+              <!--Delete Images-->
               <div class="mb-3">
                 <button class="btn btn-secondary float-end">
                   Update Panorama
@@ -171,5 +174,25 @@
     </main>
   </div>
 </div>
+
+<!--!temp script for upload limit -->
+<!--*Form upload limit script + Image preview-->
+<script>
+  let uploadField = document.getElementById('formFileMultiple');
+  let span = document.getElementById('formFileMultipleSpan');
+  uploadField.onchange = function () {
+    //5mb file restriction
+    if (this.files[0].size > 5242880) {
+      // alert('File is too big!');
+      span.innerText = 'Image Size Exceeds 5mb!';
+      this.value = '';
+    } else {
+      document.getElementById('upload').src = window.URL.createObjectURL(
+        this.files[0]
+      );
+    }
+  };
+</script>
+<!--*Form upload limit script-->
 
 <%-include("../partials/admin/admin-footer.ejs"); -%>
