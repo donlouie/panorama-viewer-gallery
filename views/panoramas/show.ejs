@@ -8,70 +8,70 @@
 
 <!--* Body  -->
 <main class="container mt-5 mb-5">
-    <div class="container py-4">
-        <header class="pb-3 mb-4 border-bottom">
-            <a
-                href="/"
-                class="d-flex align-items-center text-dark text-decoration-none"
-            >
-                <span class="fs-4"
-                    ><i class="fas fa-street-view"></i> <%= panorama.title %>
-                </span>
-            </a>
-        </header>
-        <div class="p-3 mb-4 text-light bg-dark rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">360° Panorama</h1>
-                <div id="panorama">
-                    <div id="controls">
-                        <div class="ctrl" id="pan-up">&#9650;</div>
-                        <div class="ctrl" id="pan-down">&#9660;</div>
-                        <div class="ctrl" id="pan-left">&#9664;</div>
-                        <div class="ctrl" id="pan-right">&#9654;</div>
-                        <div class="ctrl" id="zoom-in">&plus;</div>
-                        <div class="ctrl" id="zoom-out">&minus;</div>
-                        <div class="ctrl" id="fullscreen">&#x2922;</div>
-                    </div>
-                </div>
-            </div>
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a
+        href="/"
+        class="d-flex align-items-center text-dark text-decoration-none"
+      >
+        <span class="fs-4"
+          ><i class="fas fa-street-view"></i> <%= panorama.title %>
+        </span>
+      </a>
+    </header>
+    <div class="p-3 mb-4 text-light bg-dark rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">360° Panorama</h1>
+        <div id="panorama">
+          <div id="controls">
+            <div class="ctrl" id="pan-up">&#9650;</div>
+            <div class="ctrl" id="pan-down">&#9660;</div>
+            <div class="ctrl" id="pan-left">&#9664;</div>
+            <div class="ctrl" id="pan-right">&#9654;</div>
+            <div class="ctrl" id="zoom-in">&plus;</div>
+            <div class="ctrl" id="zoom-out">&minus;</div>
+            <div class="ctrl" id="fullscreen">&#x2922;</div>
+          </div>
         </div>
-
-        <div class="row align-items-md-stretch">
-            <div class="col-md-6">
-                <div class="h-100 p-5 text-light bg-secondary rounded-3"></div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="h-100 p-5 bg-light text-dark border rounded-3">
-                    <h2>Description</h2>
-                    <p><%= panorama.description %></p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <!--!temp fix for url fetch -->
-    <!--Hidden Link -->
-    <% panorama.images.forEach((img, i) => { %>
-    <input id="panorama.url" type="hidden" value=" <%= img.panorama %>" />
-    <% }) %>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-light bg-secondary rounded-3"></div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light text-dark border rounded-3">
+          <h2>Description</h2>
+          <p><%= panorama.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--!temp fix for url fetch -->
+  <!--Hidden Link -->
+  <% panorama.images.forEach((img, i) => { %>
+  <input id="panorama.url" type="hidden" value=" <%= img.panorama %>" />
+  <% }) %>
 </main>
 
 <!--* Panellum viewer JS  -->
 <script>
-    // autoLoad: true => auto start panorama on page load
-    panoramaURL = document.getElementById('panorama.url').value;
-    panoramaLocation = '<%= panorama.location %>';
-    //* 360 Panorama
-    viewer = pannellum.viewer('panorama', {
-        type: 'equirectangular',
-        panorama: panoramaURL,
-        autoRotate: -2,
-        compass: true,
-        northOffset: 247.5,
-        preview: panoramaURL,
-        title: panoramaLocation,
-        author: 'LORMAKAD',
-    });
+  // autoLoad: true => auto start panorama on page load
+  panoramaURL = document.getElementById('panorama.url').value;
+  panoramaLocation = '<%= panorama.location %>';
+  //* 360 Panorama
+  viewer = pannellum.viewer('panorama', {
+    type: 'equirectangular',
+    panorama: panoramaURL,
+    autoRotate: -2,
+    compass: true,
+    northOffset: 247.5,
+    preview: panoramaURL,
+    title: panoramaLocation,
+    author: 'LORMAKAD',
+  });
 </script>
 <!--* Pannellum viewer controls JS  -->
 <script src="/js/pannellum/pannellum.controls.js"></script>

@@ -27,18 +27,18 @@ router.route('/:page').get(panoramaController.showPanorama);
 //* @route POST
 //? @desc Create new panorama
 router
-    .route('/admin/create')
-    .get(ensureAuthenticated, panoramaController.renderNewForm)
-    .post(upload.array('image'), panoramaController.createPanorama);
+  .route('/admin/create')
+  .get(ensureAuthenticated, panoramaController.renderNewForm)
+  .post(upload.array('image'), panoramaController.createPanorama);
 
 //* @route GET
 //? @desc Render panorama list
 //* @route POST
 //? @desc Delete panorama
 router
-    .route('/admin/list/:page')
-    .get(ensureAuthenticated, panoramaController.renderList)
-    .post(panoramaController.deletePanorama);
+  .route('/admin/list/:page')
+  .get(ensureAuthenticated, panoramaController.renderList)
+  .post(panoramaController.deletePanorama);
 
 //* @route GET
 //? @desc Show panorama detail
@@ -49,8 +49,8 @@ router.route('/show/:id').get(panoramaController.showDetail);
 //* @route PUT
 //? @desc Update panorama
 router
-    .route('/admin/:id/edit')
-    .get(ensureAuthenticated, panoramaController.renderEditForm)
-    .put(upload.array('image'), panoramaController.updatePanorama);
+  .route('/admin/:id/edit')
+  .get(ensureAuthenticated, panoramaController.renderEditForm)
+  .put(upload.array('image'), panoramaController.updatePanorama);
 
 module.exports = router;

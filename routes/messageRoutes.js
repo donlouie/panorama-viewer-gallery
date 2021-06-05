@@ -11,18 +11,18 @@ const messageController = require('../controllers/messageController');
 //* @route POST
 //? @desc Create new message
 router
-    .route('/create')
-    .get(messageController.renderNewForm)
-    .post(messageController.createMessage);
+  .route('/create')
+  .get(messageController.renderNewForm)
+  .post(messageController.createMessage);
 
 //* @route GET
 //? @desc Render message list
 //* @route POST
 //? @desc Delete panorama
 router
-    .route('/admin/list/:page')
-    .get(ensureAuthenticated, messageController.renderList)
-    .post(messageController.sendEmail)
-    .delete(messageController.deleteMessage);
+  .route('/admin/list/:page')
+  .get(ensureAuthenticated, messageController.renderList)
+  .post(messageController.sendEmail)
+  .delete(messageController.deleteMessage);
 
 module.exports = router;

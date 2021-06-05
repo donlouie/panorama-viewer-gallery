@@ -10,7 +10,7 @@ const adminController = require('../controllers/adminController');
 //* @route GET
 //? @desc Render technical info page
 router
-    .route('/admin/info')
-    .get(ensureAuthenticated, adminController.renderInfo);
+  .route('/admin/info')
+  .get(ensureAuthenticated, adminController.renderInfo);
 
 module.exports = router;

@@ -109,12 +109,13 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
-/* Navbar */
+/*Navbar*/
 
-/* Image preview */
+/*Image preview*/
 .fit-preview {
     width: 100%;
     object-fit: cover;
     height: 185px; /* only if you want fixed height */
 }
-/* Image preview */
+/*Image preview*/
+

@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
-    url: String,
-    filename: String,
+  url: String,
+  filename: String,
 });
 
 //* Virtual thumbnail
 imageSchema.virtual('thumbnail').get(function () {
-    return this.url.replace('/upload', '/upload/w_200');
+  return this.url.replace('/upload', '/upload/w_200');
 });
 //* Virtual preview
 // imageSchema.virtual('preview').get(function () {
@@ -16,28 +16,28 @@ imageSchema.virtual('thumbnail').get(function () {
 // });
 //* Virtual pannellum preview
 imageSchema.virtual('panorama').get(function () {
-    return this.url.replace('/upload', '/upload/w_1920');
+  return this.url.replace('/upload', '/upload/w_1920');
 });
 
 const panoramaSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: [true, 'Panorama must have a Title'],
-    },
-    location: {
-        type: String,
-        required: [true, 'Panorama must have a Location'],
-    },
-    description: {
-        type: String,
-        required: [true, 'Panorama must have a Description'],
-    },
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    images: [imageSchema],
-    date: { type: Date, default: Date.now },
+  title: {
+    type: String,
+    required: [true, 'Panorama must have a Title'],
+  },
+  location: {
+    type: String,
+    required: [true, 'Panorama must have a Location'],
+  },
+  description: {
+    type: String,
+    required: [true, 'Panorama must have a Description'],
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  images: [imageSchema],
+  date: { type: Date, default: Date.now },
 });
 
 const Panorama = mongoose.model('Panorama', panoramaSchema);
