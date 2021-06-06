@@ -1,3 +1,30 @@
 html {
   overflow-y: scroll;
 }
+
+body {
+  background-color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+/*Navbar*/
+.navbar-nav > li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/*Navbar*/
