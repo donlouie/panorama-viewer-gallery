@@ -2,46 +2,543 @@
 include('partials/utils/messages.ejs')%>
 
 <main class="container mt-5 mb-5 px-3">
-	<div class="p-2 mb-3">
-		<h1>Campus Virtual Reality Tour</h1>
-		<p class="lead p-2">
-			Explore the Panoramic Virtual Reality Tour of Lorma Colleges through
-			our web application with the use of your Desktop or Mobile Device.
-			Also capable of being viewed through the use of a Virtual Reality
-			Goggles.
-		</p>
-		<p class="lead">
-			<a
-				href="#"
-				class="btn btn-lg btn-secondary fw-bold border-white bg-dark"
-				>Lorma Carlatan</a
-			>
-			<a
-				href="#"
-				class="btn btn-lg btn-secondary fw-bold border-white bg-dark"
-				>Lorma San Juan</a
-			>
-		</p>
-	</div>
-	<div class="p-2 mb-3">
-		<h1>Single Panorama Virtual Reality Tour</h1>
-		<p class="lead p-2">
-			If you would only like to view a specific facility within the
-			campus. You can do so through our Facilities Gallery.
-		</p>
-		<p class="lead">
-			<a
-				href="/panoramas/1"
-				class="
-					btn btn-lg btn-secondary
-					fw-bold
-					border-white
-					bg-secondary
-				"
-				>View Facilities</a
-			>
-		</p>
-	</div>
+	<!-- Showcase -->
+	<section
+		class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+	>
+		<div class="container">
+			<div class="d-sm-flex align-items-center justify-content-between">
+				<div>
+					<h1>
+						VR Tour
+						<span class="text-success"> LORMAKAD </span>
+					</h1>
+					<p class="lead my-4">
+						Virtual reality is about to become our new reality. Lose
+						yourself in the moment. Virtual reality is a platform of
+						endless possibilities.
+					</p>
+					<!-- <button class="btn btn-success btn-lg">
+						Start Exploring
+					</button> -->
+				</div>
+				<img
+					class="img-fluid w-50 d-none d-sm-block"
+					src="/images/css/explore.svg"
+					alt=""
+				/>
+			</div>
+		</div>
+	</section>
+
+	<!-- Block -->
+	<section class="bg-success text-light p-5">
+		<div class="container">
+			<!-- <div class="d-md-flex justify-content-between align-items-center">
+				<h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
+
+				<div class="input-group news-input">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Enter Email"
+					/>
+					<button class="btn btn-dark btn-lg" type="button">
+						Submit
+					</button>
+				</div>
+			</div> -->
+		</div>
+	</section>
+
+	<!-- Boxes -->
+	<section class="p-5">
+		<div class="container">
+			<div class="row text-center g-4">
+				<div class="col-md">
+					<div class="card bg-dark text-light">
+						<div class="card-body text-center">
+							<div class="h1 mb-3">
+								<i class="fas fa-walking"></i>
+							</div>
+							<h3 class="card-title mb-3">Full VR Tour</h3>
+							<p class="card-text">
+								Explore the whole location and be immersed
+							</p>
+							<a href="#" class="btn btn-success">Read More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="card bg-secondary text-light">
+						<div class="card-body text-center">
+							<div class="h1 mb-3">
+								<i class="fas fa-photo-video"></i>
+							</div>
+							<h3 class="card-title mb-3">Panorama Gallery</h3>
+							<p class="card-text">
+								Browse our curated collection of 360° / VR
+								stereoscopic panoramas
+							</p>
+							<a href="#" class="btn btn-dark">Read More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="card bg-dark text-light">
+						<div class="card-body text-center">
+							<div class="h1 mb-3">
+								<i class="fas fa-vr-cardboard"></i>
+							</div>
+							<h3 class="card-title mb-3">VR Goggle Support</h3>
+							<p class="card-text">
+								Our virtual tour can be seen in Virtual Reality
+								- on VR headsets
+							</p>
+							<a href="#" class="btn btn-success">Read More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Panoramic Virtual Reality Tour Sections -->
+	<section id="virtual-reality" class="p-5">
+		<div class="container">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-md">
+					<img
+						src="/images/css/virtual-reality.svg"
+						class="img-fluid"
+						alt=""
+					/>
+				</div>
+				<div class="col-md p-5">
+					<h2>Panoramic Virtual Reality Tour</h2>
+					<p class="lead">
+						We aim to improve by providing users with memorable and
+						immersive experiences that would otherwise not be
+						possible. VR is accessible to everyone.
+					</p>
+					<p>
+						A virtual tour is a simulation of an existing location,
+						usually composed of a sequence of videos or still
+						images. It may also use other multimedia elements such
+						as sound effects, music, narration, and text.
+					</p>
+					<!-- <a href="#" class="btn btn-light mt-3">
+						<i class="bi bi-chevron-right"></i> Read More
+					</a> -->
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="quickly-explore-locations" class="p-5 bg-dark text-light">
+		<div class="container">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-md p-5">
+					<h2>Quickly Explore Locations</h2>
+					<p class="lead">
+						Quickly get a feel for the location without actually
+						visiting the location. Our 3D walkthrough will allow you
+						to see what it would look like without any costs.
+					</p>
+					<!-- <p>
+						Lorem ipsum dolor sit, amet consectetur adipisicing
+						elit. Cumque reiciendis eius autem eveniet mollitia, at
+						asperiores suscipit quae similique laboriosam iste minus
+						placeat odit velit quos, nulla architecto amet
+						voluptates?
+					</p>
+					<a href="#" class="btn btn-light mt-3">
+						<i class="bi bi-chevron-right"></i> Read More
+					</a> -->
+				</div>
+				<div class="col-md">
+					<img
+						src="/images/css/location-search.svg"
+						class="img-fluid"
+						alt=""
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Question Accordion -->
+	<section id="questions" class="p-5">
+		<div class="container">
+			<h2 class="text-center mb-4">Frequently Asked Questions</h2>
+			<div class="accordion accordion-flush" id="questions">
+				<!-- Item 1 -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button
+							class="accordion-button collapsed"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#question-one"
+						>
+							What do I need to know?
+						</button>
+					</h2>
+					<div
+						id="question-one"
+						class="accordion-collapse collapse"
+						data-bs-parent="#questions"
+					>
+						<div class="accordion-body">
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Numquam beatae fuga animi distinctio
+							perspiciatis adipisci velit maiores totam tempora
+							accusamus modi explicabo accusantium consequatur,
+							praesentium rem quisquam molestias at quos vero.
+							Officiis ad velit doloremque at. Dignissimos
+							praesentium necessitatibus natus corrupti cum
+							consequatur aliquam! Minima molestias iure quam
+							distinctio velit.
+						</div>
+					</div>
+				</div>
+				<!-- Item 2 -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button
+							class="accordion-button collapsed"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#question-two"
+						>
+							How do I use its VR Goggle capability
+						</button>
+					</h2>
+					<div
+						id="question-two"
+						class="accordion-collapse collapse"
+						data-bs-parent="#questions"
+					>
+						<div class="accordion-body">
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Numquam beatae fuga animi distinctio
+							perspiciatis adipisci velit maiores totam tempora
+							accusamus modi explicabo accusantium consequatur,
+							praesentium rem quisquam molestias at quos vero.
+							Officiis ad velit doloremque at. Dignissimos
+							praesentium necessitatibus natus corrupti cum
+							consequatur aliquam! Minima molestias iure quam
+							distinctio velit.
+						</div>
+					</div>
+				</div>
+				<!-- Item 3 -->
+				<!-- <div class="accordion-item">
+					<h2 class="accordion-header">
+						<button
+							class="accordion-button collapsed"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#question-three"
+						>
+							What do I need to Know?
+						</button>
+					</h2>
+					<div
+						id="question-three"
+						class="accordion-collapse collapse"
+						data-bs-parent="#questions"
+					>
+						<div class="accordion-body">
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Numquam beatae fuga animi distinctio
+							perspiciatis adipisci velit maiores totam tempora
+							accusamus modi explicabo accusantium consequatur,
+							praesentium rem quisquam molestias at quos vero.
+							Officiis ad velit doloremque at. Dignissimos
+							praesentium necessitatibus natus corrupti cum
+							consequatur aliquam! Minima molestias iure quam
+							distinctio velit.
+						</div>
+					</div>
+				</div> -->
+				<!-- Item 4 -->
+				<!-- <div class="accordion-item">
+					<h2 class="accordion-header">
+						<button
+							class="accordion-button collapsed"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#question-four"
+						>
+							How Do I sign up?
+						</button>
+					</h2>
+					<div
+						id="question-four"
+						class="accordion-collapse collapse"
+						data-bs-parent="#questions"
+					>
+						<div class="accordion-body">
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Numquam beatae fuga animi distinctio
+							perspiciatis adipisci velit maiores totam tempora
+							accusamus modi explicabo accusantium consequatur,
+							praesentium rem quisquam molestias at quos vero.
+							Officiis ad velit doloremque at. Dignissimos
+							praesentium necessitatibus natus corrupti cum
+							consequatur aliquam! Minima molestias iure quam
+							distinctio velit.
+						</div>
+					</div>
+				</div> -->
+				<!-- Item 5 -->
+				<!-- <div class="accordion-item">
+					<h2 class="accordion-header">
+						<button
+							class="accordion-button collapsed"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#question-five"
+						>
+							Do you help me find a job?
+						</button>
+					</h2>
+					<div
+						id="question-five"
+						class="accordion-collapse collapse"
+						data-bs-parent="#questions"
+					>
+						<div class="accordion-body">
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Numquam beatae fuga animi distinctio
+							perspiciatis adipisci velit maiores totam tempora
+							accusamus modi explicabo accusantium consequatur,
+							praesentium rem quisquam molestias at quos vero.
+							Officiis ad velit doloremque at. Dignissimos
+							praesentium necessitatibus natus corrupti cum
+							consequatur aliquam! Minima molestias iure quam
+							distinctio velit.
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</section>
+
+	<section id="instructors" class="p-5 bg-success">
+		<div class="container">
+			<h2 class="text-center text-white">Our Team</h2>
+			<p class="lead text-center text-white mb-5">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit.
+			</p>
+			<div class="row g-4">
+				<div class="col-md-6 col-lg-4">
+					<div class="card bg-light">
+						<div class="card-body text-center">
+							<img
+								src="https://randomuser.me/api/portraits/men/11.jpg"
+								class="rounded-circle mb-3"
+								alt=""
+							/>
+							<h3 class="card-title mb-3">John Doe</h3>
+							<p class="card-text">
+								Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Assumenda accusamus nobis sed
+								cupiditate iusto? Quibusdam.
+							</p>
+							<a href="#"
+								><i class="bi bi-twitter text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-facebook text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-linkedin text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-instagram text-dark mx-1"></i
+							></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4">
+					<div class="card bg-light">
+						<div class="card-body text-center">
+							<img
+								src="https://randomuser.me/api/portraits/women/11.jpg"
+								class="rounded-circle mb-3"
+								alt=""
+							/>
+							<h3 class="card-title mb-3">Jane Doe</h3>
+							<p class="card-text">
+								Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Assumenda accusamus nobis sed
+								cupiditate iusto? Quibusdam.
+							</p>
+							<a href="#"
+								><i class="bi bi-twitter text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-facebook text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-linkedin text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-instagram text-dark mx-1"></i
+							></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4">
+					<div class="card bg-light">
+						<div class="card-body text-center">
+							<img
+								src="https://randomuser.me/api/portraits/men/12.jpg"
+								class="rounded-circle mb-3"
+								alt=""
+							/>
+							<h3 class="card-title mb-3">Steve Smith</h3>
+							<p class="card-text">
+								Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Assumenda accusamus nobis sed
+								cupiditate iusto? Quibusdam.
+							</p>
+							<a href="#"
+								><i class="bi bi-twitter text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-facebook text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-linkedin text-dark mx-1"></i
+							></a>
+							<a href="#"
+								><i class="bi bi-instagram text-dark mx-1"></i
+							></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact & Map -->
+	<!-- <section class="p-5">
+		<div class="container">
+			<div class="row g-4">
+				<div class="col-md">
+					<h2 class="text-center mb-4">Contact Info</h2>
+					<ul class="list-group list-group-flush lead">
+						<li class="list-group-item">
+							<span class="fw-bold">Main Location:</span> 50 Main
+							st Boston MA
+						</li>
+						<li class="list-group-item">
+							<span class="fw-bold">Enrollment Phone:</span> (555)
+							555-5555
+						</li>
+						<li class="list-group-item">
+							<span class="fw-bold">Student Phone:</span> (333)
+							333-3333
+						</li>
+						<li class="list-group-item">
+							<span class="fw-bold">Enrollment Email:</span> (555)
+							enroll@frontendbc.test
+						</li>
+						<li class="list-group-item">
+							<span class="fw-bold">Student Email:</span>
+							student@frontendbc.test
+						</li>
+					</ul>
+				</div>
+				<div class="col-md">
+					<div id="map"></div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- Modal -->
+	<!-- <div
+		class="modal fade"
+		id="enroll"
+		tabindex="-1"
+		aria-labelledby="enrollLabel"
+		aria-hidden="true"
+	>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="enrollLabel">Enrollment</h5>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<p class="lead">
+						Fill out this form and we will get back to you
+					</p>
+					<form>
+						<div class="mb-3">
+							<label for="first-name" class="col-form-label">
+								First Name:
+							</label>
+							<input
+								type="text"
+								class="form-control"
+								id="first-name"
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="last-name" class="col-form-label"
+								>Last Name:</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="last-name"
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="email" class="col-form-label"
+								>Email:</label
+							>
+							<input
+								type="email"
+								class="form-control"
+								id="email"
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="phone" class="col-form-label"
+								>Phone:</label
+							>
+							<input type="tel" class="form-control" id="phone" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal"
+					>
+						Close
+					</button>
+					<button type="button" class="btn btn-primary">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
 </main>
 
 <%-include("partials/footer.ejs"); -%>
