@@ -1,136 +1,194 @@
 <%- include("../partials/header.ejs"); -%>
 
 <main class="container mt-5 mb-5">
-  <!--Header-->
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">FACILITIES</h1>
-        <h6>The Lorma Schools</h6>
-        <p class="lead text-muted">College and University</p>
-      </div>
-    </div>
-  </section>
-  <!--Header-->
+	<!-- Showcase -->
+	<section
+		class="bg-light text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+	>
+		<div class="container">
+			<div class="d-sm-flex align-items-center justify-content-between">
+				<div>
+					<h1>
+						360° Gallery
+						<span class="text-success"
+							><i class="fas fa-vr-cardboard"></i>
+						</span>
+					</h1>
+					<p class="lead my-4">
+						Explore each location quickly using our 360° Panorama
+						Gallery.
+					</p>
+					<!-- <button class="btn btn-success btn-lg">
+						Start Exploring
+					</button> -->
+				</div>
+				<img
+					class="img-fluid w-50 d-none d-sm-block"
+					src="/images/css/augmented-reality.svg"
+					alt=""
+				/>
+			</div>
+		</div>
+	</section>
+	<!-- Block -->
+	<section class="bg-dark text-light p-5">
+		<div class="container">
+			<!-- <div class="d-md-flex justify-content-between align-items-center">
+				<h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
 
-  <!--Gallery List-->
-  <div class="album">
-    <div class="container">
-      <!--Search Form-->
-      <div class="search-input d-flex justify-content-end">
-        <form
-          action="/panoramas/:r"
-          method="GET"
-          class="form-inline"
-          autocomplete="off"
-        >
-          <div class="input-group">
-            <input type="text" name="search" class="form-control" />
-            <span class="input-group-btn">
-              <input
-                type="submit"
-                value="Search"
-                class="btn btn-search btn-dark"
-              />
-            </span>
-          </div>
-        </form>
-      </div>
-      <!--Search Form-->
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
-        <!--  -->
-        <% for(let panorama of panoramas) { %>
-        <div class="col">
-          <div class="card p-3 shadow-sm rounded text-dark">
-            <!--!temp removed image thumbnail -->
-            <!-- <% panorama.images.forEach((img, i) => { %>
+				<div class="input-group news-input">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Enter Email"
+					/>
+					<button class="btn btn-dark btn-lg" type="button">
+						Submit
+					</button>
+				</div>
+			</div> -->
+		</div>
+	</section>
+
+	<!--Gallery List-->
+	<div class="album pt-5">
+		<div class="container">
+			<!--Search Form-->
+			<div class="search-input d-flex justify-content-end">
+				<form
+					action="/panoramas/:r"
+					method="GET"
+					class="form-inline"
+					autocomplete="off"
+				>
+					<div class="input-group">
+						<input type="text" name="search" class="form-control" />
+						<span class="input-group-btn">
+							<input
+								type="submit"
+								value="Search"
+								class="btn btn-search btn-dark"
+							/>
+						</span>
+					</div>
+				</form>
+			</div>
+			<!--Search Form-->
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
+				<!--  -->
+				<% for(let panorama of panoramas) { %>
+				<div class="col">
+					<div class="card p-3 shadow-sm rounded text-dark">
+						<!--!temp removed image thumbnail -->
+						<!--<% panorama.images.forEach((img, i) => { %>
                         <img
-                            src="<%= img.thumbnail %>"
+                            src="<%=img.thumbnail %>"
                             class="card-img-top"
                             alt="..."
                         />
                         <% }) %> -->
-            <div class="card-body">
-              <h5 class="card-title"><%= panorama.title %></h5>
-              <p class="text-muted"><%= panorama.location %></p>
-              <p class="card-text">
-                <%= panorama.description.substring(0, 150) + "..." %>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a
-                    href="/panoramas/show/<%= panorama.id %>"
-                    type="button"
-                    class="btn btn-sm btn-dark"
-                  >
-                    View
-                  </a>
-                  <a
-                    href="#"
-                    type="button"
-                    class="btn btn-sm btn-secondary disabled"
-                  >
-                    <i class="fas fa-vr-cardboard"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% } %>
-        <!--  -->
-      </div>
-      <!--Gallery List-->
+						<!--!temp thumbnail -->
+						<img
+							src="/images/css/preview.jpg"
+							class="card-img-top"
+							alt="..."
+						/>
 
-      <!--* Pagination -->
-      <div class="mt-3">
-        <% if (pages > 0) { %>
-        <ul class="pagination text-center justify-content-center">
-          <% if (current == 1) { %>
-          <li class="disabled">
-            <a class="page-link text-secondary">First</a>
-          </li>
-          <% } else { %>
-          <li>
-            <a class="page-link text-secondary" href="/panoramas/1">First</a>
-          </li>
-          <% } %> <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
-          <% if (i !== 1) { %>
-          <li class="disabled">
-            <a class="page-link text-secondary">...</a>
-          </li>
-          <% } %> <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
-          <!-- Current Page -->
-          <% if (i == current) { %>
-          <li class="active">
-            <a class="page-link text-secondary"><%= i %></a>
-          </li>
-          <% } else { %>
-          <li>
-            <a class="page-link text-secondary" href="/panoramas/<%= i %>"
-              ><%= i %></a
-            >
-          </li>
-          <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
-          <li class="disabled">
-            <a class="page-link text-secondary">...</a>
-          </li>
-          <% } %> <% } %> <% if (current == pages) { %>
-          <li class="disabled">
-            <a class="page-link text-secondary">Last</a>
-          </li>
-          <% } else { %>
-          <li>
-            <a class="page-link text-secondary" href="/panoramas/<%= pages %>"
-              >Last</a
-            >
-          </li>
-          <% } %>
-        </ul>
-        <% } %>
-      </div>
-    </div>
-  </div>
+						<div class="card-body">
+							<h5 class="card-title"><%= panorama.title %></h5>
+							<p class="text-muted"><%= panorama.location %></p>
+							<p class="card-text">
+								<%= panorama.description.substring(0, 150) +
+								"..." %>
+							</p>
+							<div
+								class="
+									d-flex
+									justify-content-between
+									align-items-center
+								"
+							>
+								<div class="btn-group">
+									<a
+										href="/panoramas/show/<%= panorama.id %>"
+										type="button"
+										class="btn btn-sm btn-dark"
+									>
+										View
+									</a>
+									<a
+										href="#"
+										type="button"
+										class="btn btn-sm btn-success disabled"
+									>
+										<i class="fas fa-vr-cardboard"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<!--  -->
+			</div>
+			<!--Gallery List-->
+
+			<!--* Pagination -->
+			<div class="mt-3">
+				<% if (pages > 0) { %>
+				<ul class="pagination text-center justify-content-center">
+					<% if (current == 1) { %>
+					<li class="disabled">
+						<a class="page-link text-secondary">First</a>
+					</li>
+					<% } else { %>
+					<li>
+						<a class="page-link text-secondary" href="/panoramas/1"
+							>First</a
+						>
+					</li>
+					<% } %> <% var i = (Number(current) > 5 ? Number(current) -
+					4 : 1) %> <% if (i !== 1) { %>
+					<li class="disabled">
+						<a class="page-link text-secondary">...</a>
+					</li>
+					<% } %> <% for (; i <= (Number(current) + 4) && i <= pages;
+					i++) { %>
+					<!-- Current Page -->
+					<% if (i == current) { %>
+					<li class="active">
+						<a class="page-link text-secondary"><%= i %></a>
+					</li>
+					<% } else { %>
+					<li>
+						<a
+							class="page-link text-secondary"
+							href="/panoramas/<%= i %>"
+							><%= i %></a
+						>
+					</li>
+					<% } %> <% if (i == Number(current) + 4 && i < pages) { %>
+					<li class="disabled">
+						<a class="page-link text-secondary">...</a>
+					</li>
+					<% } %> <% } %> <% if (current == pages) { %>
+					<li class="disabled">
+						<a class="page-link text-secondary">Last</a>
+					</li>
+					<% } else { %>
+					<li>
+						<a
+							class="page-link text-secondary"
+							href="/panoramas/<%= pages %>"
+							>Last</a
+						>
+					</li>
+					<% } %>
+				</ul>
+				<% } %>
+			</div>
+		</div>
+	</div>
 </main>
 
 <%- include("../partials/footer.ejs"); -%>
