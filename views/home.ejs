@@ -65,7 +65,7 @@ include('partials/utils/messages.ejs')%>
 							<p class="card-text">
 								Explore the whole location and be immersed
 							</p>
-							<a href="#" class="btn btn-success">Read More</a>
+							<!-- <a href="#" class="btn btn-success">Read More</a> -->
 						</div>
 					</div>
 				</div>
@@ -80,7 +80,7 @@ include('partials/utils/messages.ejs')%>
 								Browse our curated collection of 360° / VR
 								stereoscopic panoramas
 							</p>
-							<a href="#" class="btn btn-dark">Read More</a>
+							<!-- <a href="#" class="btn btn-dark">Read More</a> -->
 						</div>
 					</div>
 				</div>
@@ -95,7 +95,12 @@ include('partials/utils/messages.ejs')%>
 								Our virtual tour can be seen in Virtual Reality
 								- on VR headsets
 							</p>
-							<a href="#" class="btn btn-success">Read More</a>
+							<!-- <a
+								class="btn btn-success"
+								data-bs-toggle="modal"
+								data-bs-target="#vr-goggle-support"
+								>Read More</a
+							> -->
 						</div>
 					</div>
 				</div>
@@ -462,18 +467,21 @@ include('partials/utils/messages.ejs')%>
 		</div>
 	</section> -->
 
-	<!-- Modal -->
-	<!-- <div
+	<!-- VR Goggle Support Modal -->
+	<!--
+	<div
 		class="modal fade"
-		id="enroll"
+		id="vr-goggle-support"
 		tabindex="-1"
-		aria-labelledby="enrollLabel"
+		aria-labelledby="exampleModalLabel"
 		aria-hidden="true"
 	>
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-xl modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="enrollLabel">Enrollment</h5>
+					<h5 class="modal-title" id="exampleModalLabel">
+						VR Goggle Support
+					</h5>
 					<button
 						type="button"
 						class="btn-close"
@@ -482,63 +490,21 @@ include('partials/utils/messages.ejs')%>
 					></button>
 				</div>
 				<div class="modal-body">
-					<p class="lead">
-						Fill out this form and we will get back to you
-					</p>
-					<form>
-						<div class="mb-3">
-							<label for="first-name" class="col-form-label">
-								First Name:
-							</label>
-							<input
-								type="text"
-								class="form-control"
-								id="first-name"
-							/>
-						</div>
-						<div class="mb-3">
-							<label for="last-name" class="col-form-label"
-								>Last Name:</label
-							>
-							<input
-								type="text"
-								class="form-control"
-								id="last-name"
-							/>
-						</div>
-						<div class="mb-3">
-							<label for="email" class="col-form-label"
-								>Email:</label
-							>
-							<input
-								type="email"
-								class="form-control"
-								id="email"
-							/>
-						</div>
-						<div class="mb-3">
-							<label for="phone" class="col-form-label"
-								>Phone:</label
-							>
-							<input type="tel" class="form-control" id="phone" />
-						</div>
-					</form>
+				...
 				</div>
 				<div class="modal-footer">
 					<button
 						type="button"
-						class="btn btn-secondary"
+						class="btn btn-success"
 						data-bs-dismiss="modal"
 					>
 						Close
 					</button>
-					<button type="button" class="btn btn-primary">
-						Submit
-					</button>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
+	 -->
 </main>
 
 <%-include("partials/footer.ejs"); -%>
