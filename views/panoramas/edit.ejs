@@ -1,197 +1,228 @@
 <%- include("../partials/admin/admin-header.ejs"); -%>
 
 <div class="container-fluid">
-  <div class="row">
-    <%- include("../partials/admin/admin-navbar.ejs"); -%>
+	<div class="row">
+		<%- include("../partials/admin/admin-navbar.ejs"); -%>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div
-        class="
-          d-flex
-          justify-content-between
-          flex-wrap flex-md-nowrap
-          align-items-center
-          border-bottom
-          shadow-lg
-          p-3
-          mb-5
-          bg-white
-          rounded
-        "
-      >
-        <h5><i class="far fa-edit"></i> Update Panorama</h5>
-      </div>
+		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<div
+				class="
+					d-flex
+					justify-content-between
+					flex-wrap flex-md-nowrap
+					align-items-center
+					border-bottom
+					shadow-lg
+					p-3
+					mb-5
+					bg-white
+					rounded
+				"
+			>
+				<h5><i class="far fa-edit"></i> Update Panorama</h5>
+			</div>
 
-      <div
-        class="col-md-8 table-responsive shadow-sm p-3 mb-5 bg-white rounded"
-      >
-        <div class="card">
-          <h5 class="card-header"></h5>
-          <div class="card-body">
-            <form
-              action="/panoramas/admin/<%= panorama._id %>/edit?_method=PUT"
-              method="POST"
-              novalidate
-              class="validated-form"
-              enctype="multipart/form-data"
-            >
-              <div class="mb-3">
-                <!--* Title  -->
-                <label class="form-label" for="title">Title</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  id="title"
-                  name="panorama[title]"
-                  value="<%=panorama.title %>"
-                  required
-                />
-              </div>
-              <!--* Location  -->
-              <div class="mb-3">
-                <label class="form-label" for="location">Location</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  id="location"
-                  name="panorama[location]"
-                  value="<%=panorama.location %>"
-                  required
-                />
-              </div>
-              <!--* Description  -->
-              <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <textarea
-                  class="form-control"
-                  type="text"
-                  id="description"
-                  name="panorama[description]"
-                  rows="10"
-                  required
-                >
+			<div
+				class="
+					col-md-8
+					table-responsive
+					shadow-sm
+					p-3
+					mb-5
+					bg-white
+					rounded
+				"
+			>
+				<div class="card">
+					<h5 class="card-header"></h5>
+					<div class="card-body">
+						<form
+							action="/panoramas/admin/<%= panorama._id %>/edit?_method=PUT"
+							method="POST"
+							novalidate
+							class="validated-form"
+							enctype="multipart/form-data"
+						>
+							<div class="mb-3">
+								<!--* Title  -->
+								<label class="form-label" for="title"
+									>Title</label
+								>
+								<input
+									class="form-control"
+									type="text"
+									id="title"
+									name="panorama[title]"
+									value="<%=panorama.title %>"
+									required
+								/>
+							</div>
+							<!--* Location  -->
+							<div class="mb-3">
+								<label class="form-label" for="location"
+									>Location</label
+								>
+								<input
+									class="form-control"
+									type="text"
+									id="location"
+									name="panorama[location]"
+									value="<%=panorama.location %>"
+									required
+								/>
+							</div>
+							<!--* Description  -->
+							<div class="mb-3">
+								<label class="form-label" for="description"
+									>Description</label
+								>
+								<textarea
+									class="form-control"
+									type="text"
+									id="description"
+									name="panorama[description]"
+									rows="10"
+									required
+								>
         <%= panorama.description%></textarea
-                >
-              </div>
-              <!--Image Url-->
-              <div class="mb-3">
-                <label for="formFileMultiple" class="form-label"
-                  >New Image</label
-                >
-                <p>
-                  <small class="text-muted"
-                    >To update the image, tick the image checkbox and upload a
-                    new one.</small
-                  >
-                </p>
-                <!--? How to restrict to single image upload-->
-                <input
-                  type="file"
-                  class="form-control"
-                  id="formFileMultiple"
-                  name="image"
-                  onchange="document.getElementById('upload').src = window.URL.createObjectURL(this.files[0])"
-                  multiple
-                  disabled
-                />
-                <!--Image Preview-->
-                <div class="card card-thumbnail">
-                  <img
-                    class="img-fluid fit-preview"
-                    id="upload"
-                    alt="Image Preview"
-                    src="/images/css/preview-default.jpg"
-                  />
-                </div>
-                <div>
-                  <span
-                    id="formFileMultipleSpan"
-                    class="text-danger fw-bold"
-                  ></span>
-                </div>
-              </div>
-              <!-- <div class="mb-3">
+								>
+							</div>
+							<!--Image Url-->
+							<div class="mb-3">
+								<label for="formFileMultiple" class="form-label"
+									>New Image</label
+								>
+								<p>
+									<small class="text-muted"
+										>To update the image, tick the image
+										checkbox and upload a new one.</small
+									>
+								</p>
+								<!--? How to restrict to single image upload-->
+								<input
+									type="file"
+									class="form-control"
+									id="formFileMultiple"
+									name="image"
+									onchange="document.getElementById('upload').src = window.URL.createObjectURL(this.files[0])"
+									multiple
+									disabled
+								/>
+								<!--Image Preview-->
+								<div class="card card-thumbnail">
+									<img
+										class="img-fluid fit-preview"
+										id="upload"
+										alt="Image Preview"
+										src="/images/css/preview.jpg"
+									/>
+								</div>
+								<div>
+									<span
+										id="formFileMultipleSpan"
+										class="text-danger fw-bold"
+									></span>
+								</div>
+							</div>
+							<!-- <div class="mb-3">
         <label class="form-label" for="image">Add Images</label>
         <input type="file" name="image" id="image" multiple>
       </div> -->
-              <!--Image Url-->
-              <!--Delete Images-->
-              <div class="mb-3">
-                <span>Current Image</span>
-                <div class="mb-3">
-                  <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
-                    <% panorama.images.forEach((img, i) => { %>
-                    <div class="col">
-                      <div class="card">
-                        <img
-                          class="img-thumbnail card-img"
-                          src="<%= img.thumbnail %>"
-                          alt=""
-                        />
-                        <div class="text-end pt-1 pe-2">
-                          <label class="visually-hidden" for="image-<%= i %>"
-                            >Delete Image</label
-                          >
-                          <i class="fas fa-trash-alt"></i>
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="deleteImages[]"
-                            value="<%=
+							<!--Image Url-->
+							<!--Delete Images-->
+							<div class="mb-3">
+								<span>Current Image</span>
+								<div class="mb-3">
+									<div
+										class="
+											row row-cols-1 row-cols-md-4
+											g-4
+											mb-3
+										"
+									>
+										<% panorama.images.forEach((img, i) => {
+										%>
+										<div class="col">
+											<div class="card">
+												<img
+													class="
+														img-thumbnail
+														card-img
+													"
+													src="<%= img.thumbnail %>"
+													alt=""
+												/>
+												<div class="text-end pt-1 pe-2">
+													<label
+														class="visually-hidden"
+														for="image-<%= i %>"
+														>Delete Image</label
+													>
+													<i
+														class="fas fa-trash-alt"
+													></i>
+													<input
+														class="form-check-input"
+														type="checkbox"
+														name="deleteImages[]"
+														value="<%=
                                                 img.filename %>"
-                            id="image-<%= i
+														id="image-<%= i
                                                 %>"
-                            onclick="var input =
+														onclick="var input =
                                                 document.getElementById('formFileMultiple');
                                                 if(this.checked){ input.disabled
                                                 = false;
                                                 input.focus();}else{input.disabled=true;}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <% })%>
-                  </div>
-                </div>
-              </div>
-              <!--Delete Images-->
-              <div class="mb-3">
-                <button class="btn btn-secondary float-end">
-                  Update Panorama
-                  <i class="far fa-edit"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!--Back button-->
-        <div class="mb-3">
-          <a class="btn btn-dark float-end" href="/panoramas/admin/list/1">
-            <i class="fas fa-chevron-left"></i> Back to List
-          </a>
-        </div>
-      </div>
-    </main>
-  </div>
+													/>
+												</div>
+											</div>
+										</div>
+										<% })%>
+									</div>
+								</div>
+							</div>
+							<!--Delete Images-->
+							<div class="mb-3">
+								<button class="btn btn-secondary float-end">
+									Update Panorama
+									<i class="far fa-edit"></i>
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--Back button-->
+				<div class="mb-3">
+					<a
+						class="btn btn-dark float-end"
+						href="/panoramas/admin/list/1"
+					>
+						<i class="fas fa-chevron-left"></i> Back to List
+					</a>
+				</div>
+			</div>
+		</main>
+	</div>
 </div>
 
 <!--!temp script for upload limit -->
 <!--*Form upload limit script + Image preview-->
 <script>
-  let uploadField = document.getElementById('formFileMultiple');
-  let span = document.getElementById('formFileMultipleSpan');
-  uploadField.onchange = function () {
-    //5mb file restriction
-    if (this.files[0].size > 5242880) {
-      // alert('File is too big!');
-      span.innerText = 'Image Size Exceeds 5mb!';
-      this.value = '';
-    } else {
-      document.getElementById('upload').src = window.URL.createObjectURL(
-        this.files[0]
-      );
-    }
-  };
+	let uploadField = document.getElementById('formFileMultiple');
+	let span = document.getElementById('formFileMultipleSpan');
+	uploadField.onchange = function () {
+		//5mb file restriction
+		if (this.files[0].size > 5242880) {
+			// alert('File is too big!');
+			span.innerText = 'Image Size Exceeds 5mb!';
+			this.value = '';
+		} else {
+			document.getElementById('upload').src = window.URL.createObjectURL(
+				this.files[0]
+			);
+		}
+	};
 </script>
 <!--*Form upload limit script-->
 
