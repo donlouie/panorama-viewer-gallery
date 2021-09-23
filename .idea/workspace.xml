@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb3106f0-208c-400d-9774-b02a26f7a8f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/panoramaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/panoramaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/panoramas/create.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/panoramas/create.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/panoramas/list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/panoramas/list.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/admin/admin-footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/admin/admin-footer.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="fb3106f0-208c-400d-9774-b02a26f7a8f2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +32,7 @@
       <updated>1621259449566</updated>
       <workItem from="1621259450907" duration="80000" />
       <workItem from="1622878445671" duration="146000" />
+      <workItem from="1632389739931" duration="24000" />
     </task>
     <servers />
   </component>

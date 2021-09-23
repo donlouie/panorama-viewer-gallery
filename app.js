@@ -40,10 +40,10 @@ app.use(passport.session());
 app.use(flash());
 //* Global vars
 app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    next();
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	next();
 });
 
 //* Routes
@@ -55,13 +55,19 @@ app.use('/panoramas', panoramaRouter);
 //* @route GET
 //? @desc Render home page
 app.get('/', (req, res) => {
-    res.render('home');
+	res.render('home');
+});
+
+//* @route GET
+//? @desc Render tours page
+app.get('/tours', (req, res) => {
+	res.render('tours');
 });
 
 //* @route ALL
 //? @desc ERROR 404 Page
 app.all('*', (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+	next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 // app.all('*', (req, res, next) => {
 //     res.render('error404');

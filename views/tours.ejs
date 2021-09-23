@@ -1,0 +1,161 @@
+<%- include("partials/header.ejs"); -%> <%-
+include('partials/utils/messages.ejs')%>
+<!-- class="container mt-5 mb-5 px-3" -->
+<main>
+	<!-- Showcase -->
+	<section
+		class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+	>
+		<div class="container">
+			<div class="d-sm-flex align-items-center justify-content-between">
+				<div>
+					<h1>
+						Full Virtual Tours
+						<span class="text-success">
+							<i class="fas fa-walking"></i>
+						</span>
+					</h1>
+					<p class="lead my-4">
+						Experience the whole place and explore whenever and
+						wherever you want.
+					</p>
+					<!-- <button class="btn btn-success btn-lg">
+						Start Exploring
+					</button> -->
+				</div>
+				<img
+					class="img-fluid w-50 d-none d-sm-block"
+					src="/images/css/full-tour.svg"
+					alt=""
+				/>
+			</div>
+		</div>
+	</section>
+
+	<!-- Block -->
+	<section class="bg-success text-light p-5">
+		<div class="container">
+			<!-- <div class="d-md-flex justify-content-between align-items-center">
+				<h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
+
+				<div class="input-group news-input">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Enter Email"
+					/>
+					<button class="btn btn-dark btn-lg" type="button">
+						Submit
+					</button>
+				</div>
+			</div> -->
+		</div>
+	</section>
+
+	<!-- Tour Cards -->
+	<div class="album pt-5">
+		<div class="container pb-5">
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
+				<!--  -->
+				<div class="col-6">
+					<div
+						class="card p-3 shadow-sm rounded text-dark card-hover"
+					>
+						<img
+							src="/images/css/preview.jpg"
+							class="card-img-top"
+							alt="..."
+						/>
+						<div class="card-body">
+							<h5 class="card-title">Lorma College</h5>
+							<p class="text-muted">Carlatan Campus</p>
+							<p class="card-text">
+								Lorma Colleges an educational institution with a
+								global perspective – emphasizing quality,
+								Christian values, and leadership skills relevant
+								to national development.
+							</p>
+							<div
+								class="
+									d-flex
+									justify-content-between
+									align-items-center
+								"
+							>
+								<div class="btn-group">
+									<!-- ! CARLATAN TOUR LINK HERE!!! -->
+									<a
+										href="#"
+										type="button"
+										class="btn btn-sm btn-dark"
+									>
+										Start Tour
+									</a>
+									<a
+										href="#"
+										type="button"
+										class="btn btn-sm btn-success disabled"
+									>
+										<i class="fas fa-walking"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--  -->
+				<!--  -->
+				<div class="col-6">
+					<div
+						class="card p-3 shadow-sm rounded text-dark card-hover"
+					>
+						<img
+							src="/images/css/preview.jpg"
+							class="card-img-top"
+							alt="..."
+						/>
+						<div class="card-body">
+							<h5 class="card-title">Lorma College</h5>
+							<p class="text-muted">San Juan Campus</p>
+							<p class="card-text">
+								Lorma Colleges an educational institution with a
+								global perspective – emphasizing quality,
+								Christian values, and leadership skills relevant
+								to national development.
+							</p>
+							<div
+								class="
+									d-flex
+									justify-content-between
+									align-items-center
+								"
+							>
+								<div class="btn-group">
+									<!-- ! SAN JUAN TOUR LINK HERE!!! -->
+									<a
+										href="#"
+										type="button"
+										class="btn btn-sm btn-dark"
+									>
+										Start Tour
+									</a>
+									<a
+										href="#"
+										type="button"
+										class="btn btn-sm btn-success disabled"
+									>
+										<i class="fas fa-walking"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--  -->
+			</div>
+		</div>
+	</div>
+	<!--  -->
+</main>
+
+<%-include("partials/footer.ejs"); -%>
