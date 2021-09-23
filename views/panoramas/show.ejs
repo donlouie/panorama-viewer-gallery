@@ -10,8 +10,6 @@
 		/>
 		<!--*Favicon-->
 		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<!--*User CSS -->
-		<link rel="stylesheet" href="/css/style.css" />
 		<!--* Bootstrap CSS -->
 		<!-- CDN Bootstrap CSS -->
 		<link
@@ -22,6 +20,8 @@
 		/>
 		<!-- Local Bootstrap CSS -->
 		<!-- <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" /> -->
+		<!--*User CSS -->
+		<link rel="stylesheet" href="/css/style.css" />
 		<!--* Fontawesome CDN  -->
 		<link
 			rel="stylesheet"
@@ -64,10 +64,10 @@
 	<!--* Body  -->
 
 	<body>
-		<main class="container-fluid mt-2 mb-5 bg-dark">
+		<main class="container-fluid mt-2 mb-5">
 			<div class="container py-5">
 				<!--Pannellum viewer -->
-				<div class="p-3 mb-4 text-light bg-light rounded-3">
+				<div class="p-3 mb-4 text-dark bg-light rounded-3">
 					<div class="container">
 						<div class="img-fluid" id="panorama">
 							<div id="controls">
@@ -156,17 +156,17 @@
 		<script>
 			// autoLoad: true => auto start panorama on page load
 			panoramaURL = document.getElementById('panorama.url').value;
-			panoramaTitle = '<%= panorama.title %>';
+			panoramaLocation = '<%= panorama.location %>';
 			//* 360 Panorama
 			viewer = pannellum.viewer('panorama', {
 				type: 'equirectangular',
 				panorama: panoramaURL,
 				autoRotate: -2,
 				northOffset: 247.5,
-				// compass: true,
+				//compass: true,
 				preview: panoramaURL,
-				// title: panoramaTitle,
-				// author: 'LORMAKAD',
+				title: panoramaLocation,
+				author: 'LORMAKAD',
 			});
 		</script>
 		<!--* Pannellum viewer controls JS  -->

@@ -16,8 +16,19 @@ imageSchema.virtual('thumbnail').get(function () {
 // });
 //* Virtual pannellum preview
 imageSchema.virtual('panorama').get(function () {
-	return this.url.replace('/upload', '/upload/w_1920');
+	return this.url.replace('/upload', '/upload/w_4096');
 });
+/*
+other - w_1920
+panellum max - w_4096
+
+tiny.jpg      320w,
+small.jpg     512w,
+medium.jpg    640w,
+large.jpg    1024w,
+huge.jpg     1280w,
+enormous.jpg 2048w
+*/
 
 const panoramaSchema = new mongoose.Schema({
 	title: {
