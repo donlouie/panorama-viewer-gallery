@@ -8,7 +8,7 @@ const imageSchema = new Schema({
 
 //* Virtual thumbnail
 imageSchema.virtual('thumbnail').get(function () {
-	return this.url.replace('/upload', '/upload/w_200');
+	return this.url.replace('/upload', '/upload/w_320');
 });
 //* Virtual preview
 // imageSchema.virtual('preview').get(function () {
@@ -22,6 +22,7 @@ imageSchema.virtual('panorama').get(function () {
 other - w_1920
 panellum max - w_4096
 
+verytiny.jpg  200w,
 tiny.jpg      320w,
 small.jpg     512w,
 medium.jpg    640w,

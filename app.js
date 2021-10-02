@@ -66,11 +66,11 @@ app.get('/tours', (req, res) => {
 
 //* @route ALL
 //? @desc ERROR 404 Page
-app.all('*', (req, res, next) => {
-	next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-});
 // app.all('*', (req, res, next) => {
-//     res.render('error404');
+// 	next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 // });
+app.all('*', (req, res, next) => {
+	res.render('error404');
+});
 
 module.exports = app;

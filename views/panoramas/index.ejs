@@ -83,19 +83,19 @@
 						class="card p-3 shadow-sm rounded text-dark card-hover"
 					>
 						<!--!temp removed image thumbnail -->
-						<!--<% panorama.images.forEach((img, i) => { %>
-                        <img
-                            src="<%=img.thumbnail %>"
-                            class="card-img-top"
-                            alt="..."
-                        />
-                        <% }) %> -->
-						<!--!temp thumbnail -->
+						<% panorama.images.forEach((img, i) => { %>
 						<img
+							src="<%=img.thumbnail %>"
+							class="container card-img-top"
+							alt="..."
+						/>
+						<% }) %>
+						<!--!temp thumbnail -->
+						<!-- <img
 							src="/images/css/preview.jpg"
 							class="card-img-top"
 							alt="..."
-						/>
+						/> -->
 
 						<div class="card-body">
 							<h5 class="card-title"><%= panorama.title %></h5>
