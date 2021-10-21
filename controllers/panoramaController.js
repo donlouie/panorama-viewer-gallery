@@ -194,13 +194,14 @@ exports.createPanorama = catchAsync(async (req, res, next) => {
 //? @desc Show panorama detail
 exports.showDetail = catchAsync(async (req, res, next) => {
 	try {
-		const panorama = await Panorama.findById(req.params.id)
-			// console.log(panorama);
-			.populate('author');
+		const panorama = await Panorama.findById(req.params.id);
+		// console.log(panorama);
+		panorama.populate('author');
 		res.status(200).render('panoramas/show', { panorama });
 	} catch (err) {
 		console.error(err.message);
-		res.status(500).send('Server Error');
+		res.status(500).redirect('/views/error404.ejs');
+		// res.status(500).send('Server Error');
 	}
 });
 
