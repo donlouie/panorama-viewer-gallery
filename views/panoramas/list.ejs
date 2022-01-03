@@ -55,7 +55,7 @@
 					</thead>
 					<thead class="table-dark">
 						<tr>
-							<th scope="col">IMAGE</th>
+							<!-- <th scope="col">IMAGE</th> -->
 							<th scope="col">TITLE</th>
 							<th scope="col">LOCATION</th>
 							<th scope="col">MODIFIED BY</th>
@@ -69,14 +69,16 @@
 					<tbody>
 						<% for(let panorama of panoramas) { %>
 						<tr>
-							<% panorama.images.forEach((img, i) => { %>
+							<%/* panorama.images.forEach((img, i) => { */%>
+							<!-- 
 							<td>
-								<!-- <img
+								<img
                                     class="img-thumbnail card-img w-75"
-                                    src="<%= img.thumbnail %>"
-                                /> -->
+                                    src="<%=/* img.thumbnail*/%>"
+                                /> 
 							</td>
-							<% }) %>
+              -->
+							<%/* }) */%>
 							<td class="align-middle"><%= panorama.title %></td>
 							<td class="align-middle">
 								<%= panorama.location %>
