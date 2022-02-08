@@ -4,11 +4,13 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-360° panorama website. CRUD with Cloudinary image upload, User authentication. Admin dashboard for list management and messenger using nodemailer.
+360° panorama viewer website. CRUD with Cloudinary image upload, User authentication. Admin dashboard for list management and messenger using nodemailer.
 
 ### 🖼️ Image Preview
 
 <!-- ![Imgur] -->
+
+![Imgur](https://i.imgur.com/CyC8EKI.png)
 
 ### 🏗️ Built With
 
@@ -41,6 +43,7 @@ To get a local copy up and running follow these simple example steps. -->
     git clone
     ```
 2. Fill up the needed keys in <config.env> file
+   \*rename <copy-config.env> to <config.env>
 
     ```sh
 

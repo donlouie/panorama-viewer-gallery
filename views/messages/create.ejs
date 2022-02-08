@@ -123,7 +123,7 @@
 
 						<li>
 							<i class="fas fa-envelope mt-4"></i>
-							<h6><b>lormakad@email.com</b></h6>
+							<h6><b>pano360@email.com</b></h6>
 						</li>
 					</ul>
 				</div>
@@ -141,8 +141,8 @@
 
 <!--*Leaftlet JS, Script-->
 <script>
-	const latitude = 16.661267;
-	const longitude = 120.327743;
+	const latitude = 33.400322;
+	const longitude = -104.534897;
 
 	const greenIcon = new L.Icon({
 		iconUrl:
@@ -158,7 +158,7 @@
 	const mymap = L.map('Map').setView([latitude, longitude], 16);
 	L.marker([latitude, longitude], { icon: greenIcon })
 		.addTo(mymap)
-		.bindPopup('LORMAKAD HQ')
+		.bindPopup('PANO360 HQ')
 		.openPopup();
 
 	const attiribution =
