@@ -4,7 +4,7 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-360° panorama viewer website. CRUD with Cloudinary image upload, User authentication. Admin dashboard for list management and messenger using nodemailer.
+360° panorama viewer website using Panellum. Gallery CRUD with Cloudinary image upload, User authentication. Admin dashboard for list management and messenger using nodemailer.
 
 ### 🖼️ Image Preview
 
@@ -42,7 +42,7 @@ To get a local copy up and running follow these simple example steps. -->
     ```sh
     git clone
     ```
-2. Fill up the needed keys in <config.env> file
+2. Fill up the needed keys in <config.env> file  
    \*rename <copy-config.env> to <config.env>
 
     ```sh
