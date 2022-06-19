@@ -10,7 +10,7 @@
 
 <!-- ![Imgur] -->
 
-![Imgur](https://i.imgur.com/hsUiMTC.png)
+![Imgur](https://i.imgur.com/IfOYY79.png)
 
 ### 🏗️ Built With
 
