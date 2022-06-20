@@ -4,13 +4,13 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-360° panorama viewer website using Panellum. Gallery CRUD with Cloudinary image upload, User authentication. Admin dashboard for list management and messenger using nodemailer.
+CRUD 360° panorama viewer website using Panellum. Gallery CRUD with Cloudinary image upload, User authentication. Admin dashboard for list management and messenger using nodemailer.
 
 ### 🖼️ Image Preview
 
 <!-- ![Imgur] -->
 
-![Imgur](https://i.imgur.com/IfOYY79.png)
+![Imgur](https://i.imgur.com/RuBrovK.png)
 
 ### 🏗️ Built With
 
