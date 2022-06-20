@@ -34,14 +34,6 @@ exports.renderNewForm = catchAsync(async (req, res, next) => {
 //? @desc Render message list
 exports.renderList = catchAsync(async (req, res, next) => {
 	try {
-		// const message = await Message.find({}, (err, doc) => {
-		//     if (!doc) {
-		//         return next(
-		//             new AppError('No documents found in the database', 404)
-		//         );
-		//     }
-		// });
-		// res.status(200).render('messages/list', { messages: message });
 		const userId = req.user._id;
 		const currentUser = await User.findById(userId);
 		const perPage = 10;

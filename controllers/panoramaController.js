@@ -12,36 +12,11 @@ function escapeRegex(text) {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
 
-//! Search query is only displays 3 results
+//! Search query only displays 3 results
 //* @route GET
 //? @desc Show client panorama list
 exports.showPanorama = catchAsync(async (req, res, next) => {
 	try {
-		// await Panorama.find({}, (err, doc) => {
-		//     if (!doc) {
-		//         return next(
-		//             new AppError('No documents found in the database', 404)
-		//         );
-		//     }
-		//     res.status(200).render('panoramas/index', { panoramas: doc });
-		// });
-		//** */
-		// const perPage = 3;
-		// const page = req.params.page || 1;
-		// Panorama.find({})
-		//     .skip(perPage * page - perPage)
-		//     .limit(perPage)
-		//     .exec(function (err, panoramas) {
-		//         Panorama.countDocuments().exec(function (err, count) {
-		//             if (err) return next(err);
-		//             res.render('panoramas/index', {
-		//                 panoramas: panoramas,
-		//                 current: page,
-		//                 pages: Math.ceil(count / perPage),
-		//             });
-		//         });
-		//     });
-		//** */
 		const perPage = 6;
 		const page = req.params.page || 1;
 		if (req.query.search) {
@@ -116,14 +91,6 @@ exports.renderEditForm = catchAsync(async (req, res, next) => {
 //? @desc Render panorama admin list
 exports.renderList = catchAsync(async (req, res, next) => {
 	try {
-		// const panorama = await Panorama.find({}, (err, doc) => {
-		//     if (!doc) {
-		//         return next(
-		//             new AppError('No documents found in the database', 404)
-		//         );
-		//     }
-		// }).populate('author');
-		// res.status(200).render('panoramas/list', { panoramas: panorama });
 		const userId = req.user._id;
 		const currentUser = await User.findById(userId);
 		const perPage = 10;
