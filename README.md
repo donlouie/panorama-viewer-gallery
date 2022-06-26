@@ -10,7 +10,7 @@ CRUD 360° panorama viewer website using Panellum. Gallery CRUD with Cloudinary 
 
 <!-- ![Imgur] -->
 
-![Imgur](https://i.imgur.com/RuBrovK.png)
+![Imgur](https://i.imgur.com/0dzINW1.png)
 
 ### 🏗️ Built With
 
