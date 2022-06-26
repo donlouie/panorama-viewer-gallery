@@ -31,13 +31,13 @@
 				<% for(let panorama of panoramas) { %>
 				<div class="col">
 					<div
-						class="card p-3 shadow-sm rounded text-dark card-hover"
+						class="card p-3 shadow-sm rounded text-light card-hove bg-dark"
 					>
 						<!--!temp removed image thumbnail -->
 						<% panorama.images.forEach((img, i) => { %>
 						<img
 							src="<%=img.thumbnail %>"
-							class="container card-img-top"
+							class="container card-img-top shadow-sm p-1 bg-body rounded"
 							alt="..."
 						/>
 						<% }) %>
@@ -62,14 +62,14 @@
 									<a
 										href="/panoramas/show/<%= panorama.id %>"
 										type="button"
-										class="btn btn-sm btn-dark"
+										class="btn btn-sm btn-light"
 									>
 										View
 									</a>
 									<a
 										href="#"
 										type="button"
-										class="btn btn-sm btn-success disabled"
+										class="btn btn-sm btn-light disabled "
 									>
 										<i class="fas fa-vr-cardboard"></i>
 									</a>

@@ -64,6 +64,52 @@
 	<!--* Body  -->
 
 	<body>
+    <nav
+    class="navbar bg-dark navbar-expand-lg navbar-dark shadow-sm p-3 mb-5 sticky-top"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/users/login"
+        ><i class="fas fa-vr-cardboard"></i>PANO360
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-bold">
+          <!--Home-->
+          <li class="nav-item">
+            <a class="nav-link" href="/"> HOME</a>
+          </li>
+          <!--Tours-->
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/tours">TOURS</a>
+          </li> -->
+          <!--Facilties-->
+          <li class="nav-item">
+            <a class="nav-link" href="/panoramas/1">GALLERY</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/messages/create">
+              CONTACT</a
+            >
+          </li>
+        </ul>
+        <!-- <a class="btn btn-dark" href="/users/login">Login</a> -->
+      </div>
+    </div>
+  </nav>
 		<main class="container-fluid mt-2 mb-5">
 			<div class="container py-5">
 				<!--Pannellum viewer -->
@@ -124,7 +170,7 @@
 					<a
 						href="/panoramas/1"
 						type="button"
-						class="btn btn-success"
+						class="btn btn-dark"
 					>
 						Back to List
 					</a>
@@ -157,9 +203,10 @@
 				autoRotate: -2,
 				northOffset: 247.5,
 				//compass: true,
+        autoLoad:true,
 				preview: panoramaURL,
 				title: panoramaLocation,
-				author: 'LORMAKAD',
+				author: 'PANO360',
 			});
 		</script>
 		<!--* Pannellum viewer controls JS  -->
@@ -180,5 +227,29 @@
 				stopAudio();
 			};
 		</script>
+
+    <!-- Footer -->
+<footer class="text-white text-center text-lg-start bg-dark">
+  <!-- Grid container -->
+  <div class="container  mb-5">
+	<div class="row">
+		<div class="col-md-6 item text">
+			<h3 class="mt-5">ABOUT THE PROJECT</h3>
+			<p>
+				This app is designed to view your high-resolution panoramic (Panorama) images, videos with equirectangular (spherical) or cylindrical projection, full 360-degree pano.
+			</p>
+		</div>
+	</div>
+</div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2021 Copyright: PANO360.
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
 	</body>
 </html>

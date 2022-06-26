@@ -8,10 +8,10 @@
 
 <!--Section: Contact v.2-->
 <main class="container mt-5 mb-5">
-	<div class="container card card-body">
+	<div class="container card card-body bg-dark">
 		<section class="mb-4">
 			<%- include('../partials/utils/messages.ejs') %>
-			<h1 class="fw-light text-center my-4">Contact us</h1>
+			<h1 class="fw-light text-center my-4 text-light">Contact us</h1>
 			<!--Section description-->
 			<p class="lead text-muted text-center w-responsive mx-auto mb-5">
 				Do you have any questions? Please do not hesitate to message us
@@ -103,7 +103,7 @@
 						<br />
 						<button
 							type="submit"
-							class="btn btn-success float-end"
+							class="btn btn-danger float-end"
 							name="button"
 						>
 							Send Message <i class="far fa-paper-plane"></i>
@@ -114,7 +114,7 @@
 				<!--Grid column-->
 
 				<!--Grid column-->
-				<div class="col-md-3 text-center">
+				<div class="col-md-3 text-center text-light">
 					<ul class="list-unstyled mb-0">
 						<li>
 							<i class="fas fa-phone mt-4"></i>
@@ -132,7 +132,7 @@
 		</section>
 	</div>
 	<!--Leaflet Map-->
-	<div class="my-3 p-3 rounded shadow-sm">
+	<div class="card my-3 p-3 rounded shadow-sm">
 		<div id="Map"></div>
 	</div>
 	<!--Leaflet Map-->
@@ -144,9 +144,9 @@
 	const latitude = 33.400322;
 	const longitude = -104.534897;
 
-	const greenIcon = new L.Icon({
+	const redIcon = new L.Icon({
 		iconUrl:
-			'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+			'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
 		shadowUrl:
 			'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
 		iconSize: [25, 41],
@@ -156,7 +156,7 @@
 	});
 
 	const mymap = L.map('Map').setView([latitude, longitude], 16);
-	L.marker([latitude, longitude], { icon: greenIcon })
+	L.marker([latitude, longitude], { icon: redIcon })
 		.addTo(mymap)
 		.bindPopup('PANO360 HQ')
 		.openPopup();
